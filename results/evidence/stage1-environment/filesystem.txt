@@ -1,0 +1,2 @@
+TARGET SOURCE FSTYPE OPTIONS
+/mnt/c C:\    9p     rw,noatime,aname=drvfs;path=C:\;uid=0;gid=0;symlinkroot=/mnt/,cache=0x5,access=client,msize=65536,trans=fd,rfd=6,wfd=6

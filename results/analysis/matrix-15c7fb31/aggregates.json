@@ -1,0 +1,1531 @@
+{
+  "C1-read": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.238733,
+        "mean": 0.22496833333333333,
+        "min": 0.214606,
+        "n": 3,
+        "sd": 0.012418129341142062
+      },
+      "delta_cpu_user_s": {
+        "max": 0.051796999999999996,
+        "mean": 0.04916366666666667,
+        "min": 0.04458,
+        "n": 3,
+        "sd": 0.003984234221695973
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 196922.0,
+        "mean": 196918.33333333334,
+        "min": 196916.0,
+        "n": 3,
+        "sd": 3.2145502536643185
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.15238930099985737,
+        "mean": 0.14531176733332055,
+        "min": 0.1402944009996645,
+        "n": 3,
+        "sd": 0.006305146198405562
+      },
+      "queue_wait_mean_s": {
+        "max": 0.06449770033331485,
+        "mean": 0.06216765994439458,
+        "min": 0.06090185016671512,
+        "n": 3,
+        "sd": 0.0020203897397743204
+      },
+      "sampled_max_rss_bytes": {
+        "max": 37904384.0,
+        "mean": 35951957.333333336,
+        "min": 34713600.0,
+        "n": 3,
+        "sd": 1711051.3999495553
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 427474944.0,
+        "mean": 427474944.0,
+        "min": 427474944.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3363983360.0,
+        "mean": 3344707584.0,
+        "min": 3313102848.0,
+        "n": 3,
+        "sd": 27590017.51280227
+      },
+      "throughput_rps": {
+        "max": 53.90791976099066,
+        "mean": 52.90382746361896,
+        "min": 51.070034035731815,
+        "n": 3,
+        "sd": 1.5905036378112858
+      },
+      "window_s": {
+        "max": 0.4699429020001844,
+        "mean": 0.45393166799991985,
+        "min": 0.4452036009997755,
+        "n": 3,
+        "sd": 0.013884943091742886
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C2-mmap": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.144236,
+        "mean": 0.12977766666666668,
+        "min": 0.10732,
+        "n": 3,
+        "sd": 0.019715216568258476
+      },
+      "delta_cpu_user_s": {
+        "max": 0.070646,
+        "mean": 0.057568666666666664,
+        "min": 0.045612,
+        "n": 3,
+        "sd": 0.01255456926116278
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 24.0,
+        "mean": 24.0,
+        "min": 24.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 98700.0,
+        "mean": 98697.33333333333,
+        "min": 98695.0,
+        "n": 3,
+        "sd": 2.516611478423583
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.13105660500059457,
+        "mean": 0.12623410300026686,
+        "min": 0.12042980000023817,
+        "n": 3,
+        "sd": 0.005381003255078028
+      },
+      "queue_wait_mean_s": {
+        "max": 0.05476197237495247,
+        "mean": 0.053500467819389996,
+        "min": 0.05198760849994718,
+        "n": 3,
+        "sd": 0.0014041574486956955
+      },
+      "sampled_max_rss_bytes": {
+        "max": 37642240.0,
+        "mean": 36164949.333333336,
+        "min": 35139584.0,
+        "n": 3,
+        "sd": 1311106.0764733467
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 427417600.0,
+        "mean": 427417600.0,
+        "min": 427417600.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3316977664.0,
+        "mean": 3308613632.0,
+        "min": 3303129088.0,
+        "n": 3,
+        "sd": 7359643.514705858
+      },
+      "throughput_rps": {
+        "max": 62.499413905140365,
+        "mean": 60.71778920412927,
+        "min": 59.524737826291,
+        "n": 3,
+        "sd": 1.5722558192236669
+      },
+      "window_s": {
+        "max": 0.40319371199984744,
+        "mean": 0.39544590833368903,
+        "min": 0.38400360100058606,
+        "n": 3,
+        "sd": 0.01011445045713278
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C3-workers1": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.227753,
+        "mean": 0.20727,
+        "min": 0.186794,
+        "n": 3,
+        "sd": 0.020479500897238694
+      },
+      "delta_cpu_user_s": {
+        "max": 0.09381099999999999,
+        "mean": 0.07331366666666667,
+        "min": 0.056354,
+        "n": 3,
+        "sd": 0.018977434661548255
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 196799.0,
+        "mean": 196797.0,
+        "min": 196794.0,
+        "n": 3,
+        "sd": 2.6457513110645907
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.2598260080003456,
+        "mean": 0.2574629746665475,
+        "min": 0.2543020079992857,
+        "n": 3,
+        "sd": 0.002847133155722919
+      },
+      "queue_wait_mean_s": {
+        "max": 0.13085892491665163,
+        "mean": 0.12904781234727933,
+        "min": 0.12751133720837515,
+        "n": 3,
+        "sd": 0.0016906079246269794
+      },
+      "sampled_max_rss_bytes": {
+        "max": 33497088.0,
+        "mean": 33484800.0,
+        "min": 33472512.0,
+        "n": 3,
+        "sd": 12288.0
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 343531520.0,
+        "mean": 343531520.0,
+        "min": 343531520.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3341103104.0,
+        "mean": 3329212416.0,
+        "min": 3321401344.0,
+        "n": 3,
+        "sd": 10465289.618782273
+      },
+      "throughput_rps": {
+        "max": 27.147554587644095,
+        "mean": 26.927382853135995,
+        "min": 26.708440804741798,
+        "n": 3,
+        "sd": 0.219559474128641
+      },
+      "window_s": {
+        "max": 0.8985923280006318,
+        "mean": 0.8913255280003796,
+        "min": 0.8840575280000849,
+        "n": 3,
+        "sd": 0.007267400074577916
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C3-workers4": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.218439,
+        "mean": 0.21177666666666664,
+        "min": 0.20246399999999998,
+        "n": 3,
+        "sd": 0.008310737412127366
+      },
+      "delta_cpu_user_s": {
+        "max": 0.08166399999999999,
+        "mean": 0.073599,
+        "min": 0.060129999999999996,
+        "n": 3,
+        "sd": 0.011740132069103818
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 197163.0,
+        "mean": 197154.66666666666,
+        "min": 197141.0,
+        "n": 3,
+        "sd": 11.930353445448853
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.13270960399950127,
+        "mean": 0.13081823733318743,
+        "min": 0.12726290399950813,
+        "n": 3,
+        "sd": 0.0030811075971245807
+      },
+      "queue_wait_mean_s": {
+        "max": 0.03959265954169192,
+        "mean": 0.03838505120835281,
+        "min": 0.037444576208448176,
+        "n": 3,
+        "sd": 0.0010986745036696516
+      },
+      "sampled_max_rss_bytes": {
+        "max": 53149696.0,
+        "mean": 52772864.0,
+        "min": 52494336.0,
+        "n": 3,
+        "sd": 338558.6207911416
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 529203200.0,
+        "mean": 529185450.6666667,
+        "min": 529154048.0,
+        "n": 3,
+        "sd": 27272.511973291592
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3322986496.0,
+        "mean": 3311322453.3333335,
+        "min": 3297746944.0,
+        "n": 3,
+        "sd": 12727883.755892389
+      },
+      "throughput_rps": {
+        "max": 76.67506038125195,
+        "mean": 74.02890750933406,
+        "min": 71.74891946358807,
+        "n": 3,
+        "sd": 2.483399604396103
+      },
+      "window_s": {
+        "max": 0.33449981099965953,
+        "mean": 0.32443940999989235,
+        "min": 0.3130092090004837,
+        "n": 3,
+        "sd": 0.010810585442102965
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C4-cache1": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.19499299999999997,
+        "mean": 0.18806599999999998,
+        "min": 0.178147,
+        "n": 3,
+        "sd": 0.008812546567252841
+      },
+      "delta_cpu_user_s": {
+        "max": 0.070836,
+        "mean": 0.06281666666666666,
+        "min": 0.057297,
+        "n": 3,
+        "sd": 0.007107206225608857
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 184632.0,
+        "mean": 178483.33333333334,
+        "min": 172336.0,
+        "n": 3,
+        "sd": 6148.000108436347
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.08333333333333333,
+        "mean": 0.06944444444444445,
+        "min": 0.041666666666666664,
+        "n": 3,
+        "sd": 0.024056261216234404
+      },
+      "latency_p95_s": {
+        "max": 0.16681640799924935,
+        "mean": 0.15223240633319315,
+        "min": 0.14467770400005975,
+        "n": 3,
+        "sd": 0.012632847680741062
+      },
+      "queue_wait_mean_s": {
+        "max": 0.057465955916692714,
+        "mean": 0.05680556763886418,
+        "min": 0.05549008183322712,
+        "n": 3,
+        "sd": 0.0011392471973339995
+      },
+      "sampled_max_rss_bytes": {
+        "max": 36827136.0,
+        "mean": 35808597.333333336,
+        "min": 34881536.0,
+        "n": 3,
+        "sd": 976020.4490098214
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 427474944.0,
+        "mean": 427474944.0,
+        "min": 427474944.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3336704000.0,
+        "mean": 3335888896.0,
+        "min": 3335131136.0,
+        "n": 3,
+        "sd": 787998.4399578467
+      },
+      "throughput_rps": {
+        "max": 57.35284776723175,
+        "mean": 55.94489770082002,
+        "min": 54.296232248096594,
+        "n": 3,
+        "sd": 1.5424598960296707
+      },
+      "window_s": {
+        "max": 0.4420196209994174,
+        "mean": 0.42921248466639855,
+        "min": 0.41846222000003763,
+        "n": 3,
+        "sd": 0.011912633052823356
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C4-cache3": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.173986,
+        "mean": 0.16972233333333334,
+        "min": 0.16178700000000001,
+        "n": 3,
+        "sd": 0.006878571969045116
+      },
+      "delta_cpu_user_s": {
+        "max": 0.041708999999999996,
+        "mean": 0.039264999999999994,
+        "min": 0.03583399999999999,
+        "n": 3,
+        "sd": 0.003059335385341074
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 141589.0,
+        "mean": 137490.33333333334,
+        "min": 135440.0,
+        "n": 3,
+        "sd": 3549.549595840764
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.3333333333333333,
+        "mean": 0.3194444444444444,
+        "min": 0.2916666666666667,
+        "n": 3,
+        "sd": 0.024056261216234387
+      },
+      "latency_p95_s": {
+        "max": 0.13875550299962924,
+        "mean": 0.13751393633325884,
+        "min": 0.13526950300001772,
+        "n": 3,
+        "sd": 0.0019473970224284508
+      },
+      "queue_wait_mean_s": {
+        "max": 0.04739735958340437,
+        "mean": 0.04684465822229969,
+        "min": 0.046178901375090696,
+        "n": 3,
+        "sd": 0.0006170463990296474
+      },
+      "sampled_max_rss_bytes": {
+        "max": 38211584.0,
+        "mean": 36569088.0,
+        "min": 34574336.0,
+        "n": 3,
+        "sd": 1844032.6652551468
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 427474944.0,
+        "mean": 427458560.0,
+        "min": 427425792.0,
+        "n": 3,
+        "sd": 28377.920431208484
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3337486336.0,
+        "mean": 3327866197.3333335,
+        "min": 3319427072.0,
+        "n": 3,
+        "sd": 9087373.021151785
+      },
+      "throughput_rps": {
+        "max": 69.52009804160558,
+        "mean": 67.40515043080615,
+        "min": 65.01258206096615,
+        "n": 3,
+        "sd": 2.266545839668293
+      },
+      "window_s": {
+        "max": 0.3691593110006579,
+        "mean": 0.35632621000028547,
+        "min": 0.3452239090001967,
+        "n": 3,
+        "sd": 0.0120612030374941
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C5-context": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.258747,
+        "mean": 0.242139,
+        "min": 0.21801199999999998,
+        "n": 3,
+        "sd": 0.02138309091314912
+      },
+      "delta_cpu_user_s": {
+        "max": 0.557068,
+        "mean": 0.526932,
+        "min": 0.5106229999999999,
+        "n": 3,
+        "sd": 0.02612803002524302
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 198640.0,
+        "mean": 198587.66666666666,
+        "min": 198559.0,
+        "n": 3,
+        "sd": 45.39089482851526
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.3205450089999431,
+        "mean": 0.31195277533333865,
+        "min": 0.30383720800000447,
+        "n": 3,
+        "sd": 0.008364093594547022
+      },
+      "queue_wait_mean_s": {
+        "max": 0.13487080795827447,
+        "mean": 0.13263894534718979,
+        "min": 0.13061691195828948,
+        "n": 3,
+        "sd": 0.00213469647058638
+      },
+      "sampled_max_rss_bytes": {
+        "max": 56848384.0,
+        "mean": 55144448.0,
+        "min": 52244480.0,
+        "n": 3,
+        "sd": 2524252.843728615
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 439398400.0,
+        "mean": 439188138.6666667,
+        "min": 439083008.0,
+        "n": 3,
+        "sd": 182091.65610025445
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3332927488.0,
+        "mean": 3320281770.6666665,
+        "min": 3302060032.0,
+        "n": 3,
+        "sd": 16171548.176050596
+      },
+      "throughput_rps": {
+        "max": 25.952019391825385,
+        "mean": 25.46582754525944,
+        "min": 24.86336732745365,
+        "n": 3,
+        "sd": 0.5535608186353925
+      },
+      "window_s": {
+        "max": 0.9652755269999034,
+        "mean": 0.9427383930002785,
+        "min": 0.924783526000283,
+        "n": 3,
+        "sd": 0.02063124849300771
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C6-missing": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.009220000000000002,
+        "mean": 0.006768000000000001,
+        "min": 0.0038989999999999997,
+        "n": 3,
+        "sd": 0.0026848979496435256
+      },
+      "delta_cpu_user_s": {
+        "max": 0.012160999999999998,
+        "mean": 0.008970333333333332,
+        "min": 0.006423999999999999,
+        "n": 3,
+        "sd": 0.0029222707494914514
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 23.0,
+        "mean": 20.333333333333332,
+        "min": 15.0,
+        "n": 3,
+        "sd": 4.618802153517006
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "latency_p95_s": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "queue_wait_mean_s": {
+        "max": 0.0037946876250316564,
+        "mean": 0.0037378098612129585,
+        "min": 0.0036939626669057666,
+        "n": 3,
+        "sd": 5.161129821765006e-05
+      },
+      "sampled_max_rss_bytes": {
+        "max": 24502272.0,
+        "mean": 24491349.333333332,
+        "min": 24481792.0,
+        "n": 3,
+        "sd": 10308.040615622996
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 410591232.0,
+        "mean": 409914026.6666667,
+        "min": 409575424.0,
+        "n": 3,
+        "sd": 586477.0222449753
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3363364864.0,
+        "mean": 3351852373.3333335,
+        "min": 3342168064.0,
+        "n": 3,
+        "sd": 10716005.216528282
+      },
+      "throughput_rps": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "window_s": {
+        "max": 0.057525602000168874,
+        "mean": 0.05713916866655685,
+        "min": 0.05663800199999969,
+        "n": 3,
+        "sd": 0.00045478703075352604
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "C6-recovery": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.221126,
+        "mean": 0.20337133333333332,
+        "min": 0.189906,
+        "n": 3,
+        "sd": 0.016045899330773994
+      },
+      "delta_cpu_user_s": {
+        "max": 0.079862,
+        "mean": 0.07721966666666666,
+        "min": 0.07279799999999999,
+        "n": 3,
+        "sd": 0.003853510650476182
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 196921.0,
+        "mean": 196919.0,
+        "min": 196917.0,
+        "n": 3,
+        "sd": 2.0
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.15641400599997723,
+        "mean": 0.14737307233341804,
+        "min": 0.13992350500029715,
+        "n": 3,
+        "sd": 0.00835963461584973
+      },
+      "queue_wait_mean_s": {
+        "max": 0.06410493574999994,
+        "mean": 0.06189597175000472,
+        "min": 0.06050463974990331,
+        "n": 3,
+        "sd": 0.0019344054351442758
+      },
+      "sampled_max_rss_bytes": {
+        "max": 38666240.0,
+        "mean": 37224448.0,
+        "min": 35340288.0,
+        "n": 3,
+        "sd": 1706533.404930592
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 427474944.0,
+        "mean": 427474944.0,
+        "min": 427474944.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3346931712.0,
+        "mean": 3336754517.3333335,
+        "min": 3330023424.0,
+        "n": 3,
+        "sd": 8965448.208117502
+      },
+      "throughput_rps": {
+        "max": 53.519472154654196,
+        "mean": 52.45112571137115,
+        "min": 50.343561559926236,
+        "n": 3,
+        "sd": 1.8252622031215744
+      },
+      "window_s": {
+        "max": 0.47672431699993467,
+        "mean": 0.4579461163330052,
+        "min": 0.4484349159993144,
+        "n": 3,
+        "sd": 0.016262857179034015
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "corpus-large": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.22843000000000002,
+        "mean": 0.21567066666666665,
+        "min": 0.19602799999999998,
+        "n": 3,
+        "sd": 0.01726289689864751
+      },
+      "delta_cpu_user_s": {
+        "max": 0.563779,
+        "mean": 0.5390846666666667,
+        "min": 0.514532,
+        "n": 3,
+        "sd": 0.024623805642778582
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 199049.0,
+        "mean": 198927.0,
+        "min": 198844.0,
+        "n": 3,
+        "sd": 107.92126759818937
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.3268260160002683,
+        "mean": 0.31718248233300983,
+        "min": 0.305038214999513,
+        "n": 3,
+        "sd": 0.011107084215230463
+      },
+      "queue_wait_mean_s": {
+        "max": 0.13524649399998148,
+        "mean": 0.13320434665284767,
+        "min": 0.1313808937502472,
+        "n": 3,
+        "sd": 0.0019420573543896071
+      },
+      "sampled_max_rss_bytes": {
+        "max": 56840192.0,
+        "mean": 56448341.333333336,
+        "min": 55980032.0,
+        "n": 3,
+        "sd": 435147.39133003354
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 439095296.0,
+        "mean": 439091200.0,
+        "min": 439083008.0,
+        "n": 3,
+        "sd": 7094.480107802121
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3315023872.0,
+        "mean": 3304169472.0,
+        "min": 3298566144.0,
+        "n": 3,
+        "sd": 9401836.022415197
+      },
+      "throughput_rps": {
+        "max": 25.622749038162258,
+        "mean": 25.249268128108028,
+        "min": 24.874821451388446,
+        "n": 3,
+        "sd": 0.37396472867539743
+      },
+      "window_s": {
+        "max": 0.9648310459997447,
+        "mean": 0.9506616453330329,
+        "min": 0.9366676449999431,
+        "n": 3,
+        "sd": 0.014082519764824811
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  },
+  "corpus-medium": {
+    "metrics": {
+      "delta_cpu_system_s": {
+        "max": 0.221798,
+        "mean": 0.200289,
+        "min": 0.176407,
+        "n": 3,
+        "sd": 0.02278835375800542
+      },
+      "delta_cpu_user_s": {
+        "max": 0.18145999999999998,
+        "mean": 0.15997899999999998,
+        "min": 0.14093,
+        "n": 3,
+        "sd": 0.020374155025423744
+      },
+      "delta_logical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_logical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_major_faults": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "delta_minor_faults": {
+        "max": 197356.0,
+        "mean": 197210.0,
+        "min": 197135.0,
+        "n": 3,
+        "sd": 126.45552577882866
+      },
+      "delta_physical_read_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_physical_write_bytes": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_read_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "delta_write_syscalls": {
+        "max": null,
+        "mean": null,
+        "min": null,
+        "n": 0,
+        "sd": null
+      },
+      "hit_rate": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "latency_p95_s": {
+        "max": 0.1725338060005015,
+        "mean": 0.1693029740002506,
+        "min": 0.16670600799989188,
+        "n": 3,
+        "sd": 0.002965155470349214
+      },
+      "queue_wait_mean_s": {
+        "max": 0.07279510349989475,
+        "mean": 0.0724473613611028,
+        "min": 0.0722645105832953,
+        "n": 3,
+        "sd": 0.00030128737358518234
+      },
+      "sampled_max_rss_bytes": {
+        "max": 44752896.0,
+        "mean": 44545365.333333336,
+        "min": 44154880.0,
+        "n": 3,
+        "sd": 338393.3976976107
+      },
+      "sampled_max_swap_used_bytes": {
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_max_vsz_bytes": {
+        "max": 429748224.0,
+        "mean": 429748224.0,
+        "min": 429748224.0,
+        "n": 3,
+        "sd": 0.0
+      },
+      "sampled_min_mem_available_bytes": {
+        "max": 3326193664.0,
+        "mean": 3313919317.3333335,
+        "min": 3304431616.0,
+        "n": 3,
+        "sd": 11145435.274089448
+      },
+      "throughput_rps": {
+        "max": 45.79442814419259,
+        "mean": 45.43812828328259,
+        "min": 45.04500057495612,
+        "n": 3,
+        "sd": 0.37606866147276585
+      },
+      "window_s": {
+        "max": 0.5328005259998463,
+        "mean": 0.5282149223333666,
+        "min": 0.5240812250003728,
+        "n": 3,
+        "sd": 0.004377181396805293
+      }
+    },
+    "total_runs": 3,
+    "valid_runs": 3
+  }
+}

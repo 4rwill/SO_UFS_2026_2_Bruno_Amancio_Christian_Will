@@ -1,0 +1,1 @@
+{"error":null,"operation":"ingest","request_id":"d3f4777367bc412bb04c27559652dfe7","result":{"chunks":96,"files":{"corpus.bin":{"bytes":20797,"sha256":"bfe25b88fa3fc80726dee25ec2a26cba05d5c539e865f6da6a6bec5d0c2c4649"},"index.json":{"bytes":75314,"sha256":"1185784073f413c3b4a611b2333b94c47a69bb913fe19f50a8783e3ebaafe0e6"}},"ingestion_s":0.07573108900010084},"status":"completed"}

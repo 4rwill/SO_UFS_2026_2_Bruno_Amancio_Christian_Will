@@ -1,0 +1,4 @@
+fatal: detected dubious ownership in repository at '/mnt/c/Projetos/SO_UFS_2026_2_Bruno_Amancio_Christian_Will'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /mnt/c/Projetos/SO_UFS_2026_2_Bruno_Amancio_Christian_Will

@@ -1,0 +1,29 @@
+__pycache__/
+*.py[cod]
+.venv/
+.venv-linux/
+*.egg-info/
+.env
+.env.*
+data/generated/
+results/local-validation/
+
+# Material de outra disciplina, preservado apenas localmente.
+/planejamento-qualidade/
+
+# Ambientes, caches e arquivos locais de ferramentas.
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.pem
+*.key
+*.p12
+*.pfx

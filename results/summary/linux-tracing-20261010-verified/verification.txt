@@ -1,0 +1,1 @@
+51 arquivos brutos íntegros; 2 processos com 6 threads observadas; 48 consultas concluídas; mmap de arquivos alvo 0/read e 48/mmap.

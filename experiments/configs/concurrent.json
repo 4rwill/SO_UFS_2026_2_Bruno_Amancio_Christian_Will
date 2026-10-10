@@ -1,0 +1,23 @@
+{
+  "corpus": "data/generated/small-linux",
+  "index": "data/generated/index-small-stage2",
+  "results": "results/raw/stage3",
+  "chunk_chars": 256,
+  "overlap_chars": 32,
+  "dimensions": 64,
+  "top_k": 3,
+  "context_bytes": 512,
+  "generation_delay_s": 0.01,
+  "read_mode": "read",
+  "max_input_bytes": 1048576,
+  "max_index_bytes": 8388608,
+  "max_chunks": 2000,
+  "producers": 2,
+  "workers": 2,
+  "queue_capacity": 4,
+  "cache_capacity": 3,
+  "enqueue_timeout_s": 1,
+  "run_timeout_s": 10,
+  "sample_interval_s": 0.01,
+  "queries": ["memoria pagina swap", "memoria pagina swap", "disco arquivo leitura", "thread fila consumidor", "memoria pagina swap", "disco arquivo leitura", "thread fila consumidor", "memoria pagina swap", "disco arquivo leitura", "thread fila consumidor", "memoria pagina swap", "disco arquivo leitura"]
+}

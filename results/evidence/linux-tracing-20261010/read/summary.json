@@ -1,0 +1,1 @@
+{"artifacts":"results/evidence/linux-tracing-20261010/read/runs/0a8ea05c14844d0ba58259cad3f537e5","captured_live_threads":true,"completed":24,"duplicates":0,"lost":0,"max_threads_observed":6,"mode":"read","monitors_exitcodes":[0,0],"observations":157,"returncode":0,"timeout":false,"worker_threads_alive":0}

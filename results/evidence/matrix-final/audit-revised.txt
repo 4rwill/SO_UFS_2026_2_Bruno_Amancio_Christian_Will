@@ -1,0 +1,2 @@
+33 runs: IDs/logs/recursos/limites/aquecimento válidos; C1/C2 equivalentes nas 3 repetições
+Métricas indisponíveis preservadas como null: ['physical_read_bytes']

@@ -1,0 +1,7 @@
+{
+  "seed": 202602,
+  "documents": 12,
+  "sentences_per_document": 24,
+  "max_bytes": 1048576,
+  "output": "data/generated/small"
+}

@@ -1,0 +1,3 @@
+monotonic_s,rss_bytes,vsz_bytes,mem_available_bytes,minor_faults,major_faults,swap_used_bytes,page_cache_bytes,cpu_user_s,cpu_system_s,processes,logical_read_bytes,logical_write_bytes,read_syscalls,write_syscalls,physical_read_bytes,physical_write_bytes
+5863.448832044,24113152,31674368,3396452352,3163,4,0,221945856,0.043231,0.01441,1,null,null,null,null,null,null
+5863.478320648,24489984,32751616,3387969536,9379,4,0,221945856,0.043231,0.024675,1,null,null,null,null,null,null

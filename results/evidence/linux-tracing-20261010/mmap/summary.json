@@ -1,0 +1,1 @@
+{"artifacts":"results/evidence/linux-tracing-20261010/mmap/runs/823980af0a144986bbfd3ec5ab58f2d4","captured_live_threads":true,"completed":24,"duplicates":0,"lost":0,"max_threads_observed":6,"mode":"mmap","monitors_exitcodes":[0,0],"observations":154,"returncode":0,"timeout":false,"worker_threads_alive":0}

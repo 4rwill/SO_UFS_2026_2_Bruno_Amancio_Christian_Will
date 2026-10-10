@@ -1,0 +1,7 @@
+    PID    PPID     LWP NLWP STAT %CPU   RSS    VSZ COMMAND
+   3492    3490    3492    6 Sl    9.9 21300 397692 python
+   3492    3490    3496    6 tl    0.0 21300 397692 resource-sample
+   3492    3490    3497    6 Sl    0.0 21300 397692 consumer-0
+   3492    3490    3498    6 tl    0.0 21300 397692 consumer-1
+   3492    3490    3499    6 Sl    0.0 21300 397692 producer-0
+   3492    3490    3500    6 Rl    0.0 21300 397692 python

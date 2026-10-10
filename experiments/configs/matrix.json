@@ -1,0 +1,25 @@
+{
+  "base_config": "experiments/configs/concurrent.json",
+  "repetitions": 3,
+  "seed": 202602,
+  "queries_per_run": 24,
+  "warmup_queries": 2,
+  "process_timeout_s": 45,
+  "address_space_mib": 512,
+  "cpu_limit_s": 30,
+  "batch_timeout_s": 900,
+  "corpora": {"small": 12, "medium": 48, "large": 192},
+  "configurations": [
+    {"id": "C1-read", "corpus": "small", "overrides": {"cache_capacity": 0}},
+    {"id": "C2-mmap", "corpus": "small", "overrides": {"cache_capacity": 0, "read_mode": "mmap"}},
+    {"id": "C3-workers1", "corpus": "small", "overrides": {"cache_capacity": 0, "workers": 1}},
+    {"id": "C3-workers4", "corpus": "small", "overrides": {"cache_capacity": 0, "workers": 4}},
+    {"id": "corpus-medium", "corpus": "medium", "overrides": {"cache_capacity": 0}},
+    {"id": "corpus-large", "corpus": "large", "overrides": {"cache_capacity": 0}},
+    {"id": "C4-cache1", "corpus": "small", "overrides": {"cache_capacity": 1}},
+    {"id": "C4-cache3", "corpus": "small", "overrides": {"cache_capacity": 3}},
+    {"id": "C5-context", "corpus": "large", "overrides": {"cache_capacity": 0, "top_k": 32, "context_bytes": 8192}},
+    {"id": "C6-missing", "corpus": "small", "missing_index": true, "overrides": {"cache_capacity": 0}},
+    {"id": "C6-recovery", "corpus": "small", "overrides": {"cache_capacity": 0}}
+  ]
+}

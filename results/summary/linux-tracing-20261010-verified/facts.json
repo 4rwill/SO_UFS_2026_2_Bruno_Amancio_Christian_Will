@@ -1,0 +1,34 @@
+[
+  {
+    "mode": "read",
+    "application_pid": 3475,
+    "max_threads": 6,
+    "corpus_index_file_mappings": 0,
+    "roles_observed": [
+      "consumer-0",
+      "consumer-1",
+      "producer-0",
+      "producer-1",
+      "python",
+      "resource-sample"
+    ],
+    "completed": 24,
+    "raw_files_checked": 51
+  },
+  {
+    "mode": "mmap",
+    "application_pid": 3492,
+    "max_threads": 6,
+    "corpus_index_file_mappings": 48,
+    "roles_observed": [
+      "consumer-0",
+      "consumer-1",
+      "producer-0",
+      "producer-1",
+      "python",
+      "resource-sample"
+    ],
+    "completed": 24,
+    "raw_files_checked": 51
+  }
+]

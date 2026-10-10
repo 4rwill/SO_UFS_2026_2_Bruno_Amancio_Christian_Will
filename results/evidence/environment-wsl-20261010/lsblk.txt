@@ -1,0 +1,6 @@
+NAME FSTYPE FSVER LABEL UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+sda  ext4   1.0                                                             
+sdb  ext4   1.0                                                             
+sdc  swap   1           d4b9b1d4-559e-4c9c-a7a7-331f54ef0ea8                [SWAP]
+sdd  ext4   1.0         8d9e7e0b-5e11-45ed-9861-996e631285e3  954.4G     0% /mnt/wslg/distro
+                                                                            /

@@ -1,0 +1,86 @@
+{
+  "documents": [
+    {
+      "bytes": 1734,
+      "file": "document-0000.txt",
+      "sha256": "9329bf7f6391934c11f24c2dd6a997842ce162fd8969a3763a55afcb74f55881",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0001.txt",
+      "sha256": "a380fbf70a044be0efc8185d8f84160cee27ab769de211dfb115f6534f91bd6e",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1754,
+      "file": "document-0002.txt",
+      "sha256": "d790890dc748346941fe4c0854675635f965b3b4aed2c129c94d8733a7127b53",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0003.txt",
+      "sha256": "7f4a98299287ef8482baa92f8d8d3468c8c9310bd500b49d84a7b7a64ca23632",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1725,
+      "file": "document-0004.txt",
+      "sha256": "a42d29166e04449caf019bd83e2af029cda8b22c961ed4f95760103b707d3888",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1750,
+      "file": "document-0005.txt",
+      "sha256": "5057ef7baf1f3118a9de4b8afece312d07bb15abfe263f460c88906fb440e5d1",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1714,
+      "file": "document-0006.txt",
+      "sha256": "b6a54451bbd4fc98d8bdd6754bc2aea2a22697463057a6a60a3d5143b30e421f",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0007.txt",
+      "sha256": "b8d39526d4f79a1aad6f0f5638f975e5c5b248d7c2f74f69af72bc8e4c420076",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1752,
+      "file": "document-0008.txt",
+      "sha256": "24ec134a80ae874d3d2ec268229ec37e510e02be3e382dce9bdb81ee9965c733",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0009.txt",
+      "sha256": "b1b8ed6d6b6605d459fde0ed3e7f77e642ff50e83b587b9de0e362bc26c42c81",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0010.txt",
+      "sha256": "8d0db4b8d4d06ab1d9a353d7de555c90df7cfd71fefe43cf6e5aacfa312a93b5",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1752,
+      "file": "document-0011.txt",
+      "sha256": "04d7dc741a8de87e9cdcb2b53491a9904b6edb5b99c1cf3c1cf2882e4dc8eb52",
+      "topic": "concorrencia"
+    }
+  ],
+  "format_version": 1,
+  "generator_version": "0.1.0",
+  "queries": [
+    "memoria pagina swap",
+    "disco arquivo leitura",
+    "thread fila consumidor"
+  ],
+  "seed": 202602,
+  "sentences_per_document": 24,
+  "total_document_bytes": 20797
+}

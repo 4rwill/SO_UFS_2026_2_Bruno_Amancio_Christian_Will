@@ -1,0 +1,15 @@
+test_invalid_parameters (test_corpus.CorpusTests.test_invalid_parameters) ... ok
+test_limit_leaves_no_partial_corpus (test_corpus.CorpusTests.test_limit_leaves_no_partial_corpus) ... ok
+test_no_overwrite (test_corpus.CorpusTests.test_no_overwrite) ... ok
+test_reproducible_bytes_and_manifest (test_corpus.CorpusTests.test_reproducible_bytes_and_manifest) ... ok
+test_corruption_and_no_overwrite (test_pipeline.PipelineTests.test_corruption_and_no_overwrite) ... ok
+test_deterministic_index_and_modes (test_pipeline.PipelineTests.test_deterministic_index_and_modes) ... ok
+test_failed_run_is_recorded (test_pipeline.PipelineTests.test_failed_run_is_recorded) ... ok
+test_fragmentation (test_pipeline.PipelineTests.test_fragmentation) ... ok
+test_input_and_chunk_limits (test_pipeline.PipelineTests.test_input_and_chunk_limits) ... ok
+test_unicode_byte_limit (test_pipeline.PipelineTests.test_unicode_byte_limit) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.153s
+
+OK

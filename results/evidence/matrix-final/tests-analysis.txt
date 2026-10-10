@@ -1,0 +1,24 @@
+test_invalid_parameters (test_corpus.CorpusTests.test_invalid_parameters) ... ok
+test_limit_leaves_no_partial_corpus (test_corpus.CorpusTests.test_limit_leaves_no_partial_corpus) ... ok
+test_no_overwrite (test_corpus.CorpusTests.test_no_overwrite) ... ok
+test_reproducible_bytes_and_manifest (test_corpus.CorpusTests.test_reproducible_bytes_and_manifest) ... ok
+test_fixed_workload_has_distinct_and_repeated_queries (test_matrix.MatrixTests.test_fixed_workload_has_distinct_and_repeated_queries) ... ok
+test_known_aggregation_and_missing_values (test_matrix.MatrixTests.test_known_aggregation_and_missing_values) ... ok
+test_corruption_and_no_overwrite (test_pipeline.PipelineTests.test_corruption_and_no_overwrite) ... ok
+test_deterministic_index_and_modes (test_pipeline.PipelineTests.test_deterministic_index_and_modes) ... ok
+test_failed_run_is_recorded (test_pipeline.PipelineTests.test_failed_run_is_recorded) ... ok
+test_fragmentation (test_pipeline.PipelineTests.test_fragmentation) ... ok
+test_input_and_chunk_limits (test_pipeline.PipelineTests.test_input_and_chunk_limits) ... ok
+test_unicode_byte_limit (test_pipeline.PipelineTests.test_unicode_byte_limit) ... ok
+test_duplicate_and_corrected_results (test_race.RaceTests.test_duplicate_and_corrected_results) ... ok
+test_parent_watchdog_terminates_child (test_race.RaceTests.test_parent_watchdog_terminates_child) ... ok
+test_eviction_and_disabled (test_server.CacheTests.test_eviction_and_disabled) ... ok
+test_single_flight_error_and_retry (test_server.CacheTests.test_single_flight_error_and_retry) ... ok
+test_failure_then_recovery (test_server.ServerTests.test_failure_then_recovery) ... ok
+test_saturation_and_deadline (test_server.ServerTests.test_saturation_and_deadline) ... ok
+test_two_producers_two_consumers (test_server.ServerTests.test_two_producers_two_consumers) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.404s
+
+OK

@@ -1,0 +1,17 @@
+mode,syscall,calls,errors,traced_syscall_seconds
+read,futex,6888,1496,1.305583
+read,read,720,0,0.154781
+read,clock_nanosleep,25,0,0.069453
+read,openat,511,92,0.023978
+read,write,300,0,0.015257
+read,mmap,273,0,0.01207
+read,munmap,123,0,0.002987
+read,clone3,5,0,0.000603
+mmap,futex,6818,1440,0.936263
+mmap,read,616,0,0.068962
+mmap,clock_nanosleep,25,0,0.041379
+mmap,openat,505,90,0.01854
+mmap,write,300,0,0.014339
+mmap,mmap,273,0,0.005445
+mmap,munmap,125,0,0.003827
+mmap,clone3,5,0,0.000646

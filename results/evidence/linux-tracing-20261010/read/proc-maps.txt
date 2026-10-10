@@ -1,0 +1,132 @@
+00400000-00422000 r--p 00000000 08:30 11194                              /usr/bin/python3.14
+00422000-007a8000 r-xp 00022000 08:30 11194                              /usr/bin/python3.14
+007a8000-00a86000 r--p 003a8000 08:30 11194                              /usr/bin/python3.14
+00a86000-00a87000 r--p 00685000 08:30 11194                              /usr/bin/python3.14
+00a87000-00b22000 rw-p 00686000 08:30 11194                              /usr/bin/python3.14
+00b22000-00b94000 rw-p 00000000 00:00 0 
+1f77a000-1fa7d000 rw-p 00000000 00:00 0                                  [heap]
+7ab65c000000-7ab65c021000 rw-p 00000000 00:00 0 
+7ab65c021000-7ab660000000 ---p 00000000 00:00 0 
+7ab660000000-7ab660021000 rw-p 00000000 00:00 0 
+7ab660021000-7ab664000000 ---p 00000000 00:00 0 
+7ab664000000-7ab664021000 rw-p 00000000 00:00 0 
+7ab664021000-7ab668000000 ---p 00000000 00:00 0 
+7ab668000000-7ab668021000 rw-p 00000000 00:00 0 
+7ab668021000-7ab66c000000 ---p 00000000 00:00 0 
+7ab66c000000-7ab66c024000 rw-p 00000000 00:00 0 
+7ab66c024000-7ab670000000 ---p 00000000 00:00 0 
+7ab671c95000-7ab67449a000 rw-p 00000000 00:00 0 
+7ab67449a000-7ab674600000 rw-p 00000000 00:00 0 
+7ab674600000-7ab6746e4000 r--p 00000000 08:30 14163                      /usr/lib/x86_64-linux-gnu/libcrypto.so.3
+7ab6746e4000-7ab674a78000 r-xp 000e4000 08:30 14163                      /usr/lib/x86_64-linux-gnu/libcrypto.so.3
+7ab674a78000-7ab674b97000 r--p 00478000 08:30 14163                      /usr/lib/x86_64-linux-gnu/libcrypto.so.3
+7ab674b97000-7ab674c14000 r--p 00597000 08:30 14163                      /usr/lib/x86_64-linux-gnu/libcrypto.so.3
+7ab674c14000-7ab674c17000 rw-p 00614000 08:30 14163                      /usr/lib/x86_64-linux-gnu/libcrypto.so.3
+7ab674c17000-7ab674c1a000 rw-p 00000000 00:00 0 
+7ab674c5f000-7ab674c63000 r--p 00000000 08:30 14352                      /usr/lib/x86_64-linux-gnu/liblzma.so.5.8.3
+7ab674c63000-7ab674c87000 r-xp 00004000 08:30 14352                      /usr/lib/x86_64-linux-gnu/liblzma.so.5.8.3
+7ab674c87000-7ab674c92000 r--p 00028000 08:30 14352                      /usr/lib/x86_64-linux-gnu/liblzma.so.5.8.3
+7ab674c92000-7ab674c93000 r--p 00033000 08:30 14352                      /usr/lib/x86_64-linux-gnu/liblzma.so.5.8.3
+7ab674c93000-7ab674c94000 rw-p 00034000 08:30 14352                      /usr/lib/x86_64-linux-gnu/liblzma.so.5.8.3
+7ab674c94000-7ab674c97000 r--p 00000000 08:30 11623                      /usr/lib/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+7ab674c97000-7ab674c9b000 r-xp 00003000 08:30 11623                      /usr/lib/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+7ab674c9b000-7ab674c9e000 r--p 00007000 08:30 11623                      /usr/lib/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+7ab674c9e000-7ab674c9f000 r--p 00009000 08:30 11623                      /usr/lib/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+7ab674c9f000-7ab674ca0000 rw-p 0000a000 08:30 11623                      /usr/lib/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so
+7ab674ca0000-7ab674ca2000 r--p 00000000 08:30 14142                      /usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7ab674ca2000-7ab674cb1000 r-xp 00002000 08:30 14142                      /usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7ab674cb1000-7ab674cb3000 r--p 00011000 08:30 14142                      /usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7ab674cb3000-7ab674cb4000 r--p 00012000 08:30 14142                      /usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7ab674cb4000-7ab674cb5000 rw-p 00013000 08:30 14142                      /usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4
+7ab674cb5000-7ab674cb7000 r--p 00000000 08:30 11579                      /usr/lib/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+7ab674cb7000-7ab674cba000 r-xp 00002000 08:30 11579                      /usr/lib/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+7ab674cba000-7ab674cbc000 r--p 00005000 08:30 11579                      /usr/lib/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+7ab674cbc000-7ab674cbd000 r--p 00006000 08:30 11579                      /usr/lib/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+7ab674cbd000-7ab674cbe000 rw-p 00007000 08:30 11579                      /usr/lib/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so
+7ab674cbe000-7ab674cc0000 r--p 00000000 08:30 12128                      /usr/lib/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+7ab674cc0000-7ab674cc7000 r-xp 00002000 08:30 12128                      /usr/lib/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+7ab674cc7000-7ab674cc9000 r--p 00009000 08:30 12128                      /usr/lib/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+7ab674cc9000-7ab674cca000 r--p 0000a000 08:30 12128                      /usr/lib/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+7ab674cca000-7ab674ccb000 rw-p 0000b000 08:30 12128                      /usr/lib/python3.14/lib-dynload/_zoneinfo.cpython-314-x86_64-linux-gnu.so
+7ab674ccb000-7ab674ccd000 r--p 00000000 08:30 12130                      /usr/lib/python3.14/lib-dynload/mmap.cpython-314-x86_64-linux-gnu.so
+7ab674ccd000-7ab674cd1000 r-xp 00002000 08:30 12130                      /usr/lib/python3.14/lib-dynload/mmap.cpython-314-x86_64-linux-gnu.so
+7ab674cd1000-7ab674cd3000 r--p 00006000 08:30 12130                      /usr/lib/python3.14/lib-dynload/mmap.cpython-314-x86_64-linux-gnu.so
+7ab674cd3000-7ab674cd4000 r--p 00007000 08:30 12130                      /usr/lib/python3.14/lib-dynload/mmap.cpython-314-x86_64-linux-gnu.so
+7ab674cd4000-7ab674cd5000 rw-p 00008000 08:30 12130                      /usr/lib/python3.14/lib-dynload/mmap.cpython-314-x86_64-linux-gnu.so
+7ab674cd5000-7ab674cd9000 r--p 00000000 08:30 14544                      /usr/lib/x86_64-linux-gnu/libzstd.so.1.5.7
+7ab674cd9000-7ab674d89000 r-xp 00004000 08:30 14544                      /usr/lib/x86_64-linux-gnu/libzstd.so.1.5.7
+7ab674d89000-7ab674d96000 r--p 000b4000 08:30 14544                      /usr/lib/x86_64-linux-gnu/libzstd.so.1.5.7
+7ab674d96000-7ab674d97000 r--p 000c1000 08:30 14544                      /usr/lib/x86_64-linux-gnu/libzstd.so.1.5.7
+7ab674d97000-7ab674d98000 rw-p 000c2000 08:30 14544                      /usr/lib/x86_64-linux-gnu/libzstd.so.1.5.7
+7ab674d98000-7ab674d9c000 r--p 00000000 08:30 11683                      /usr/lib/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+7ab674d9c000-7ab674da2000 r-xp 00004000 08:30 11683                      /usr/lib/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+7ab674da2000-7ab674da6000 r--p 0000a000 08:30 11683                      /usr/lib/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+7ab674da6000-7ab674da7000 r--p 0000d000 08:30 11683                      /usr/lib/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+7ab674da7000-7ab674da9000 rw-p 0000e000 08:30 11683                      /usr/lib/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so
+7ab674da9000-7ab674db0000 r--p 00000000 08:30 11609                      /usr/lib/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+7ab674db0000-7ab674dec000 r-xp 00007000 08:30 11609                      /usr/lib/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+7ab674dec000-7ab674dfc000 r--p 00043000 08:30 11609                      /usr/lib/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+7ab674dfc000-7ab674dfd000 r--p 00052000 08:30 11609                      /usr/lib/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+7ab674dfd000-7ab674e00000 rw-p 00053000 08:30 11609                      /usr/lib/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so
+7ab674e00000-7ab675200000 rw-p 00000000 00:00 0 
+7ab675200000-7ab675228000 r--p 00000000 08:30 14143                      /usr/lib/x86_64-linux-gnu/libc.so.6
+7ab675228000-7ab6753c0000 r-xp 00028000 08:30 14143                      /usr/lib/x86_64-linux-gnu/libc.so.6
+7ab6753c0000-7ab67540e000 r--p 001c0000 08:30 14143                      /usr/lib/x86_64-linux-gnu/libc.so.6
+7ab67540e000-7ab675412000 r--p 0020d000 08:30 14143                      /usr/lib/x86_64-linux-gnu/libc.so.6
+7ab675412000-7ab675414000 rw-p 00211000 08:30 14143                      /usr/lib/x86_64-linux-gnu/libc.so.6
+7ab675414000-7ab675421000 rw-p 00000000 00:00 0 
+7ab675426000-7ab675428000 r--p 00000000 08:30 14492                      /usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7ab675428000-7ab67542d000 r-xp 00002000 08:30 14492                      /usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7ab67542d000-7ab67542e000 r--p 00007000 08:30 14492                      /usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7ab67542e000-7ab67542f000 r--p 00007000 08:30 14492                      /usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7ab67542f000-7ab675430000 rw-p 00008000 08:30 14492                      /usr/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7ab675435000-7ab675436000 r--p 00000000 08:30 12126                      /usr/lib/python3.14/lib-dynload/_uuid.cpython-314-x86_64-linux-gnu.so
+7ab675436000-7ab675437000 r-xp 00001000 08:30 12126                      /usr/lib/python3.14/lib-dynload/_uuid.cpython-314-x86_64-linux-gnu.so
+7ab675437000-7ab675438000 r--p 00002000 08:30 12126                      /usr/lib/python3.14/lib-dynload/_uuid.cpython-314-x86_64-linux-gnu.so
+7ab675438000-7ab675439000 r--p 00002000 08:30 12126                      /usr/lib/python3.14/lib-dynload/_uuid.cpython-314-x86_64-linux-gnu.so
+7ab675439000-7ab67543a000 rw-p 00003000 08:30 12126                      /usr/lib/python3.14/lib-dynload/_uuid.cpython-314-x86_64-linux-gnu.so
+7ab67543a000-7ab67543c000 r--p 00000000 08:30 11965                      /usr/lib/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+7ab67543c000-7ab67543e000 r-xp 00002000 08:30 11965                      /usr/lib/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+7ab67543e000-7ab67543f000 r--p 00004000 08:30 11965                      /usr/lib/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+7ab67543f000-7ab675440000 r--p 00004000 08:30 11965                      /usr/lib/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+7ab675440000-7ab675441000 rw-p 00005000 08:30 11965                      /usr/lib/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so
+7ab675451000-7ab675465000 rw-p 00000000 00:00 0 
+7ab675465000-7ab675468000 r--p 00000000 08:30 12129                      /usr/lib/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+7ab675468000-7ab67546e000 r-xp 00003000 08:30 12129                      /usr/lib/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+7ab67546e000-7ab675472000 r--p 00009000 08:30 12129                      /usr/lib/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+7ab675472000-7ab675473000 r--p 0000d000 08:30 12129                      /usr/lib/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+7ab675473000-7ab675474000 rw-p 0000e000 08:30 12129                      /usr/lib/python3.14/lib-dynload/_zstd.cpython-314-x86_64-linux-gnu.so
+7ab675474000-7ab675476000 r--p 00000000 08:30 12132                      /usr/lib/python3.14/lib-dynload/resource.cpython-314-x86_64-linux-gnu.so
+7ab675476000-7ab675478000 r-xp 00002000 08:30 12132                      /usr/lib/python3.14/lib-dynload/resource.cpython-314-x86_64-linux-gnu.so
+7ab675478000-7ab675479000 r--p 00004000 08:30 12132                      /usr/lib/python3.14/lib-dynload/resource.cpython-314-x86_64-linux-gnu.so
+7ab675479000-7ab67547a000 r--p 00004000 08:30 12132                      /usr/lib/python3.14/lib-dynload/resource.cpython-314-x86_64-linux-gnu.so
+7ab67547a000-7ab67547b000 rw-p 00005000 08:30 12132                      /usr/lib/python3.14/lib-dynload/resource.cpython-314-x86_64-linux-gnu.so
+7ab67547b000-7ab6754e3000 rw-p 00000000 00:00 0 
+7ab6754e3000-7ab6754e7000 r--p 00000000 08:30 14214                      /usr/lib/x86_64-linux-gnu/libexpat.so.1.11.2
+7ab6754e7000-7ab675505000 r-xp 00004000 08:30 14214                      /usr/lib/x86_64-linux-gnu/libexpat.so.1.11.2
+7ab675505000-7ab67550d000 r--p 00022000 08:30 14214                      /usr/lib/x86_64-linux-gnu/libexpat.so.1.11.2
+7ab67550d000-7ab67550f000 r--p 0002a000 08:30 14214                      /usr/lib/x86_64-linux-gnu/libexpat.so.1.11.2
+7ab67550f000-7ab675510000 rw-p 0002c000 08:30 14214                      /usr/lib/x86_64-linux-gnu/libexpat.so.1.11.2
+7ab675510000-7ab675513000 r--p 00000000 08:30 14542                      /usr/lib/x86_64-linux-gnu/libz.so.1.3.1
+7ab675513000-7ab675526000 r-xp 00003000 08:30 14542                      /usr/lib/x86_64-linux-gnu/libz.so.1.3.1
+7ab675526000-7ab67552c000 r--p 00016000 08:30 14542                      /usr/lib/x86_64-linux-gnu/libz.so.1.3.1
+7ab67552c000-7ab67552d000 r--p 0001c000 08:30 14542                      /usr/lib/x86_64-linux-gnu/libz.so.1.3.1
+7ab67552d000-7ab67552e000 rw-p 0001d000 08:30 14542                      /usr/lib/x86_64-linux-gnu/libz.so.1.3.1
+7ab67552e000-7ab675540000 r--p 00000000 08:30 14355                      /usr/lib/x86_64-linux-gnu/libm.so.6
+7ab675540000-7ab6755e0000 r-xp 00012000 08:30 14355                      /usr/lib/x86_64-linux-gnu/libm.so.6
+7ab6755e0000-7ab675652000 r--p 000b2000 08:30 14355                      /usr/lib/x86_64-linux-gnu/libm.so.6
+7ab675652000-7ab675653000 r--p 00123000 08:30 14355                      /usr/lib/x86_64-linux-gnu/libm.so.6
+7ab675653000-7ab675654000 rw-p 00124000 08:30 14355                      /usr/lib/x86_64-linux-gnu/libm.so.6
+7ab675657000-7ab675658000 rw-p 00000000 00:00 0 
+7ab675658000-7ab675659000 rw-p 00000000 00:00 0 
+7ab675659000-7ab67565b000 rw-p 00000000 00:00 0 
+7ab67565b000-7ab67565f000 r--p 00000000 00:00 0                          [vvar]
+7ab67565f000-7ab675661000 r--p 00000000 00:00 0                          [vvar_vclock]
+7ab675661000-7ab675663000 r-xp 00000000 00:00 0                          [vdso]
+7ab675663000-7ab675664000 r--p 00000000 08:30 13898                      /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ab675664000-7ab675693000 r-xp 00001000 08:30 13898                      /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ab675693000-7ab67569e000 r--p 00030000 08:30 13898                      /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ab67569e000-7ab6756a0000 r--p 0003b000 08:30 13898                      /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ab6756a0000-7ab6756a1000 rw-p 0003d000 08:30 13898                      /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ab6756a1000-7ab6756a2000 rw-p 00000000 00:00 0 
+7ffcfb36b000-7ffcfb38c000 rw-p 00000000 00:00 0                          [stack]

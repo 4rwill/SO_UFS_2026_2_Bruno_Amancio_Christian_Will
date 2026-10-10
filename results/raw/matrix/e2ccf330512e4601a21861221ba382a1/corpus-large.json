@@ -1,0 +1,1166 @@
+{
+  "documents": [
+    {
+      "bytes": 1734,
+      "file": "document-0000.txt",
+      "sha256": "9329bf7f6391934c11f24c2dd6a997842ce162fd8969a3763a55afcb74f55881",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0001.txt",
+      "sha256": "a380fbf70a044be0efc8185d8f84160cee27ab769de211dfb115f6534f91bd6e",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1754,
+      "file": "document-0002.txt",
+      "sha256": "d790890dc748346941fe4c0854675635f965b3b4aed2c129c94d8733a7127b53",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0003.txt",
+      "sha256": "7f4a98299287ef8482baa92f8d8d3468c8c9310bd500b49d84a7b7a64ca23632",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1725,
+      "file": "document-0004.txt",
+      "sha256": "a42d29166e04449caf019bd83e2af029cda8b22c961ed4f95760103b707d3888",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1750,
+      "file": "document-0005.txt",
+      "sha256": "5057ef7baf1f3118a9de4b8afece312d07bb15abfe263f460c88906fb440e5d1",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1714,
+      "file": "document-0006.txt",
+      "sha256": "b6a54451bbd4fc98d8bdd6754bc2aea2a22697463057a6a60a3d5143b30e421f",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0007.txt",
+      "sha256": "b8d39526d4f79a1aad6f0f5638f975e5c5b248d7c2f74f69af72bc8e4c420076",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1752,
+      "file": "document-0008.txt",
+      "sha256": "24ec134a80ae874d3d2ec268229ec37e510e02be3e382dce9bdb81ee9965c733",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0009.txt",
+      "sha256": "b1b8ed6d6b6605d459fde0ed3e7f77e642ff50e83b587b9de0e362bc26c42c81",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0010.txt",
+      "sha256": "8d0db4b8d4d06ab1d9a353d7de555c90df7cfd71fefe43cf6e5aacfa312a93b5",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1752,
+      "file": "document-0011.txt",
+      "sha256": "04d7dc741a8de87e9cdcb2b53491a9904b6edb5b99c1cf3c1cf2882e4dc8eb52",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0012.txt",
+      "sha256": "f0b2bd95c41c0799675e37c1d6bcb2162c23a57ed9b5ffc52d7318a8e5767d88",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0013.txt",
+      "sha256": "bbced0b738bc42645333739a5c3fd52ad2ada23bdf5aa26ea757bac9f56c4a3f",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1740,
+      "file": "document-0014.txt",
+      "sha256": "6c13ff5a89c05f8d323b5eee955663f2bf7294c4c28a987a71a3025d59672bf8",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1722,
+      "file": "document-0015.txt",
+      "sha256": "fa5df2c78f9c129a3d6901e2e9d5f5679e37695bc29141fcec3653009537f143",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1732,
+      "file": "document-0016.txt",
+      "sha256": "6c8f9d4fa9c670eabe361b96e96a514d44124d5ef513c55d0f255eae29e9decd",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1746,
+      "file": "document-0017.txt",
+      "sha256": "2220ee77c45578fa521281740187f4e1b93ce691b6c62eb5f6d5daea14ccff94",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1740,
+      "file": "document-0018.txt",
+      "sha256": "0731b3ad83dfb3e3e1e4b376398c62951c2c1e128fccd00584128213f7d75efc",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0019.txt",
+      "sha256": "0bc3d159bd81a1c3d587861223fc91758f44adee0ecf676d9595cdfa7359b58b",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1748,
+      "file": "document-0020.txt",
+      "sha256": "bcb0e74b316c6a6ed6302aab2530f330884922ab474412513c459f154e44e03e",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1721,
+      "file": "document-0021.txt",
+      "sha256": "f85b31df3d354b878e74a957a4a0908a86bb79bf54b7bce600ff685a9b51c6dc",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1723,
+      "file": "document-0022.txt",
+      "sha256": "1517f70dd33a23a5ff593e5f42171d92a7e6da25680d62d1d0644e871233a0ba",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1760,
+      "file": "document-0023.txt",
+      "sha256": "3bfc1c66dfe245a40c2b25ae805f5bcd097d547d15df6966e6847a1b4fc87e69",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0024.txt",
+      "sha256": "66f9793ee3574426940ce882d70ae45c4697ea934eaacc297e70c4cd5e69ac87",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0025.txt",
+      "sha256": "deeeb5af5974e2186976c7280a709e33c70f510c3f4099fee4d43264daefcdec",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1762,
+      "file": "document-0026.txt",
+      "sha256": "9a7b9f1c21c677db61511cda12e66ffa3db2b0fab16053dae860e0a5a1f05ea0",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0027.txt",
+      "sha256": "efad4b9ef4ece440d6c00f52c4b913d68cbd5e662569b64334f8ef34077f3302",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1717,
+      "file": "document-0028.txt",
+      "sha256": "9719fd5711179fa40c980eb43a91c29bcbb4d30a8007ffc3a4cca3cdf53447a2",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0029.txt",
+      "sha256": "394a404cab9955c30a15b4acb23d2099adec5be10696214dbd55a8cc08865c7a",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1737,
+      "file": "document-0030.txt",
+      "sha256": "4313e3d4434843aa1ba5a1eaea828161e59ced1ed1c54b3e43c98f8316532da5",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0031.txt",
+      "sha256": "75ea829615a924d14cfd31626bc1067101f2531881d95eb9b9fe3e4fe9659745",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1734,
+      "file": "document-0032.txt",
+      "sha256": "1cdef21eaa8f752cc2cf1fa2081ce8345961661507656af5db99d5821247641e",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1718,
+      "file": "document-0033.txt",
+      "sha256": "c78a81a799a9603720a84604b44fcbeebd15a9897c5bcc8a352e63762c8d4f7a",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0034.txt",
+      "sha256": "1e045fc4e819119b363bc3e0c312266b26dd1b036782a1ff3d629cfa1d212dee",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1782,
+      "file": "document-0035.txt",
+      "sha256": "3b42ec19310f7f3a57f6f601b8e77a5ad93951ee62157c1f407c5db2637828d7",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1718,
+      "file": "document-0036.txt",
+      "sha256": "e65e7621ddc0feb0e84207aa5da789bcc962e15bc2cbada199dda82c5cc375d0",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0037.txt",
+      "sha256": "f1d362e83172dd45b52fdf0ef77c8c399ea0dbd76ed0573ecef9c19f78be272e",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1748,
+      "file": "document-0038.txt",
+      "sha256": "e844879510abdbcd311c40855d7a98d7ded7751f7620296a88e1aba3c1fea18c",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1734,
+      "file": "document-0039.txt",
+      "sha256": "9ea175a50c26a5640e8f226ddcc012d5230ced541354fb47236678fa3a195af3",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1741,
+      "file": "document-0040.txt",
+      "sha256": "a8f3952621eb94993b78c6b93e589e81af4a46b74bffb9068d29c45f75dfbad6",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0041.txt",
+      "sha256": "547f3c1387f07e60649af5a3195de4a41e3e1fb4d356850e343b871f28dc5a05",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0042.txt",
+      "sha256": "454c048e5a066f4bc89ef45bc803dca6db96b145839736431c902b9c710a162a",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1708,
+      "file": "document-0043.txt",
+      "sha256": "aeb13ea449592d2658d4626bac5259bba797f64a9064cc2cddacb04532d60d2d",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1766,
+      "file": "document-0044.txt",
+      "sha256": "5767aa63e24c546d40915adb852f9be3a804d01f8f8deb47c7e6b1c62c15ea59",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1716,
+      "file": "document-0045.txt",
+      "sha256": "5774fc753fc384d3d4067c12f74f581f478fe0236b056882e73adc3c8b1d2fb3",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0046.txt",
+      "sha256": "1724078a8249676f43767380fe301b96f17ef3a708ae02fc34499e462b0368bd",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1758,
+      "file": "document-0047.txt",
+      "sha256": "398c4bfda398a45e8942b0644c99e0910abf58871460b632e0815994799fceb7",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1706,
+      "file": "document-0048.txt",
+      "sha256": "946fc10f11e9f6873c6fe16ed6494367318276e7c82906e482cdfaf8153d5d96",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0049.txt",
+      "sha256": "0041cdfbc746a7a19f4302fe1b037e12d32cf83cf7e5d7a6885deca355a74563",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1728,
+      "file": "document-0050.txt",
+      "sha256": "3f36959c1743fb938e8ce5a109273235a6c77e89c35f9a2bcdd20921d84e44f3",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1709,
+      "file": "document-0051.txt",
+      "sha256": "1ca14b10ad1c8ebf4539521688cc6df765e8d887d596027930cc626825dd50f0",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1723,
+      "file": "document-0052.txt",
+      "sha256": "564e2c7139d7864fdc8c9aa09258bd1d42a452b4886b8ba2657d88173d74f5bb",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0053.txt",
+      "sha256": "7433f123c85490356b72a6686d72436e6cbe7e62242e0f1845c687c94f48d533",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1718,
+      "file": "document-0054.txt",
+      "sha256": "469b5292c650891d5d6d61eb67c57ecb22302577cb078bb6dcd1f0345731c316",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1732,
+      "file": "document-0055.txt",
+      "sha256": "e7b4ba3bcad789dcf2e7c46feaed3139233d7d7b39bf5841bcfe70cf0df145ac",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1768,
+      "file": "document-0056.txt",
+      "sha256": "2cdfeda5431dc73ff79d67dee57dd9d64eb3c7987575f80a7668965ebdb70f36",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0057.txt",
+      "sha256": "f0edc9ba3b78274fee35f28a9c20fce26c9a90f1e140a859b2d966bac5e9f790",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0058.txt",
+      "sha256": "19be0ab401fba20572dc4bf4e3d91cb4941c8f11bf0c8b0bc7fccafaf16305b1",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0059.txt",
+      "sha256": "b23bf82e02662a5f76384661c54659590e83716907bf564f16d2f44795e4cabb",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0060.txt",
+      "sha256": "0a7a29a9940cb84a9a7b0490ab996992fcbe7cfbefe803155467dec707ca27bf",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0061.txt",
+      "sha256": "2830bca66ef38c491906ec8be2238ef33441fc2651dec21cca30c4376498f473",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1778,
+      "file": "document-0062.txt",
+      "sha256": "156d9cd8a764f770bfbccbad1718d12285f52d317fb217aad521f5f15beb5663",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1728,
+      "file": "document-0063.txt",
+      "sha256": "2b3a3dadab876366a77c165b93d5c6559784d91876b604cd18503ec375bdc9c8",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1733,
+      "file": "document-0064.txt",
+      "sha256": "1f31894b9755b304541d7a80350720cbe0a0a4b726a4fdc1e876e3a92dc2575b",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1762,
+      "file": "document-0065.txt",
+      "sha256": "7a449b84571c50c8eb999bc742e01b3776edb72e8c091e6d3159cba17e6c06df",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1718,
+      "file": "document-0066.txt",
+      "sha256": "c478dda693e78c2360c1782fbb6503fcb614f930231158383c5c69090cbee5b7",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0067.txt",
+      "sha256": "7a33f383937e72076b29bec0ea736978281ff2d502b2a6127f35fba030c28761",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1734,
+      "file": "document-0068.txt",
+      "sha256": "8b5f2a96d65bf6abe4f28b7724f917e81adbfe47a22325dd5ade64c80dc11294",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1714,
+      "file": "document-0069.txt",
+      "sha256": "e8030691e410d94eb6267e102e31e14d688178d7a1f6fe814d9fc73e2d1c0037",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1718,
+      "file": "document-0070.txt",
+      "sha256": "1403716142a5c778b1215a9e43d72e34ea9ebbc65467a2107b42309fc9fad98b",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1718,
+      "file": "document-0071.txt",
+      "sha256": "337bf96568213dcf76c6f6752e71f4e63f9032d3163f6b424cc701bb32b0d832",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1728,
+      "file": "document-0072.txt",
+      "sha256": "f185e3e519a4fbef055358fa2f9a8d2cf9ee980666a529048e7d6543cd7917e6",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1731,
+      "file": "document-0073.txt",
+      "sha256": "26dc619b5c4c90edf267a3499d94f0212b0925103e55be0ebe86321902b33c53",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1742,
+      "file": "document-0074.txt",
+      "sha256": "f8940c91cbd3c0dfdf8f8299fdc35c37534b4ff0ca51757eed47b01378bbe96f",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1721,
+      "file": "document-0075.txt",
+      "sha256": "61d058adc1f72f6681762b8628729d58b144288fb8566712518cb8fdd409cc2b",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1734,
+      "file": "document-0076.txt",
+      "sha256": "753422ea07916a6a120b7e49b838b9d10aad86607acdcfee43242cc916cfc9da",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0077.txt",
+      "sha256": "ca326698c4c3c181ac3ab67050ccba42e24f37ea527b0f355aa8b57128d13691",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1723,
+      "file": "document-0078.txt",
+      "sha256": "2ea73fa09ec6d4d0cc2f21390797e4d792b6adf937ae35fdb51df775fd381501",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0079.txt",
+      "sha256": "7680cbc5b54013b438c3939ba77af5a858b53429785dac01ab6092207d9566d2",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1760,
+      "file": "document-0080.txt",
+      "sha256": "abd61088ab8bb33ff06331f98df671aca4161c17e515fbfb4891068df260e8dc",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1717,
+      "file": "document-0081.txt",
+      "sha256": "86ad2cf1dd0c322d4ef64c07150f797e430fb30be116b4e486c69ee3e0e4cfd2",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0082.txt",
+      "sha256": "2fe3cea9501aa5eb3dcdee25d1444b9ded84c0cabb749d5eaa7af15e064af414",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0083.txt",
+      "sha256": "ae7e97ce57baf438009d4987f750e6524811729e884699f7456f398b1700b124",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0084.txt",
+      "sha256": "c520f0f0b41f684e946e3ae29ff66079ab3372189c9c877681aaf5c88c2cda04",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0085.txt",
+      "sha256": "41edaaeabb69ecdfcbac0c9d3a664193e727609034c22d2036b650f75ffd9da9",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1772,
+      "file": "document-0086.txt",
+      "sha256": "ee0d05129116cededf2ee9a9bdf3961dcc73558fb3daa64544d34887eb011dfa",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0087.txt",
+      "sha256": "c556701084fd92591f6c53d4caf7832fee1af8ffa33c0de36ad7863318c3ccd9",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0088.txt",
+      "sha256": "c39471862a121cf1b2574eca8298b08e78039b21501770692614555af8141336",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1784,
+      "file": "document-0089.txt",
+      "sha256": "6ef442a2b05e104f2b9c68641ee3ca1a50b352f1d162a3d2897f1e62abad4cf2",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1716,
+      "file": "document-0090.txt",
+      "sha256": "d34669f09b85a0706458b24355eb8408c50552865a8b1a61c858b99e92ac40ca",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0091.txt",
+      "sha256": "8a01ba1894b83e7eeaa8bc851da14cc9117f2e6e7eafdc8cd92d6909515a5aa2",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1760,
+      "file": "document-0092.txt",
+      "sha256": "7b36a5e5ea3a8bc41c637b777dc84ef6ae11260277b9146a75546d9aed52b5e1",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1720,
+      "file": "document-0093.txt",
+      "sha256": "d6d44bea146dac410631365611665fa6c17e6bdfe08db3411e310298e7f9cb6b",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1737,
+      "file": "document-0094.txt",
+      "sha256": "39b9c81d19bc0af07580673d170ff985d54a99ab1240ddef17bf5be3af88faf4",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1780,
+      "file": "document-0095.txt",
+      "sha256": "247f853a112487736ae3993a320eb6c40291eff9346f47cb7d003c4eb933aaf5",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1732,
+      "file": "document-0096.txt",
+      "sha256": "00b7bf4f552df851ad55c7e2a814185bc4a9bdc673264c45d9c5311517ab0d05",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0097.txt",
+      "sha256": "ed6d3baef3ab16266e460df0014efefbcd33055934262db9fefc1121ecb31438",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1750,
+      "file": "document-0098.txt",
+      "sha256": "368b2277e5ed088ad0b19a6cd53e86384089aa38ee43ec5157934ea2dc0526f5",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0099.txt",
+      "sha256": "c63615d34336cc91ee85f3c547d2b68499ada5bed80631af8ce56cb2393b7980",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0100.txt",
+      "sha256": "64ed0d1b0493dd9d7d639441bf46ac5eea38539a08eb9f39a8fc08e0f6452be1",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1734,
+      "file": "document-0101.txt",
+      "sha256": "34f40d71f0e6d60818dc3944924c751bc81a0d2019e8937c78797ae56b8b5fb4",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1732,
+      "file": "document-0102.txt",
+      "sha256": "a4618a0d2b68377ad9fcad3df7e40512cfcf14dcf799e5db8caf035f5f5699a2",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0103.txt",
+      "sha256": "b57240c3351e50f81b184e24e8b458930dec2fabc6f45a64dd0cfe3b631fdeff",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1770,
+      "file": "document-0104.txt",
+      "sha256": "230766b442f316c3ff262cef9352225fb908c2eba3450f9a4dcc31fbd5d2c6a3",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1720,
+      "file": "document-0105.txt",
+      "sha256": "109cdd19bbeb55cc0698fa2b6c97909f5f0a9895ff63bae7f53aafcb80db56ef",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1728,
+      "file": "document-0106.txt",
+      "sha256": "d2b7ca8f3b99657584440406ab6809fa10272ea96bbbefb7e69fe940bfe8c975",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0107.txt",
+      "sha256": "02ffdaa223c97a46813028d045514ba8d23bfaa0b1fc58fc60a21fa5de9461b2",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1712,
+      "file": "document-0108.txt",
+      "sha256": "e4add0eac70217f1b41cd4069e7be3a10febb915ff4d65d940a6c63f265c2dc6",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1731,
+      "file": "document-0109.txt",
+      "sha256": "291177da8a1644671f39368eb9bcf5ccb01786913c1a94f86d125b2688e5b18e",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1740,
+      "file": "document-0110.txt",
+      "sha256": "9e562b2d0e8c9c20ceebd46100a609f27c4928c915a07b8935ce3c5f70235cfa",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1734,
+      "file": "document-0111.txt",
+      "sha256": "ed7ac35fd8f0058de84c58b420b81f113eb4c4ba65bb8aab885825ba4d1e8c81",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0112.txt",
+      "sha256": "5dfeb7967fa7b802bfbe2b282e34b9b8f9d75a550bc177a5de96c20a254790e4",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1758,
+      "file": "document-0113.txt",
+      "sha256": "18a8d30e04a5eb58c3dabd9b36ed89858bfd5f0501ae9393ceda5f317e88ec6d",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1735,
+      "file": "document-0114.txt",
+      "sha256": "9725ffded0ee99959df983d44f802d05a27745396211774c8eac1a50b38ca718",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1723,
+      "file": "document-0115.txt",
+      "sha256": "b358cd1420aa0a04ee6930666e2860b2cbdd926ea277d68573eb39e490686175",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1742,
+      "file": "document-0116.txt",
+      "sha256": "4006ebda287eed147dc43f6be5f9a99b6945496b98a032bd54c6a2f78cc44cea",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0117.txt",
+      "sha256": "7a9085a4a2d648953257352d13352553ec96ecbb515cec69032f8d9f6cf490e1",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1726,
+      "file": "document-0118.txt",
+      "sha256": "e3346a1420d7df0eb8be13a731abe715119cde3e5a5faa6acfa55a9fd29142b6",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1766,
+      "file": "document-0119.txt",
+      "sha256": "510de56383be3c67d3a6917354b3c7c87dca603b8e32452d555cd2408755e34a",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1734,
+      "file": "document-0120.txt",
+      "sha256": "164a8600f76a9904cf87bfd5d62290b10b5a3a99db7859bb7ee7073998019bfc",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1721,
+      "file": "document-0121.txt",
+      "sha256": "dd4c3ddc2a4e0e926e617746a78f1ef61c92e429abb07ad1d5882bc444de1660",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1746,
+      "file": "document-0122.txt",
+      "sha256": "e5838f46884761f827172baffee336ef5e20460066fca5537a79485ed8ea4a22",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1709,
+      "file": "document-0123.txt",
+      "sha256": "29e474bbcef8e2ebed822e32d1351752bf028fb1dabf5a93e253f69b4ae408dd",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1733,
+      "file": "document-0124.txt",
+      "sha256": "973d0fe0a801585756224fd1b10ab398ecd11f7d036fb80505f7e552d65eef76",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1772,
+      "file": "document-0125.txt",
+      "sha256": "77075cd18966c50f2701ab6ce42aae4409b7df2763bfd3b2cf1ca5d89305da2c",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1725,
+      "file": "document-0126.txt",
+      "sha256": "4d9e1646cc835f829d5c9aab34d1db1bcf211bea2d4eaa35fb103955b7c28fe0",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1728,
+      "file": "document-0127.txt",
+      "sha256": "ffe7c69cde1e6cf7ef1921ad6bd41d5137c11bbaf095294dbe431e3ccfa4b82e",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1746,
+      "file": "document-0128.txt",
+      "sha256": "a1aae7c1c11823b5b9226b9449e513de9ffd974c2442585b84e05a9dbc0d5976",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1725,
+      "file": "document-0129.txt",
+      "sha256": "fc20a7ef22cdc7becc2e5b5ab63992e3bb2eb8bcb67b3f2c4ec006a41efffa00",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1723,
+      "file": "document-0130.txt",
+      "sha256": "95395dcdb6d0063ffed7a9100689836080d500581cef864522f91d9ebbdb42e0",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1748,
+      "file": "document-0131.txt",
+      "sha256": "348c3962126d282ed087e511031358ccb264826f9a43732ca98959d05784d19e",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1715,
+      "file": "document-0132.txt",
+      "sha256": "af528fd54a1d2796856795d56d37f12e02a2fe1ec86d8ed9f4ab375c89ad4f62",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0133.txt",
+      "sha256": "de16bcf3c05b9f98221b310471518c48a019f2b3342c27670872c2b9294a2077",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1736,
+      "file": "document-0134.txt",
+      "sha256": "c6fe276c5920c46380d94687e585c89d1bc039f40700fa89788c879ea0ab677a",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1715,
+      "file": "document-0135.txt",
+      "sha256": "17d81dae167f942939bc98edb2b331a604f3187049ddfc3e243096c919b4491a",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1737,
+      "file": "document-0136.txt",
+      "sha256": "f7c27b2a740d370b28ff62d7b139b50d2cf75dce317eb28bd01a2d68db5caa18",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1748,
+      "file": "document-0137.txt",
+      "sha256": "9cc3322ae5c385fa2cf2c23831dcea5c25a44e5fdc20de341367f42905cd6563",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1728,
+      "file": "document-0138.txt",
+      "sha256": "ba3ff1d97f2df12ad6e5c636b145d9e01eb9f910877a6f10ca30aeccc08060a1",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1715,
+      "file": "document-0139.txt",
+      "sha256": "834a9337a6a766751512eefccd1ed09338ee434752371295df80b46ca2bb7227",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0140.txt",
+      "sha256": "68e5db8696db1b114956316d6a8bfed2528fab387c779c3cdbc928330e3f3cab",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1720,
+      "file": "document-0141.txt",
+      "sha256": "07f49baa190d1c50655d857256a7535e500ce8bff3cfb29e935df5837fed4aa3",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0142.txt",
+      "sha256": "259dec39f45a5a66d5a0e4e58f07400464786a42e202fe23c86fb7b34cb975f7",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1738,
+      "file": "document-0143.txt",
+      "sha256": "ac1baf3ef9e2c8891e5c69c880ce1b4e331e7426e4d37b0f7d890401eff17f36",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1714,
+      "file": "document-0144.txt",
+      "sha256": "e56574c264a07181d2b846a12c277eb23608bb292223a431e00dc2aa6f377033",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0145.txt",
+      "sha256": "6346b0dca273a19198adf4cea44e3e448f1ef17e742cf0dd9fec263997054c69",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1764,
+      "file": "document-0146.txt",
+      "sha256": "e379c2bcf5d5450270830e38e19d71112a06ba7766cdea50ff8f7454dbabb08a",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1716,
+      "file": "document-0147.txt",
+      "sha256": "d2c41745802fa4fd709de6aa81a1aed977bb3de58e9d5a40508c376b1bcc65ff",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1725,
+      "file": "document-0148.txt",
+      "sha256": "cd495d7e6aff1cb4a453d6bb082df9f454d5543b4e2b7087bd53598d4e6c67fe",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1758,
+      "file": "document-0149.txt",
+      "sha256": "ed7b9135b48a0f5648f1e1925061c724a4b22a083b447ee357158f69c7c583e5",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1725,
+      "file": "document-0150.txt",
+      "sha256": "a0002f4dc910d826f437e02f09653d002c418a20c7c2428eeec96846df7427d6",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1728,
+      "file": "document-0151.txt",
+      "sha256": "561c2f939d02a494a6e976e73702d16887e6f1af29b524eb61c0bf20368bd2f1",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1722,
+      "file": "document-0152.txt",
+      "sha256": "d55b3447a71943743da54d128c107a405a01c6e9c2aa08be46d84c2a3f82fa3e",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1718,
+      "file": "document-0153.txt",
+      "sha256": "8f77366227f68601f774e5d6f324d3cc123feb080cabfa6db7994159489dcaa6",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0154.txt",
+      "sha256": "1888f6799d93e4e4ce8719231ea759695973a15e1ca172916306c3beeb363ad5",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1738,
+      "file": "document-0155.txt",
+      "sha256": "4135d7a39d6ed7983c996668ddd8027c334bd51d8d71f165e8266395851fc80d",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1717,
+      "file": "document-0156.txt",
+      "sha256": "82372fa62862b985e65caef491fa161b6060241f5d60e4356a48072a5370f69a",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0157.txt",
+      "sha256": "c4e08c9c57cd018447c0d02fa5740cb24a927edebf5ff0ec59ad79633dddd895",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0158.txt",
+      "sha256": "04c9ee036386ec31ba3aef1d047151861947799270ed1bd51f4e074c15f5bf4d",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1732,
+      "file": "document-0159.txt",
+      "sha256": "7051849ce4ab9840c604d9eb7451106bca8071f53a35faba99c52d79afa93e1e",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1732,
+      "file": "document-0160.txt",
+      "sha256": "1153f2344069813c9e0a92912e9cef7060befa10268e20ffa2321127a2c4c5a2",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1774,
+      "file": "document-0161.txt",
+      "sha256": "ccce46b502b6e481e6b0c115f89f6ca32b04022fe6e7b9a094c1878a4bb7a801",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1727,
+      "file": "document-0162.txt",
+      "sha256": "c31c3fb154969f9aa6ba5cb50cefb60b9bc16c2c58e47e74c9991f7cc0c91f23",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1735,
+      "file": "document-0163.txt",
+      "sha256": "403bdd7be8c2f4b37cce3c99426994108ce660e6061a224a3cc3ace53177599d",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1794,
+      "file": "document-0164.txt",
+      "sha256": "c80c9e115e8aad1b01c795db07164a2ea3cc1a9f669f28a1c6aae242668744ad",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0165.txt",
+      "sha256": "dafd22e4696c220004f1236773e70ffd8106608f90130df1474f71d003fff0cf",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1717,
+      "file": "document-0166.txt",
+      "sha256": "436abc4e0b5857e621280a1c8739a80f830322c0b6358fad58e7911b31b6fd8a",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1744,
+      "file": "document-0167.txt",
+      "sha256": "fc834ba2fc79b7f07e6136b8b2bc62511788037c1ca1e01fa0bdf75376bcf32c",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1722,
+      "file": "document-0168.txt",
+      "sha256": "efe4fda4b81f7c2b765d067c2c5883782408b35894d7f2bb5c50e32c9d0ce2f0",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1723,
+      "file": "document-0169.txt",
+      "sha256": "1f5f5acca10c6e0e5bd4b1a8b357cb2a10cf41f9f67a8bc3fef12c665f841772",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1754,
+      "file": "document-0170.txt",
+      "sha256": "980a9a44cdb312a879caae5d58605def505ec9e0515c13a18e762f5dccbf4e2b",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1721,
+      "file": "document-0171.txt",
+      "sha256": "83e274bf2b12df06a5b84e41cbb5e0400ce83f64b4a657bb0f7840dbd8151f72",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1729,
+      "file": "document-0172.txt",
+      "sha256": "4aee5e9613050fc6ac73f1c1ac251809765b1b133f373572b876bee7f1bb7ba0",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1748,
+      "file": "document-0173.txt",
+      "sha256": "68be17db8d56da78e857933bf230af486760732c6560674e9ef4a5db223f0ed5",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0174.txt",
+      "sha256": "a19017976a1aebda4a379a72d43d778685161b16655497e37498e29723796f2a",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1724,
+      "file": "document-0175.txt",
+      "sha256": "c55a49f8fa897d9d081081e5fb974794030d71d5ee2731fc57f161730095551b",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1762,
+      "file": "document-0176.txt",
+      "sha256": "153734bcc09e5bac86913ab09d2b274e1693e9ae645ad3c2dfd26216885ceb01",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1742,
+      "file": "document-0177.txt",
+      "sha256": "3f9e5d2c39fb627a012eefd80f5ca3ec3c94e389a7f30d2b7e396a6a9baca14e",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1719,
+      "file": "document-0178.txt",
+      "sha256": "cc41bf6d3aebef670d9e211213fe399add4da8e49dca667d6b780e5a42acfcd5",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1764,
+      "file": "document-0179.txt",
+      "sha256": "0ad04d77d74a7b411bf2588bef806e3fd9ba6b1fdd290bfd31af0ccd0470f120",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1733,
+      "file": "document-0180.txt",
+      "sha256": "290fc3f4377e407f578db2566a9ec28814af71d4ee1cfaccd476fbeb10a9df67",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1733,
+      "file": "document-0181.txt",
+      "sha256": "c18759c8fa5440bc72737eb4072c75d41f92f72919b68047949c1965e8284282",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1756,
+      "file": "document-0182.txt",
+      "sha256": "69252e702e77a69ff48e1104800f5ef26178b23b62459f5700feb9e021ff5a35",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0183.txt",
+      "sha256": "65fce3bdffb74f49f52a2f6fc46f18d0646321a4c205cdcf6b44dd0d33f2a6c6",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1723,
+      "file": "document-0184.txt",
+      "sha256": "f7ffe2d9cf0c48f923447817e42931cf6c1d5d55f74c72c3f118cd23617fd4ea",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1752,
+      "file": "document-0185.txt",
+      "sha256": "2c78f5f9dfc4dca423acd9857c7ce8f96987b3fb8116a5bb77c4feff324a73df",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1731,
+      "file": "document-0186.txt",
+      "sha256": "d6bf0eac48d77c525ca3b619ab388c1f0803dc4402e874a17bf5ea6720dd4349",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1725,
+      "file": "document-0187.txt",
+      "sha256": "63a8b1805a54d2dfa520a73addaaed90c4d77eec78b9ada7383123a7a36dc63e",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1730,
+      "file": "document-0188.txt",
+      "sha256": "7ae4cc581b0f49db396d3cafd73b2b2be75c47bb7169bd7ae098cefbbd0d4c62",
+      "topic": "concorrencia"
+    },
+    {
+      "bytes": 1714,
+      "file": "document-0189.txt",
+      "sha256": "7f6152b5a4f3863dc540fecea2bfc953cbdf8f9056a77098233280ce21768383",
+      "topic": "memoria"
+    },
+    {
+      "bytes": 1732,
+      "file": "document-0190.txt",
+      "sha256": "f481ab2ebc1641d5583d01544033259c0b31f12f3e2c97f9f0844c176955e0cd",
+      "topic": "armazenamento"
+    },
+    {
+      "bytes": 1736,
+      "file": "document-0191.txt",
+      "sha256": "00f1e4adb2c7f1f3e375bbcbf2dae50a12aadc2e406cc926e509aba84927d94e",
+      "topic": "concorrencia"
+    }
+  ],
+  "format_version": 1,
+  "generator_version": "0.1.0",
+  "queries": [
+    "memoria pagina swap",
+    "disco arquivo leitura",
+    "thread fila consumidor"
+  ],
+  "seed": 202602,
+  "sentences_per_document": 24,
+  "total_document_bytes": 333022
+}

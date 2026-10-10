@@ -1,0 +1,7 @@
+    PID    PPID     LWP NLWP STAT %CPU   RSS    VSZ COMMAND
+   3475    3473    3475    6 Sl    9.8 21328 397708 python
+   3475    3473    3479    6 tl    0.0 21328 397708 resource-sample
+   3475    3473    3480    6 Sl    0.0 21328 397708 consumer-0
+   3475    3473    3481    6 tl    0.0 21328 397708 consumer-1
+   3475    3473    3482    6 tl    0.0 21328 397708 producer-0
+   3475    3473    3483    6 tl    0.0 21328 397708 producer-1

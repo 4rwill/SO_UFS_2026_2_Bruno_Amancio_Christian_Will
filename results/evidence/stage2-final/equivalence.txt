@@ -1,0 +1,1 @@
+read/mmap: conteúdo, recuperação, resposta e bytes equivalentes; artefatos válidos
