@@ -1,32 +1,30 @@
-# Fundação e protocolo pendente
+# Memória e definições de medição
 
-MemFree é memória atualmente livre; MemAvailable estima memória utilizável por
-novas cargas, incluindo partes recuperáveis de caches. O cache de páginas mantém
-conteúdo de arquivos em RAM: uma leitura lógica pode dispensar E/S física. Swap
-armazena páginas fora da RAM; sua ausência deve ser registrada, não tratada como
-falha. A coleta Linux inicial está documentada em docs/environment.md.
-Cache de páginas é útil porque evita releituras físicas e pode ser recuperado;
-não representa necessariamente memória desperdiçada. Paginação move e mapeia
-páginas conforme a demanda: datasets, índices, embeddings e checkpoints grandes
-podem exigir acesso a disco quando as páginas necessárias não estão residentes.
-Isso será investigado nas próximas etapas, sem conclusão experimental antecipada.
+O ambiente e as ferramentas estão em [environment.md](environment.md); condições, comandos e controles da matriz em [experiments.md](experiments.md).
 
-O gerador usa apenas biblioteca padrão e não usa hash() nativo. Limites atuais:
-1000 documentos, 1000 frases/documento, 8 MiB de texto no máximo, 30 segundos e
-reserva de disco de limite + 1 MiB. O preset inicial limita texto a 1 MiB. Esses
-limites são conservadores para validação funcional; não autorizam pressão de
-memória. Antes de C5, medir RAM, MemAvailable e disco no Linux e definir orçamento
-de processo/contêiner e watchdog. Não alterar swap nem limpar caches do kernel.
+## Memória virtual e arquivos
 
-A coleta registra saídas e códigos, inclusive comandos ausentes. Código 124 dos
-monitores significa encerramento por timeout; códigos diferentes exigem inspeção.
-GPU, VRAM e WSL 2 foram registrados em docs/environment.md. Os testes Windows
-e a coleta básica Linux não constituem comparação experimental C1–C6.
+- `MemFree`: memória atualmente livre.
+- `MemAvailable`: estimativa de memória disponibilizável para novas cargas sem swap, incluindo páginas recuperáveis.
+- `Cached`: campo de cache de páginas do Linux, sem equivaler à soma de todos os caches.
+- Swap usada: páginas armazenadas fora da RAM, distinta da capacidade configurada.
+- RSS: páginas residentes do processo. VSZ: espaço de endereçamento virtual, incluindo reservas e mapeamentos; não equivale a RAM consumida.
+- Faltas minor/major: contadores observados por delta entre primeira e última amostra; não são diretamente bytes físicos de disco.
 
-Próximas etapas: separar aquecimento, executar processos novos, pelo menos três
-repetições válidas por configuração, definir consultas/ordem/limites previamente,
-salvar manifest, requests, resources, events e summary por execução. Dados brutos
-devem permanecer imutáveis e indisponibilidade deve ser null, nunca zero fictício.
+O cache de páginas pode evitar releituras físicas e pode ser recuperado: não é necessariamente memória desperdiçada. Datasets, índices, embeddings e checkpoints dependem da residência das páginas e do padrão de acesso. Esta implementação carrega integralmente arquivos pequenos, inclusive no modo mmap.
 
-Assistência: a fundação foi preparada com Codex em 10/10/2026, segundo AGENTS.md.
-A equipe deve revisar e declarar esse uso conforme as regras institucionais.
+## Tempo, fila, cache e correção
+
+Duracões usam relógio monotônico; manifestos e eventos registram horário civil com fuso. Vazão é conclusões/janela do serviço; latência inclui admissão e fila. Espera na fila é retirada menos admissão; espera de admissão é registrada separadamente. Ocupação média é ponderada pelo tempo. Utilização de trabalhador inclui espera, sem equivaler a CPU.
+
+Média/mediana/p95 consideram consultas concluídas, com p95 nearest-rank e tamanho da amostra informado. As tabelas agregam média ± desvio padrão amostral entre três repetições, sem testes de significância. Média das medianas por execução não é mediana conjunta.
+
+Hit rate = hits/(hits+misses); miss rate = 1 − hit rate. Seguidores single-flight são misses/coalesced, não hits. Misses de cache não são erros de execução. `cache_avoided_s_estimate` é estimativa bruta, sem desconto de espera/logging; as comparações entre configurações sustentam a análise da duração observada.
+
+Manifestos, requisições, recursos, eventos e resumos preservam parâmetros, IDs, resultados e falhas. Verificações conferem integridade JSONL, sequência, perdas, duplicações e encerramento. Dados brutos permanecem imutáveis; indisponibilidade é `null`, nunca um zero atribuído artificialmente.
+
+## Limites da observação
+
+Máximos amostrados de RSS/VSZ podem perder picos. `/proc/PID/io` não existia neste ambiente: E/S por processo ficou indisponível. `vmstat`/`iostat` descrevem a instância Linux/dispositivos, sem atribuição exclusiva ao projeto ou ao SSD Windows. Tracing tem sobrecarga e foi realizado separadamente da matriz. Não houve limpeza de caches, alteração de swap ou tentativa de OOM global. C5 foi moderado, sem comprovar pressão intensa ou thrashing.
+
+Fonte técnica: [documentação /proc do kernel Linux](https://www.kernel.org/doc/html/latest/filesystems/proc.html).

@@ -1,47 +1,43 @@
-# Pipeline sequencial — etapa 2
+# Arquitetura do GenResearch-Servidor
 
-Corpus sintético → fragmentação por caracteres → vetores SHA-256 → arquivos
-persistidos → consulta vetorizada → cosseno/top-k → contexto UTF-8 limitado →
-resposta simulada e métricas.
+Aplicação local de terminal, com corpus sintético, vetores lexicais simulados, persistência em arquivos, recuperação top-k, resposta de espera simulada, fila limitada e cache compartilhado. `serve` executa uma carga finita: não há HTTP, LLM ou GPU.
 
-ingestion.py gera documentos; pipeline.py faz ingestão/consulta; retrieval.py
-fragmenta e vetoriza; storage.py acessa arquivos; metrics.py salva artefatos;
-cli.py expõe generate-corpus, ingest e query. Não há fila, cache ou trabalhadores
-concorrentes nesta etapa.
+```text
+Documentos sintéticos -> fragmentação -> vetores -> corpus/índice/metadados
+Consultas -> produtores -> Queue limitada -> consumidores -> cache
+  miss -> leitura/validação -> recuperação -> contexto -> resposta -> cache
+  hit/coalesced -> reutilização do resultado
+  todos os caminhos -> métricas, eventos JSONL e resultado/erro explícito
+```
 
-Fragmentos têm até 256 caracteres, sobreposição de 32 e ID sequencial estável.
-Vetores têm 64 dimensões: SHA-256 dos termos casefold determina o bucket; contagem
-normalizada L2. Colisões são possíveis: trata-se de representação lexical simulada,
-sem equivalência a embeddings semânticos de um modelo. Empates usam ID crescente.
+## Componentes
 
-corpus.bin concatena documentos; metadata.json registra offsets, origem, semente,
-parâmetros, tamanhos e checksums; index.json contém fragmentos e vetores. O índice
-JSON duplica os textos dos fragmentos para simplicidade e não é otimizado em RAM.
-Destino publicado apenas após preparação; sobrescrita recusada. Checksums detectam
-corpus de entrada alterado e arquivos persistidos corrompidos.
+| Módulo em `src/genresearch/` | Responsabilidade |
+|---|---|
+| `cli.py` | Comandos `generate-corpus`, `ingest`, `query` e `serve` |
+| `ingestion.py` | Corpus sintético determinístico e manifesto |
+| `pipeline.py` | Ingestão, carregamento, recuperação e resposta |
+| `retrieval.py` | Fragmentação, vetores e similaridade |
+| `storage.py` | Checksums, leitura convencional e mmap |
+| `server.py` | Produtores/consumidores, fila, métricas e encerramento |
+| `cache.py` | LRU e single-flight com lock/Event por chave |
+| `logging_setup.py` | Escrita concorrente protegida de eventos |
+| `metrics.py` | Artefatos e observação de recursos |
 
-read e mmap acessam integralmente os mesmos corpus.bin/index.json. mmap copia
-todos os bytes antes de fechar o mapeamento; não é uma implementação zero-copy.
-Metadados são lidos convencionalmente nos dois modos. open_map_s mede abertura
-e mapeamento dos dois arquivos; access_s mede acesso/cópia e fechamento;
-loading_s inclui metadados, validação de SHA-256 e parse JSON. Bytes lógicos
-incluem metadados; não são bytes físicos lidos do disco.
+## Corpus, índice e recuperação
 
-Recuperação usa cosseno, top-k=3 e contexto máximo de 512 bytes, contando separadores.
-Truncamento respeita UTF-8; tokens aproximados = ceil(bytes/4), sem tokenizer real.
-Trechos escolhidos, origem, offsets e scores são exportados. sleep de 0,01 s simula
-espera e a resposta informa SHA-256 do contexto; não é geração de texto por IA.
+Fragmentos de até 256 caracteres, sobreposição 32 e IDs estáveis. Vetores de 64 dimensões usam SHA-256 dos termos casefold para determinar buckets e normalização L2 das contagens. Colisões são possíveis: a representação é lexical, sem equivalência a embeddings semânticos de um modelo. Cosseno determina top-k, com desempate por ID.
 
-Duracões usam time.monotonic. Artefatos têm UUID, comando, configuração, versão,
-commit/estado, horário com fuso, sucesso/falha, tempos e resultado. resources.csv
-tem amostras antes/depois (não pico): RSS/VSZ via /proc/self/status, memória
-disponível via /proc/meminfo e faltas cumulativas minor/major via getrusage.
-Indisponíveis são null; falhas são preservadas. Logs apenas start/fim nesta etapa;
-eventos detalhados e proteção concorrente ficam para etapa 3. Percentis de uma
-consulta têm n=1 e método nearest-rank, sem interpretação estatística.
+`corpus.bin` concatena documentos; `metadata.json` registra origem, offsets, semente, parâmetros, tamanhos e checksums; `index.json` contém fragmentos e vetores. O JSON duplica texto e é parte do custo medido. Arquivos permanecem imutáveis durante uma execução; corrupção e mudanças de versão são rejeitadas.
 
-Limites: entrada 1 MiB, índice 8 MiB, 2000 fragmentos no preset; teto validado
-8 MiB de entrada, 32 MiB de índice, 5000 fragmentos, 512 dimensões. Ingestão
-verifica timeout interno de 30 s entre documentos; os comandos publicados usam
-watchdog externo de 60 s para limitar também parsing e consulta. Não são limites
-rígidos de RSS. Pressão de memória não foi executada.
+A linha de base usa top-k=3, contexto máximo de 512 bytes, truncamento UTF-8 e tokens apenas aproximados por `ceil(bytes/4)`. A resposta informa SHA-256 do contexto e usa `sleep` de 0,01 s para simular espera, sem geração textual por IA.
+
+## read e mmap
+
+Os dois modos acessam integralmente os mesmos `corpus.bin` e `index.json`; os metadados são lidos convencionalmente. O modo mmap copia todos os bytes antes de fechar o mapeamento: não é zero-copy. `open_map_s` mede abertura/mapeamento; `access_s`, acesso/cópia/fechamento; `loading_s` inclui metadados, checksums e parsing JSON. Bytes lógicos não representam bytes físicos de disco.
+
+## Concorrência e observabilidade
+
+Dois produtores e consumidores configuráveis compartilham fila, cache e log dentro de um processo. O cache coordena cálculos em andamento; o log serializa linhas JSONL. O pipeline reabre/valida arquivos em cada cálculo, sem índice residente compartilhado. RSS é do processo e não deve ser somado por thread.
+
+Cada execução produz manifesto, requisições, recursos, eventos e resumo. Configurações, IDs e falhas explícitas permitem verificar perdas, duplicações e encerramento. Definições completas em [concurrency.md](concurrency.md); a falha isolada e sua correção estão em [synchronization.md](synchronization.md).

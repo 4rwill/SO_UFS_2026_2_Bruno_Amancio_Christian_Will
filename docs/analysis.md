@@ -172,9 +172,8 @@ perder picos, WSL/DrvFS, limite de VSZ, E/S/syscalls por processo indisponíveis
 Campos null não significam zero. Faltas major de mmap precisam de investigação
 para explicar causalmente. Evidências complementares de processos/syscalls
 estão em docs/evidence.md; a coleta não isolou a causa dessas faltas.
-Revisão da equipe permanece necessária antes de transformar em relatório.
 
-## Reprodução e revisão
+## Reprodução da análise
 
 Comando executado na raiz do projeto Linux:
 
@@ -186,4 +185,5 @@ Saída exige destino novo. Matplotlib 3.10.8 e dependências testadas estão em
 requirements-analysis-lock.txt; aplicação de medição usou biblioteca padrão.
 Cinco PNG foram inspecionados visualmente: eixos/unidades, dispersão, legendas
 e textos legíveis. Gráficos SVG estão disponíveis para slides/relatório.
-Não se trata ainda do relatório PDF final nem de revisão humana concluída.
+O fonte do relatório técnico está em deliverables/relatorio.tex; os dados
+originais e a proveniência permanecem preservados.

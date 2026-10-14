@@ -90,5 +90,5 @@ timeout 950 /home/will/.venvs/genresearch/bin/python experiments/run_matrix.py -
 /home/will/.venvs/genresearch/bin/python experiments/analyze.py --input results/raw/matrix/15c7fb31a435409597342b40f0d70665 --output results/summary/matrix-15c7fb31
 ```
 
-Runner cria lote UUID novo; análise exige saída nova. Gráficos, interpretação
-e evidências complementares concluídos; entregas e revisão humana pendentes.
+Runner cria lote UUID novo; análise exige saída nova. Gráficos e interpretação estão em docs/analysis.md; evidências complementares
+em docs/evidence.md. O README identifica os artefatos acadêmicos disponíveis.

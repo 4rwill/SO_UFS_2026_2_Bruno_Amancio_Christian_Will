@@ -1,10 +1,10 @@
-# Etapa 3 — fila, cache e logs
+# Fila, cache e logs concorrentes
 
 serve executa uma carga local finita, sem HTTP. Configuração em concurrent.json:
 2 produtores, 2 consumidores, fila 4, cache 3, timeout de admissão 1 s,
 prazo cooperativo 10 s, amostragem 0,01 s, 12 consultas. Limites configuráveis:
 até 8 produtores/consumidores, fila/cache até 100, até 200 consultas, texto até
-4096 bytes, tempos até 60 s. Limites de índice da etapa 2 continuam valendo.
+4096 bytes, tempos até 60 s. Os limites de corpus e índice continuam valendo.
 
 Threads permitem sobrepor E/S e sleep de geração (espera simulada); não se
 afirma ganho de CPU com threads Python. Todos compartilham índice em disco,
@@ -63,7 +63,7 @@ result em um hit/coalesced conserva contexto e tempos da consulta originalmente
 calculada; processing_s é o tempo efetivamente observado para a requisição atual.
 cache_avoided_s_estimate soma o total original de etapas reutilizadas: estimativa
 bruta, não economia líquida comprovada, especialmente para seguidores que esperam.
-Economia real requer comparação pareada sem cache na matriz futura.
+A comparação entre condições sem/com cache está em docs/analysis.md.
 
 ## Verificação real no WSL
 
@@ -84,8 +84,7 @@ Todos com perdas=0, duplicações=0, fila final vazia e nenhuma thread de trabal
 viva. Normal retorna código 0; runs com falhas/recusas retornam 2 e preservam
 artefatos. Esses números descrevem os runs observados, não expectativa estável
 para novas execuções: escalonamento e saturação variam. Não são a matriz C1–C6.
-Demonstração isolada deliberadamente incorreta continua pendente na etapa 4.
+A demonstração isolada de duplicação e correção está em docs/synchronization.md.
 
-Uma tentativa de validação via comando entre PowerShell/Bash falhou no shell
-ao conferir código de saída; dados preservados em stage3-final. A validação
-final foi feita pelo script Bash salvo, código 0, em stage3-check.
+A validação funcional usada como evidência é stage3-check; ensaios anteriores
+foram preservados, sem mistura com o lote da matriz.

@@ -23,7 +23,7 @@ PYTHONPATH=src:. timeout 90 /home/will/.venvs/genresearch/bin/python scripts/col
 ```
 
 Para repetir, escolher destinos novos: os scripts recusam sobrescrita.
-Pré-requisitos: índice da etapa 2, strace, time, procps e sysstat disponíveis.
+Pré-requisitos: corpus/índice gerados pelo CLI, strace, time, procps e sysstat disponíveis.
 O coletor registra a linha completa de execução no manifesto. Usa strace -f
 -yy -C com seleção de openat/read/write/mmap/munmap/futex/clone/clone3/
 clock_nanosleep; read/write em formato raw evitam despejar o conteúdo dos buffers.
@@ -44,8 +44,6 @@ consumer-0, consumer-1, producer-0 e producer-1. O nome Linux do amostrador
 aparece truncado como resource-sample. Uma thread pode aparecer inicialmente
 como python antes de seu nome ser aplicado; por isso a auditoria usa toda a
 série para confirmar papéis, além do snapshot simultâneo de seis threads.
-A primeira auditoria rejeitou essa diferença de nome; a verificação foi corrigida
-sem refazer a medição nem editar dados brutos.
 
 ps -L evidencia LWPs do mesmo PID e /proc/PID/task confirma compartilhamento do
 processo. Não somar o RSS repetido nas linhas de threads: compartilham o espaço
@@ -104,5 +102,4 @@ revisar a interpretação e conservar os artefatos usados na entrega.
 Fontes técnicas consultadas: [strace](https://strace.io/),
 [Linux FUTEX_WAIT](https://www.man7.org/linux/man-pages/man2/FUTEX_WAIT.2const.html)
 e [documentação /proc do kernel](https://www.kernel.org/doc/html/latest/filesystems/proc.html).
-Coleta, auditoria e texto preparados com assistência Codex; não foram inferidas
-contribuições individuais da equipe. Relatório e slides adiados a pedido da equipe.
+A declaração de assistência de IA e a situação dos artefatos finais estão no README.

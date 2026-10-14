@@ -1,4 +1,4 @@
-# Etapa 4 — duplicação de trabalho e correção
+# Sincronização — duplicação de trabalho e correção
 
 Executável isolado: experiments/demonstrate_race.py. A aplicação normal não
 importa este módulo e continua usando SharedCache protegido. Não há modo inseguro
@@ -64,5 +64,5 @@ para tornar os caminhos reproduzíveis. A evidência principal é a contagem 2 �
 As duas versões finalizaram com exit code 0, nenhum processo filho ou trabalhador
 vivo e resultados iguais. 17 testes passaram, incluindo verificação dos dois
 misses antes de qualquer cálculo inseguro e encerramento pelo watchdog.
-Testes em results/evidence/stage4-validation/tests.txt. Matriz C1–C6 e conclusões
-de desempenho permanecem pendentes; esta demonstração satisfaz a Parte D isolada.
+Testes em results/evidence/stage4-validation/tests.txt. Esta demonstração atende
+à Parte D; resultados da matriz C1–C6 e limites de desempenho em docs/analysis.md.

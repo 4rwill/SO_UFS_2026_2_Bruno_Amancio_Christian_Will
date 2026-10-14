@@ -1,138 +1,104 @@
-# GenResearch-Servidor — Sistemas Operacionais AV2
+# GenResearch-Servidor — Sistemas Operacionais AV2 (2026.2)
 
-Comece pelo [roteiro de organização e estudo](docs/overview.md) para entender
-o fluxo, localizar código/resultados e conferir o que ainda depende da equipe.
-Seleção dos arquivos e cuidados de continuidade em [docs/github.md](docs/github.md).
+Implementação e avaliação de um pipeline inspirado em recuperação aumentada por geração (RAG), com documentos sintéticos, vetores lexicais por hashing, recuperação top-k, fila limitada, cache LRU compartilhado e logs concorrentes.
 
-Fundação da aplicação local para estudar memória, armazenamento, filas e
-sincronização em um pipeline inspirado em RAG. A versão atual gera corpus
-sintético e executa ingestão e consulta sequenciais com vetores simulados.
-Fila limitada, cache compartilhado e carga concorrente local estão implementados.
-A matriz experimental e a análise inicial estão concluídas, com dados reais.
+A resposta usa `sleep` como simulação de espera: não há inferência de LLM, pesos de modelos ou uso de GPU. A interface é de terminal; `serve` executa uma carga finita local, sem HTTP.
 
-Sem API, GPU, modelo real ou bibliotecas externas de execução. Python >=3.10;
-validação realizada com Python 3.12.14 no Windows e 3.14.4 no Ubuntu/WSL 2.
-Dependências de build ainda não foram testadas. Coleta Linux executada;
-experimentos e gráficos disponíveis; entregas acadêmicas permanecem pendentes.
+## Artefatos para avaliação
 
-Na raiz do repositório, com Python disponível, estes comandos foram executados
-usando o Python local do aplicativo e PYTHONPATH=src:
+| Item | Localização |
+|---|---|
+| Relatório — fonte LaTeX com gráficos incorporados | [deliverables/relatorio.tex](deliverables/relatorio.tex) |
+| Responsabilidades da equipe | [docs/contributions.md](docs/contributions.md) |
+| Vídeo e situação dos artefatos finais | [VIDEO.md](VIDEO.md) |
+| Código e testes | `src/genresearch/` e `tests/` |
+| Configurações e execução dos experimentos | `experiments/configs/` e [docs/experiments.md](docs/experiments.md) |
+| Resultados brutos e evidências | [results/README.md](results/README.md) |
+| Tabela de resultados | [results/analysis/matrix-15c7fb31/table.md](results/analysis/matrix-15c7fb31/table.md) |
+| Gráficos PNG/SVG | [results/analysis/matrix-15c7fb31/figures/](results/analysis/matrix-15c7fb31/figures/) |
+| Interpretação e limitações | [docs/analysis.md](docs/analysis.md) |
+| Ambiente Linux | [docs/environment.md](docs/environment.md) |
+| Arquitetura, fila/cache e sincronização | [architecture](docs/architecture.md), [concurrency](docs/concurrency.md), [synchronization](docs/synchronization.md) |
+| Memória e definições das métricas | [docs/methodology.md](docs/methodology.md) |
+| Processos, threads e chamadas de sistema | [docs/evidence.md](docs/evidence.md) |
 
-```powershell
-$env:PYTHONPATH = 'src'
+## Execução no Linux
+
+Requer Python >=3.10, `venv` e Bash. As medições publicadas usaram Python 3.14.4 em Ubuntu/WSL 2. A aplicação usa somente a biblioteca padrão e pode ser executada por `PYTHONPATH`, sem instalação do pacote. Para a matriz/coleta: `procps`, `sysstat`, `strace`, GNU `time` e Git. Em Ubuntu, as ferramentas podem ser instaladas com `sudo apt install python3-venv procps sysstat strace time git`.
+
+Na raiz de um clone do repositório:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+export PYTHONPATH=src:.
 python -m unittest discover -s tests -v
-python -m genresearch generate-corpus --config experiments/configs/corpus.json
+
+python -m genresearch generate-corpus --config experiments/configs/corpus-linux.json
+python -m genresearch ingest --config experiments/configs/baseline.json
+python -m genresearch query --text "memoria pagina swap" --config experiments/configs/baseline.json --read-mode read
+python -m genresearch query --text "memoria pagina swap" --config experiments/configs/baseline.json --read-mode mmap
+python -m genresearch serve --config experiments/configs/concurrent.json
+timeout 15 python experiments/demonstrate_race.py
 ```
 
-O executável `python` do PATH deste computador é um atalho indisponível. Na
-verificação, foi usado o executável fornecido pelo aplicativo, registrado em
-[docs/status.md](docs/status.md). Os comandos acima exigem Python instalado no PATH.
+Gerar corpus e ingerir são operações de preparação: recusam destinos existentes. Em uma segunda preparação, escolher destinos novos nos campos `output`, `corpus` e `index` das configurações correspondentes. Consulta, serviço e demonstração criam novos diretórios UUID para os resultados. `data/generated/` é recriável e não está versionado.
 
-O gerador cria data/generated/small com documentos e corpus.json contendo temas,
-consultas, tamanhos e checksums SHA-256. Não sobrescreve destino existente: para
-uma nova geração, use outro output no JSON. Os testes comparam dois destinos
-temporários e verificam limites sem depender do corpus previamente gerado.
+O preset `concurrent.json` usa 12 consultas, dois produtores, dois consumidores, fila quatro e cache três. Não equivale à matriz de desempenho, que usa 24 consultas por repetição. Os presets de consulta inválida e saturação retornam código 2 quando registram falhas/recusas explícitas; isso faz parte da validação de robustez.
 
-O preset tem 12 documentos, 24 frases por documento, semente 202602 e limite de
-1 MiB. Dados gerados são ignorados pelo Git. Consulte [data/README.md](data/README.md).
+## Auditar os resultados publicados
 
-A etapa 1 foi verificada no Linux. Comandos reais e ambiente virtual estão em
-[docs/status.md](docs/status.md). A coleta aceita destino novo e duração de 1 a
-60 segundos. Evidências em results/evidence/stage1-environment; ambiente e
-limitações WSL em [docs/environment.md](docs/environment.md).
-
-C1–C6, corrida/correção e análise estão implementados. Relatório final, slides
-e vídeo ainda estão pendentes.
-O protocolo e conceitos de memória estão em [docs/methodology.md](docs/methodology.md).
-
-Etapa 2: comandos executados no Ubuntu, na raiz do repositório, com timeout de 60 s:
+Os comandos abaixo conferem dados existentes, sem refazer as medições. Executar na raiz do repositório, com o ambiente acima ativo:
 
 ```bash
-export PYTHONPATH=src
-timeout 60 /home/will/.venvs/genresearch/bin/python -m genresearch ingest --config experiments/configs/baseline.json
-timeout 60 /home/will/.venvs/genresearch/bin/python -m genresearch query --text "memoria pagina swap" --config experiments/configs/baseline.json --read-mode read
-timeout 60 /home/will/.venvs/genresearch/bin/python -m genresearch query --text "memoria pagina swap" --config experiments/configs/baseline.json --read-mode mmap
-/home/will/.venvs/genresearch/bin/python -m unittest discover -s tests -v
-/home/will/.venvs/genresearch/bin/python scripts/verify_stage2.py
+python scripts/verify_matrix.py results/raw/matrix/15c7fb31a435409597342b40f0d70665
 ```
 
-O corpus small-linux deve existir. A ingestão recusa índice existente; para repetir
-altere index em baseline.json. Consultas podem ser repetidas, pois cada execução
-cria um diretório novo por UUID em results/raw/stage2. O script verify_stage2
-confere as saídas CLI salvas em results/evidence/stage2-final, geradas nesta
-validação; os testes reproduzem a equivalência independentemente dessas saídas.
-Cada run contém manifest.json, requests.jsonl, resources.csv, events.jsonl e
-summary.json. A resposta é simulada por espera sleep de 0,01 s, sem modelo real
-nem promessa de carga CPU. Consulte [docs/architecture.md](docs/architecture.md).
-
-Etapa 3: o comando abaixo foi executado no Ubuntu e verifica testes e três cargas
-(normal, consulta inválida e saturação), com watchdogs e checagem dos artefatos:
+Para verificar também os gráficos e a proveniência, instalar as dependências de análise:
 
 ```bash
-GENRESEARCH_PYTHON=/home/will/.venvs/genresearch/bin/python bash scripts/validate_stage3.sh results/evidence/stage3-check
+python -m pip install -r requirements-analysis-lock.txt
+python scripts/verify_analysis.py results/analysis/matrix-15c7fb31
 ```
 
-O destino já existe; para repetir use um diretório novo. O índice da etapa 2 é
-pré-requisito. Para executar apenas a carga normal, comando também verificado:
+## Reexecutar a matriz e gerar a análise
+
+A matriz exige Linux, pelo menos 1 GiB de `MemAvailable` e 256 MiB livres em disco. Cada processo tem limite de espaço virtual de 512 MiB, CPU de 30 s e watchdog de 45 s. Não há alteração de swap nem limpeza automática do cache de páginas.
 
 ```bash
-PYTHONPATH=src timeout 30 /home/will/.venvs/genresearch/bin/python -m genresearch serve --config experiments/configs/concurrent.json
+timeout 950 python experiments/run_matrix.py --config experiments/configs/matrix.json --repetitions 3
 ```
 
-Presets concurrent-failure.json e concurrent-saturation.json preservam resultados
-e retornam 2 ao registrar falhas/recusas; a carga normal retorna 0. Cada run salva
-cinco artefatos em results/raw/stage3. Configuração, fórmulas, classificação de
-hits/misses e limites estão em [docs/concurrency.md](docs/concurrency.md).
-Etapa 4 concluída: demonstração isolada de duplicação e correção single-flight,
-comandos executados no WSL:
+O executor cria um lote com novo UUID e gera seus próprios corpus e índices. O manifesto e as saídas identificam esse lote; os caminhos do lote publicado abaixo não devem ser usados para representar uma nova medição.
+
+Para recalcular tabelas e gráficos a partir do lote publicado, sem alterar suas saídas originais:
 
 ```bash
-export PYTHONPATH=src:.
-timeout 15 /home/will/.venvs/genresearch/bin/python experiments/demonstrate_race.py
-timeout 60 /home/will/.venvs/genresearch/bin/python -m unittest discover -s tests -v
+python -m pip install -r requirements-analysis-lock.txt
+saida_analise="results/local-validation/analise-$(date +%Y%m%d-%H%M%S)"
+python experiments/analyze.py --input results/raw/matrix/15c7fb31a435409597342b40f0d70665 --output "$saida_analise/tabelas"
+python experiments/plot_results.py --input results/raw/matrix/15c7fb31a435409597342b40f0d70665 --race results/raw/stage4/7309c1af68234c8aa1f17d02d92f4737 --output "$saida_analise/graficos"
 ```
 
-Cada versão roda em processo filho com timeout e encerramento. A versão incorreta
-é exclusiva da demonstração. Runs novos em results/raw/stage4 preservam eventos,
-contagens, tempos e status. Resultado verificado: dois cálculos sem coordenação,
-um com proteção; 17 testes passaram. Veja [docs/synchronization.md](docs/synchronization.md).
-A matriz C1–C6 foi executada com três repetições e limites de processo;
-plano e limitações em [docs/experiments.md](docs/experiments.md).
+Coleta e auditoria de processos, threads e syscalls estão descritas em [docs/evidence.md](docs/evidence.md). As ferramentas de análise recusam sobrescrita; usar destinos novos.
 
-```bash
-export PYTHONPATH=src:.
-timeout 950 /home/will/.venvs/genresearch/bin/python experiments/run_matrix.py --config experiments/configs/matrix.json --repetitions 3
-/home/will/.venvs/genresearch/bin/python scripts/verify_matrix.py results/raw/matrix/15c7fb31a435409597342b40f0d70665
-/home/will/.venvs/genresearch/bin/python experiments/analyze.py --input results/raw/matrix/15c7fb31a435409597342b40f0d70665 --output results/summary/matrix-15c7fb31
-```
+## Resultados e alcance
 
-Comandos executados no WSL. Runner cria lote UUID novo; análise exige saída nova.
-Dados finais em results/raw/matrix/15c7fb31a435409597342b40f0d70665; tabelas
-derivadas em results/summary/matrix-15c7fb31. E/S por processo indisponível=null.
-Gráficos e interpretação disponíveis em [docs/analysis.md](docs/analysis.md).
-Cinco gráficos PNG/SVG, tabelas, diagnóstico e proveniência em
-results/analysis/matrix-15c7fb31. Geração e verificação foram executadas no WSL:
+Lote principal: `15c7fb31a435409597342b40f0d70665`, coletado em 10/10/2026, com 11 condições × 3 repetições. Foram 720 consultas concluídas e 72 falhas intencionais de índice ausente, sem perdas ou duplicações de IDs. A demonstração isolada reduziu de dois para um cálculo da mesma chave.
 
-```bash
-PYTHONPATH=src:. /home/will/.venvs/genresearch/bin/python experiments/plot_results.py --input results/raw/matrix/15c7fb31a435409597342b40f0d70665 --race results/raw/stage4/7309c1af68234c8aa1f17d02d92f4737 --output results/analysis/matrix-15c7fb31
-/home/will/.venvs/genresearch/bin/python scripts/verify_analysis.py results/analysis/matrix-15c7fb31
-```
+| Comparação | Resultado observado |
+|---|---|
+| read → mmap | Janela média 0,454 → 0,395 s; RSS semelhante |
+| 1 → 2 → 4 consumidores | Vazão 26,93 → 52,90 → 74,03 req/s |
+| Cache 0 → 1 → 3 | Hit rate 0 → 6,94 → 31,94% |
+| Corpus 12 → 48 → 192 documentos | RSS máximo amostrado médio 34,29 → 42,48 → 53,83 MiB |
 
-Para regenerar, escolha saída nova. Matplotlib 3.10.8 instalado apenas para
-análise; versões testadas em requirements-analysis-lock.txt. A aplicação de
-medição continua usando biblioteca padrão. Entregas acadêmicas permanecem pendentes.
+O recorte tem corpus pequeno, geração simulada, três repetições em ordem fixa, logging e cópias integrais. A execução usou `/mnt/c` no WSL/DrvFS. E/S física por processo estava indisponível (`null`); swap foi zero nas amostras, sem demonstração de thrashing. Os ganhos não representam inferência real ou paralelismo de bytecode limitado por CPU. Reprodução completa em clone limpo Linux ainda não foi confirmada.
 
-Evidências complementares Linux concluídas: ps, /proc, strace, GNU time,
-vmstat e iostat. Duas cargas instrumentadas com 24 consultas cada terminaram
-corretamente; seis threads observadas por processo. Interpretação e limitações
-em [docs/evidence.md](docs/evidence.md). Comandos executados no Ubuntu:
+## Entrega e atribuição
 
-```bash
-PYTHONPATH=src:. timeout 90 /home/will/.venvs/genresearch/bin/python scripts/collect_evidence.py --output results/evidence/linux-tracing-20261010
-/home/will/.venvs/genresearch/bin/python scripts/verify_evidence.py results/evidence/linux-tracing-20261010 results/summary/linux-tracing-20261010-verified
-```
+O fonte do relatório está incluído e utiliza pdfLaTeX. O PDF final, os slides e a URL do vídeo ainda precisam ser incorporados. O relatório contém campos para o commit final e o vídeo; este último deve constar também neste README e em `VIDEO.md`.
 
-Para repetir, escolher destinos novos. Exige índice da etapa 2 e ferramentas
-Linux indicadas no guia de evidências. Dados brutos preservados e 51 hashes
-auditados; traces separados da matriz de desempenho. E/S física por processo
-continua indisponível no WSL. Relatório e slides adiados a pedido da equipe.
+**URL do vídeo:** ainda não informada.
+
+Houve assistência de IA (Codex) na implementação, documentação, auditoria e análise. As fontes técnicas e as limitações estão documentadas; a revisão e a responsabilidade acadêmica pertencem à equipe. A tabela de responsabilidades registra a divisão atribuída, sem presumir participação técnica não comprovada pelos registros.
