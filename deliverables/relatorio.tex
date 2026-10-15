@@ -2,7 +2,7 @@
   % !TeX program = pdflatex
   % Arquivo independente: não requer imagens externas nem arquivo .bib.
   % Compilar duas vezes com pdfLaTeX para atualizar sumário e referências.
-  % Antes da entrega: revisar funções, preencher URL do vídeo e commit final.
+  % Antes da entrega: revisar funções e preencher a URL do vídeo.
   \documentclass[12pt,a4paper]{article}
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -44,7 +44,7 @@
   \newcommand{\pendencia}[1]{\par\smallskip\noindent{\small\textbf{A completar antes da entrega:} #1}\par}
   % Campos que dependem da equipe; editar aqui antes da submissão.
   \newcommand{\urlvideo}{\textit{Pendente de gravação e publicação.}}
-  \newcommand{\commitfinal}{\textit{A preencher após consolidar os artefatos.}}
+  \newcommand{\commitfinal}{\href{https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will/commit/9f8ad355769af28f7252a5700905476b6dc6a413}{\texttt{9f8ad355769af28f7252a5700905476b6dc6a413}}}
   \newcommand{\titulotrabalho}{GENRESEARCH-SERVIDOR: MEMÓRIA, ARMAZENAMENTO, FILAS, CACHE E SINCRONIZAÇÃO}
   \newcommand{\integrantes}{Bruno Amancio Ferreira\\Christian Will Silva Santos Nunes\\Iasmin Victoria Teixeira Barreto\\Marcos Vinícius Dantas Aguiar\\Pedro César Figueiredo Carneiro\\Sibele Oliveira Cruz\\Silas Santos da Silva}
   % Gráficos vetoriais incorporados; valores são médias das três repetições.
@@ -55,7 +55,7 @@
    every node near coord/.append style={font=\scriptsize},
    scaled y ticks=false,grid=major,grid style={gray!18},
    /pgf/number format/use comma}}
-
+  
   \begin{document}
   \hypersetup{pageanchor=false}
   \begin{titlepage}
@@ -63,7 +63,7 @@
   \begin{center}
   \textbf{UNIVERSIDADE FEDERAL DE SERGIPE}
   \vspace{1.2cm}
-
+  
   \textbf{ATIVIDADE 2 - SISTEMAS OPERACIONAIS (2026.2)}
   \vfill
   {\bfseries\integrantes}
@@ -73,7 +73,7 @@
   \textbf{SERGIPE}\\\textbf{2026}
   \end{center}
   \end{titlepage}
-
+  
   \begin{titlepage}
   \thispagestyle{empty}
   \begin{center}
@@ -90,21 +90,21 @@
   SERGIPE\\2026
   \end{center}
   \end{titlepage}
-
+  
   \hypersetup{pageanchor=true}
   \pagenumbering{arabic}
   \thispagestyle{empty}
   \begin{center}\textbf{RESUMO}\end{center}
   Este relatório apresenta a implementação e a análise do GenResearch-Servidor, um pipeline inspirado em recuperação aumentada por geração (RAG). O objetivo foi relacionar memória, armazenamento, leitura de arquivos, filas, cache e sincronização ao desempenho e à correção de uma aplicação. O recorte utiliza documentos sintéticos, vetores lexicais simulados, recuperação por similaridade e resposta com espera simulada, sem inferência de modelo de linguagem. Em Ubuntu/WSL~2, foram executadas onze condições com três repetições, totalizando 720 consultas concluídas e 72 falhas intencionais. Compararam-se leitura convencional e mapeada, um a quatro consumidores, três tamanhos de corpus e capacidades de cache. Na carga pequena, o uso de \texttt{mmap} reduziu a janela média de 0,454 para 0,395~s, com memória residente semelhante. A vazão passou de 26,93 para 74,03 consultas por segundo entre um e quatro consumidores. O cache de capacidade três atingiu 31,94\% de acerto e reduziu a janela média em aproximadamente 21,5\%. Uma condição de corrida isolada duplicou o cálculo de uma mesma chave; a coordenação por chave eliminou a duplicação. Não houve swap nas amostras nem evidência suficiente de thrashing. As conclusões são limitadas pelos dados pequenos, pela simulação da geração, pela amostragem e pela integração de arquivos do WSL. O estudo demonstra a relação entre organização dos dados, coordenação concorrente, desempenho e correção, preservando as limitações de generalização.
-
+  
   \vspace{\baselineskip}
   \noindent\textbf{Palavras-chave:} Sistemas Operacionais. Memória virtual. Mapeamento de arquivos. Concorrência. Cache.
-
+  
   \clearpage
   \thispagestyle{empty}
   \begin{singlespace}\small\tableofcontents\end{singlespace}
-
-  % Oito páginas de conteúdo, além dos quatro elementos iniciais.
+  
+  % Conferir a paginação final após compilar; anexos são excluídos do limite do enunciado.
   \secao{Contribuições, introdução e problema}
   \begin{table}[H]
   \centering
@@ -124,17 +124,17 @@
   \end{singlespace}
   \end{table}
   A tabela distribui as responsabilidades técnicas e editoriais entre os sete integrantes, em alinhamento com os temas de participação no vídeo. As funções orientam a preparação, a apresentação e a revisão das respectivas partes do trabalho.
-
+  
   Na atividade anterior, o grupo observou a inferência local do Gemma~3. Nesta atividade, o recorte muda para um serviço simplificado inspirado em RAG, com controle de arquivos, fila e cache. As medições anteriores de Ollama, ARM64 e Open WebUI não são resultados do GenResearch.
-
+  
   A pergunta norteadora é: \textit{como memória principal, memória virtual, armazenamento, caches, filas compartilhadas e mecanismos de sincronização afetam o desempenho, a estabilidade e a correção de uma aplicação de IA generativa ou de RAG?}
-
+  
   O objetivo é implementar um fluxo observável, comparar configurações de acesso e concorrência, demonstrar uma falha controlada e explicar sua correção. O foco está nos custos e mecanismos de Sistemas Operacionais, sem avaliar qualidade de texto de um modelo.
-
+  
   \noindent\textbf{Repositório:} \url{https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will}.\\
   \textbf{Vídeo:} \urlvideo\\
   \textbf{Commit final:} \commitfinal
-
+  
   \secao{Ambiente experimental e arquitetura}
   O inventário foi coletado em 10/10/2026 às 15:44:59, fuso $-03{:}00$ (America/Sao\_Paulo). Os valores descrevem a instância Linux, sem representar todo o Windows \cite{projeto}.
   \begin{table}[H]
@@ -155,14 +155,14 @@
   \end{table}
   \fontepropria
   O programa é executado no terminal. O comando \texttt{serve} processa uma carga local finita, sem servidor HTTP. Seu fluxo é: documentos, fragmentação e vetorização, persistência, produtores, fila limitada, consumidores, cache, recuperação em caso de miss, contexto, resposta simulada e logs.
-
+  
   \texttt{MemFree} indica páginas livres; \texttt{MemAvailable} estima memória disponibilizável sem swap, considerando páginas recuperáveis. O cache de páginas pode acelerar releituras e não é necessariamente desperdício. RSS mede páginas residentes; VSZ inclui reservas e mapeamentos virtuais. Threads compartilham o espaço de memória: não se deve somar o RSS repetido em suas linhas \cite{proc,threads}.
-
-  O registro aponta o commit base \texttt{e649deb2855910f8aa890bb6858d7fb744e5ce8c}, com alterações locais. Manifestos e hashes identificam os arquivos medidos; esse identificador não substitui o commit final da entrega.
-
+  
+  As medições foram registradas a partir do commit base \texttt{e649deb2855910f8aa890bb6858d7fb744e5ce8c}, com alterações locais identificadas pelos manifestos e hashes. A versão organizada para entrega foi publicada no commit \commitfinal. O commit base é mantido como referência histórica do ambiente medido.
+  
   \secao{Dados, fila e estratégia de sincronização}
   Os textos são sintéticos, com semente 202602. Fragmentos têm até 256 caracteres e sobreposição de 32; vetores têm 64 dimensões. O SHA-256 dos termos define posições e as contagens são normalizadas em L2. Trata-se de representação lexical simulada, com colisões possíveis, sem equivalência a embeddings semânticos.
-
+  
   \begin{table}[H]
   \centering\caption{Corpus e índice persistidos}\label{tab:corpus}
   \begin{singlespace}\small
@@ -175,16 +175,18 @@
   \end{table}
   \fontepropria
   \texttt{corpus.bin} concatena documentos; \texttt{index.json} guarda fragmentos e vetores; \texttt{metadata.json} registra origem, parâmetros, offsets e checksums. O JSON duplica textos para simplificar a implementação. A recuperação usa cosseno, top-$k=3$ e contexto de 512 bytes, com UTF-8 preservado. A resposta identifica o contexto e usa \texttt{sleep} de 0,01~s; não há LLM, pesos ou inferência em GPU.
-
+  
+  Na validação funcional do corpus pequeno, a ingestão de 12 documentos e 96 fragmentos levou 62,63~ms, conforme \path{results/evidence/stage2-final/ingest.json}. É uma observação única, separada da matriz; não há média, dispersão ou comparação entre modos para essa etapa. Nos dois modos da matriz, cada consulta sem cache registrou 97.252 bytes lógicos lidos, incluindo metadados, corpus e índice; esse valor não mede tráfego físico de disco.
+  
   Dois produtores inserem consultas em uma \texttt{Queue} de capacidade quatro. Consumidores retiram tarefas; o número varia entre um, dois e quatro. A fila coordena espaço e disponibilidade; timeout gera recusa explícita. Após o fim dos produtores, os consumidores drenam a fila e encerram. A correção não depende de \texttt{qsize()} \cite{queue}.
-
+  
   O cache LRU possui lock para busca, contadores, substituição e chaves em andamento. A coordenação \textit{single-flight} usa um evento por chave: um trabalhador calcula fora do lock e os demais aguardam resultado ou exceção. A chave combina consulta normalizada, versão dos dados e parâmetros. Falhas não são cacheadas. Um lock separado serializa as linhas e a sequência do log JSONL.
-
+  
   Na corrida isolada, uma barreira força duas threads a observarem a mesma chave ausente. Sem coordenação, há dois cálculos, um duplicado; com single-flight, há um cálculo e nenhum duplicado. Resultados iguais e encerramento foram confirmados. O processo tem watchdog de 5~s. A falha é duplicação de trabalho; não foram demonstrados deadlock ou starvation.
-
+  
   \secao{Configurações, metodologia e métricas}
   O lote final \texttt{15c7fb31a435409597342b40f0d70665} contém onze condições com três repetições, em processos novos e ordem fixa. Cada repetição submete 24 consultas: nove textos distintos, com três textos recorrentes em 18 posições e seis sufixos específicos. Duas consultas de aquecimento ficam separadas da medição; o cache da aplicação inicia vazio. C6 ausente não tem aquecimento.
-
+  
   \begin{table}[H]
   \centering\caption{Matriz de comparações}\label{tab:matriz}
   \begin{singlespace}\small
@@ -199,16 +201,42 @@
   \end{tabularx}\end{singlespace}
   \end{table}
   A linha de base usa corpus pequeno, read, dois consumidores, cache zero e geração simulada de 0,01~s. C1 é reutilizada nas séries de consumidores, corpus e cache. Esses três fatores atendem à variação mínima. C5 amplia a carga moderadamente, sem produzir pressão intensa de RAM.
-
+  
   Vazão é o número de conclusões dividido pela janela do serviço, incluindo lançamento e encerramento. Latência vai da chegada ao término, incluindo admissão e fila. Média, mediana e p95 consideram conclusões; p95 é nearest-rank entre 24 consultas, não entre três repetições. Os resultados agregam média e desvio padrão amostral; não foram realizados testes de significância.
-
-  Tempos de ingestão, recuperação, resposta e total são preservados nos artefatos. RSS, VSZ, memória disponível, cache, swap e faltas são amostrados; máximos podem perder picos. Em C1, a média das latências médias foi 122,32~ms; a média das medianas, 139,31~ms. A ocupação média temporal da fila foi 3,28 itens, com máximo quatro. Utilização de trabalhador inclui espera e não é CPU.
-
+  
+  Os tempos de recuperação, resposta e total, a memória disponível, o cache de páginas e a utilização dos consumidores são apresentados na Tabela~\ref{tab:metricas-complementares}. RSS, VSZ, memória disponível, cache, swap e faltas são amostrados; máximos podem perder picos. Em C1, a ocupação média temporal da fila foi 3,28 itens, com máximo quatro. Utilização de trabalhador inclui espera e não é CPU.
+  
   Limites: espaço virtual de 512~MiB, CPU de 30~s e watchdog de 45~s por processo. Não se alteraram swap ou caches do kernel. Manifestos, consultas, recursos, eventos, resumos, horários e hashes foram preservados. A equivalência de conteúdo read/mmap foi verificada nas três repetições.
-
+  
   \secao{Resultados de leitura e concorrência}
   \subsection{Leitura convencional e mapeada}
   A janela média foi $0{,}454\pm0{,}014$~s em read e $0{,}395\pm0{,}010$~s em mmap, redução observada de 12,9\%. Vazão: $52{,}90\pm1{,}59$ e $60{,}72\pm1{,}57$~req/s; p95: $145{,}31\pm6{,}31$ e $126{,}23\pm5{,}38$~ms. RSS máximo amostrado médio foi semelhante: 34,29 e 34,49~MiB.
+  
+
+  \begin{table}[H]
+  \centering
+  \caption{Métricas complementares de C1-read e C2-mmap: média $\pm$ desvio padrão entre três execuções}
+  \label{tab:metricas-complementares}
+  \begin{singlespace}\footnotesize
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}Xrr}
+  \toprule\textbf{Métrica} & \textbf{C1-read} & \textbf{C2-mmap}\\\midrule
+  Carregamento (ms) & $15,10\pm0,55$ & $9,01\pm0,42$\\
+  Recuperação (ms) & $1,31\pm0,03$ & $1,92\pm0,07$\\
+  Resposta simulada (ms) & $11,09\pm0,02$ & $11,45\pm0,10$\\
+  Total do pipeline (ms) & $27,50\pm0,59$ & $22,38\pm0,56$\\
+  Latência média (ms) & $122,32\pm3,97$ & $106,40\pm2,73$\\
+  Mediana da latência (ms) & $139,31\pm3,32$ & $119,88\pm2,69$\\
+  Utilização média dos trabalhadores (\%) & $92,27\pm0,12$ & $90,22\pm0,18$\\
+  Mínimo amostrado de MemAvailable (MiB) & $3.189,76\pm26,31$ & $3.155,34\pm7,02$\\
+  Máximo amostrado de Cached (MiB) & $235,96\pm0,00$ & $236,05\pm0,08$\\
+  \bottomrule
+  \end{tabularx}
+  \end{singlespace}
+  \par\smallskip\noindent{\footnotesize\textit{Fonte: cálculo a partir de requests.jsonl, summary.json e resources.csv das três repetições de cada condição do lote final.}}
+  \end{table}
+  Os quatro tempos de etapas são médias por consulta em cada execução, agregadas entre três repetições de 24 consultas, com cache desativado. O total do pipeline não inclui admissão e fila; estas integram a latência. A mediana apresentada é a média das medianas por execução, não a mediana conjunta de 72 consultas.
+
+  MemAvailable e Cached são medidas da instância Linux, sem atribuição exclusiva ao processo. A tabela agrega o mínimo disponível e o máximo de Cached de cada execução; a utilização agrega a média dos dois consumidores em cada execução. Utilização inclui espera e não equivale a CPU. O desvio $0{,}00$ de Cached em C1 decorre de máximos iguais nas amostras, sem demonstrar ausência de variação entre elas.
 
   \begin{figure}[H]\centering
   \begin{tikzpicture}\begin{axis}[grafico,symbolic x coords={read,mmap},ylabel={Janela (s)},ymax=0.57]
@@ -221,16 +249,16 @@
   \end{figure}
   \fontepropria
   Abertura/mapeamento levou cerca de 0,92/1,32~ms; acesso/cópia/fechamento, 7,24/1,03~ms. O mmap copia integralmente os dados e não é zero-copy \cite{mmap}. Faltas minor médias foram aproximadamente 196.918/98.697; major, 0/24. Não se convertem essas contagens em E/S física ou thrashing sem investigação. Houve aquecimento, sem disco frio verificado; a segunda repetição não foi sempre mais rápida. Não se comparou mmap no corpus maior.
-
+  
   \subsection{Consumidores e fila}
   Com 1/2/4 consumidores, o p95 foi 257,46/145,31/130,82~ms e a espera média na fila, 129,05/62,17/38,39~ms. O ganho de vazão foi 1,96 vez de um para dois e 1,40 vez de dois para quatro: retorno decrescente, sem queda até quatro ou ponto de saturação identificado.
-
+  
   Threads sobrepõem leitura e espera; não se demonstra ganho de bytecode limitado por CPU \cite{threads}. O RSS subiu de 31,93 para 50,33~MiB entre um e quatro consumidores. Com quatro, VSZ chegou a 504,67~MiB, próximo do limite virtual de 512~MiB, sem erro de memória observado. Logging, GIL e parsing são custos possíveis, não causas isoladas experimentalmente.
-
+  
   \secao{Resultados de cache e escala dos dados}
   \subsection{Acertos, substituições e tempo}
   Cache 0/1/3 apresentou hit rate médio de 0/6,94/31,94\% e janelas de 0,454/0,429/0,356~s. A capacidade três reduziu a janela em cerca de 21,5\%; capacidade um, em 5,4\%. As condições ocorreram em momentos distintos, com o mesmo plano de consultas.
-
+  
   \begin{figure}[H]\centering
   \begin{tikzpicture}\begin{axis}[grafico,symbolic x coords={0,1,3},ylabel={Hit rate (\%)},xlabel={Capacidade do cache},ymax=43]
   \addplot+[fill=blue!45,draw=blue!60!black,error bars/.cd,y dir=both,y explicit] coordinates {(0,0) +- (0,0) (1,6.94) +- (0,2.41) (3,31.94) +- (0,2.41)};
@@ -242,17 +270,17 @@
   \end{figure}
   \fontepropria
   Capacidade um teve 2/1/2 hits e 19/21/20 substituições; capacidade três, 7/8/8 hits e 12/11/11 substituições. Seguidores single-flight contam como miss/coalesced, sem valor pronto no instante da busca. Miss rate é $1-\text{hit rate}$, sem equivaler a falha de execução. O p95 com cache um foi $152{,}23\pm12{,}63$~ms, acima da linha de base: menor janela não garante menor cauda. A estimativa bruta de tempo evitado não desconta espera/logging e não é economia líquida.
-
+  
   \subsection{Corpus, contexto e paginação}
   Ao passar de 12 para 48 e 192 documentos, o p95 foi de 145,31 para 169,30 e 317,18~ms; vazão, de 52,90 para 45,44 e 25,25~req/s. Texto e índice crescem juntos, sem isolamento de seus custos. O lote de 24 consultas não foi variado.
-
+  
   C5 ampliou top-$k$/contexto no corpus maior: RSS foi $52{,}59\pm2{,}41$~MiB e p95, $311{,}95\pm8{,}36$~ms, sem aumento claro frente a 53,83~MiB e 317,18~ms. Carregamento integral e sleep fixo limitam a sensibilidade ao contexto. Swap permaneceu zero nas amostras, sem evidência suficiente de pressão intensa ou thrashing.
-
+  
   \secao{Correção, chamadas de sistema e discussão}
   O lote totaliza 792 consultas: 720 concluídas e 72 falhas intencionais de índice ausente. Não houve perdas, duplicações de IDs, recusas inesperadas ou threads de trabalho restantes. A duplicação de IDs é diferente da duplicação de cálculo da corrida isolada. C6-recovery concluiu 72 consultas em processos novos com índice disponível, com p95 médio de 147,37~ms; isso não comprova retentativa automática no mesmo processo.
-
+  
   Na validação funcional de saturação, fora da matriz, três consultas concluíram e 27 foram recusadas explicitamente. A falha da corrida foi corrigida de dois para um cálculo, com resultados iguais. Locks e eventos acrescentam coordenação e espera, mas permitem preservar consistência sem manter lock global durante o cálculo.
-
+  
   A coleta complementar separada usou sleep de 0,05~s e concluiu 24 consultas por modo. \texttt{ps} e \texttt{/proc} mostraram seis threads: principal, amostrador, dois produtores e dois consumidores. Seus tempos não se misturam à matriz.
   \begin{table}[H]\centering
   \caption{Chamadas selecionadas no rastreamento complementar}\label{tab:syscalls}
@@ -269,18 +297,18 @@
   \end{table}
   \fontepropria
   O filtro de corpus/índice encontrou 0/48 mapeamentos nos modos read/mmap. Contagens globais iguais não indicam comportamento igual nos arquivos alvo. Retornos EAGAIN/ETIMEDOUT em futex não são falhas de consulta.
-
+  
   \texttt{/proc/PID/io} não existia no ambiente: bytes físicos e operações por processo permanecem indisponíveis, não zero. Tamanhos e bytes lógicos não substituem E/S física. \texttt{vmstat}/\texttt{iostat} observam Linux/dispositivos, sem atribuição exclusiva ao SSD Windows.
-
+  
   Em RAG, documentos, vetores, índices e contextos competem por recursos. Cache de respostas e cache de páginas atuam em níveis distintos. Checkpoints, GPU e execução distribuída adicionariam transferência e sincronização, mas não foram medidos. Auditorias conferiram 33 execuções, 364 hashes de entrada da análise e 51 da coleta complementar; 19 testes passaram na etapa da matriz.
-
+  
   \secao{Limitações, conclusão e referências}
   As limitações são corpus pequeno sintético, hashing com colisões, resposta com sleep fixo, JSON/cópias, logs síncronos, três repetições em ordem fixa, aquecimento, máximos apenas amostrados, limite virtual e WSL/DrvFS. Faltam E/S física por processo, comparação mmap em corpus maior e reprodução comprovada em clone limpo. Não se avaliaram qualidade textual, inferência real ou GPU.
-
+  
   Conclui-se que corpus/índice maiores acompanharam maior RSS e latência; mais consumidores aumentaram vazão e reduziram espera; cache maior ampliou reutilização; sincronização por chave evitou trabalho duplicado. O mmap reduziu a janela nesta carga, sem superioridade geral demonstrada. Recomenda-se testar acesso parcial, corpus maior, ordem randomizada e geração real ou custo computacional calibrado.
-
-  \noindent\textbf{Uso de IA.} O projeto registra assistência do Codex em implementação, auditoria e análise; esta redação e adaptação em LaTeX também tiveram assistência de IA. A equipe deve revisar valores, interpretação e o registro das contribuições conforme as funções da Tabela~\ref{tab:contribuicoes}. Antes de submeter, preencher o commit final e a URL do vídeo, também exigida no README e em \texttt{VIDEO.md} ou \texttt{video.txt}.
-
+  
+  \noindent\textbf{Uso de IA.} O projeto registra assistência do Codex em implementação, auditoria e análise; esta redação e adaptação em LaTeX também tiveram assistência de IA. A equipe deve revisar valores, interpretação e o registro das contribuições conforme as funções da Tabela~\ref{tab:contribuicoes}. Antes de submeter, preencher a URL do vídeo, também exigida no README e em \texttt{VIDEO.md} ou \texttt{video.txt}.
+  
   \begingroup
   \renewcommand{\section}[2]{}
   \begin{singlespace}\footnotesize
