@@ -95,10 +95,7 @@ Lote principal: `15c7fb31a435409597342b40f0d70665`, coletado em 10/10/2026, com 
 
 O recorte tem corpus pequeno, geração simulada, três repetições em ordem fixa, logging e cópias integrais. A execução usou `/mnt/c` no WSL/DrvFS. E/S física por processo estava indisponível (`null`); swap foi zero nas amostras, sem demonstração de thrashing. Os ganhos não representam inferência real ou paralelismo de bytecode limitado por CPU. Reprodução completa em clone limpo Linux ainda não foi confirmada.
 
-## Entrega e atribuição
 
-O fonte do relatório está incluído e utiliza pdfLaTeX. O PDF final, os slides e a URL do vídeo ainda precisam ser incorporados. O relatório contém campos para o commit final e o vídeo; este último deve constar também neste README e em `VIDEO.md`.
-
-**URL do vídeo:** ainda não informada.
+**URL do vídeo:** (https://youtu.be/rbg7MXI-FG4)
 
 Houve assistência de IA (Codex) na implementação, documentação, auditoria e análise. As fontes técnicas e as limitações estão documentadas; a revisão e a responsabilidade acadêmica pertencem à equipe. A tabela de responsabilidades registra a divisão atribuída, sem presumir participação técnica não comprovada pelos registros.
