@@ -1,4 +1,4 @@
-"""Compila os 11 slides Beamer e sincroniza as miniaturas dos roteiros."""
+"""Compila os slides Beamer e sincroniza as miniaturas dos roteiros."""
 import argparse
 import hashlib
 import json
@@ -14,7 +14,11 @@ def sync_roteiros(source, output):
     plan = json.loads(plan_path.read_text(encoding='utf-8'))
     markers = re.findall(r'^% ROTEIRO_SLIDE (\d+): (.+)$', source.read_text(encoding='utf-8'), re.M)
     expected = [(str(s['number']).zfill(2), s['title']) for s in plan['slides']]
-    if markers != expected or len(PdfReader(output).pages) != 11:
+    presenters = re.findall(r'^% ROTEIRO_APRESENTADOR: (\w+)$', source.read_text(encoding='utf-8'), re.M)
+    labels = re.findall(r'\\apresenta\{([^}]+)\}', source.read_text(encoding='utf-8'))
+    people = [plan['people'][s['presenter']] for s in plan['slides']]
+    if (markers != expected or len(PdfReader(output).pages) != len(expected)
+            or presenters != [s['presenter'] for s in plan['slides']] or labels != people):
         raise ValueError('Ordem, títulos ou quantidade de slides divergem do roteiro; revisar antes de sincronizar')
     plan['deck'] = output.resolve().relative_to(ROOT.parent).as_posix()
     plan['deck_source'] = source.resolve().relative_to(ROOT.parent).as_posix()

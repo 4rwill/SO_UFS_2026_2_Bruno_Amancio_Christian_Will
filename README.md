@@ -34,6 +34,6 @@ python -m unittest discover -s atividade3/tests -v
 - [Dados, CSV e gráfico](atividade3/results/analysis/20261108T013949Z-19921f7f/)
 - [Situação dos requisitos e pendências da equipe](atividade3/docs/status.md)
 
-Vídeo, contribuições efetivas e submissão acadêmica dependem da revisão e participação da equipe. A publicação do código não comprova a entrega no Classroom.
+[Vídeo da Atividade 3 no Google Drive](https://drive.google.com/drive/folders/1yPalBhHtxjZmD2yZngRQVawkAElJC-Hj?usp=sharing). A equipe deve conferir o acesso à gravação e efetuar a submissão acadêmica. A publicação do código não comprova a entrega no Classroom.
 
 Ambientes virtuais, temporários e materiais locais de outra disciplina ficam ignorados pelo Git e não fazem parte das atividades publicadas.

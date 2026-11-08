@@ -1,172 +1,208 @@
 # Roteiro da apresentação
 
-Duração-alvo: 11:00. Base: 11 slides de `atividade3/output/slides/apresentacao_atividade3.pdf`.
+Duração-alvo: 11:00. Base: 14 slides de `atividade3/output/slides/apresentacao_atividade3.pdf`.
 
-Falas sugeridas para ensaio; não comprovam contribuição técnica efetiva. Nos slides 7 e 10 há troca de locutor sem troca de slide.
+Um apresentador por slide. Cada integrante fala em um único bloco de dois slides, sem retorno na exposição.
 
 ## Slide 01 - Virtualização, namespaces e cgroups
 
-Janela: 00:00-00:40.
+Janela: 00:00-00:25.
 
-**Em tela:** Manter a capa e olhar para a turma. Apresentar o objetivo antes dos detalhes técnicos.
+**Em tela:** Exibir a capa com a equipe e o nome de Bruno. No vídeo, identificar Bruno na tela.
 
-**Próxima ação:** Trocar para o slide 2 quando Bruno anunciar Iasmin.
+**Próxima ação:** Avançar ao slide 2; Bruno continua.
 
 ### Bruno Amancio Ferreira
 
-Olá, nós somos a equipe GenResearch, e eu sou Bruno. Nesta atividade de Sistemas Operacionais, investigamos como contêineres Linux isolam a visão dos processos e limitam recursos usando o mesmo kernel. Criamos um laboratório próprio, com dois contêineres e seis medições de uma carga de CPU. Vamos apresentar o ambiente, as evidências de isolamento, os resultados e suas limitações. Iasmin começa mostrando onde esses contêineres executam.
+Olá, eu sou Bruno, da equipe GenResearch. Vamos apresentar a Atividade 3 de Sistemas Operacionais: um laboratório próprio para observar namespaces, limites de cgroups e montagem somente leitura em contêineres Linux. O trabalho reúne seis medições reais e registros que permitem conferir os resultados.
 
-## Slide 02 - Ambiente e kernel compartilhado
+## Slide 02 - Objetivo e percurso do laboratório
 
-Janela: 00:40-01:40.
+Janela: 00:25-01:25.
 
-**Em tela:** Apontar o diagrama de cima para baixo: Windows, WSL2, kernel, daemon e contêineres.
+**Em tela:** Apontar a pergunta e as três evidências: namespaces, limites efetivos e escrita negada. Manter Bruno até concluir o slide.
 
-**Próxima ação:** Trocar para o slide 3 após a passagem para Pedro.
+**Próxima ação:** Avançar ao slide 3 e passar a palavra a Iasmin Victoria Teixeira Barreto.
+
+### Bruno Amancio Ferreira
+
+A pergunta é como namespaces alteram a visão dos processos e como cgroups limitam recursos sob um kernel compartilhado. Observamos três aspectos: os identificadores de PID, mount e network; os limites efetivos de CPU, memória, swap e tarefas; e o comportamento de uma montagem somente leitura.
+
+A carga é um cálculo aritmético em Python, sem LLM ou GPU. Comparamos meia CPU e uma CPU, usando o mesmo trabalho e três repetições por condição. Os resultados incluem os arquivos brutos, a análise e um auditor de integridade. Primeiro veremos o ambiente e o protocolo, depois o isolamento, a carga, os limites e os resultados. Silas encerra com as restrições de acesso e as limitações. Iasmin assume agora para mostrar onde os contêineres executam.
+
+## Slide 03 - Ambiente e kernel compartilhado
+
+Janela: 01:25-02:20.
+
+**Em tela:** Iasmin assume. Percorrer o diagrama: Windows, infraestrutura WSL2, ambiente do daemon e contêineres.
+
+**Próxima ação:** Avançar ao slide 4; Iasmin continua.
 
 ### Iasmin Victoria Teixeira Barreto
 
-Eu sou Iasmin. O host físico utiliza Windows 10. Acima dele, a infraestrutura WSL2 fornece o ambiente Linux em que executa o Docker Desktop. É o kernel desse ambiente Linux que os contêineres compartilham. Cada imagem fornece seu espaço de usuário, com Python e bibliotecas Debian.
+Eu sou Iasmin. O host físico utiliza Windows 10. A infraestrutura WSL2 fornece o ambiente Linux em que executa o Docker Desktop. O kernel compartilhado pertence a esse ambiente Linux intermediário. As imagens dos contêineres fornecem Python e o espaço de usuário Debian, sem iniciar um kernel próprio.
 
-O daemon anunciou doze CPUs lógicas e aproximadamente 3,72 gibibytes de RAM. Esses valores descrevem a camada Linux intermediária. O Ubuntu usado na análise também precisa ser distinguido do ambiente efetivo do daemon. Neste desenho existe uma camada de virtualização, mas cada contêiner continua sendo um conjunto de processos sob o kernel compartilhado. Pedro vai mostrar como esses processos podem ter visões diferentes.
+O daemon anunciou doze CPUs lógicas e aproximadamente 3,72 gibibytes de RAM. Esses recursos descrevem a camada do daemon. O Ubuntu usado na análise também deve ser distinguido desse ambiente. O diagrama mostra a camada de virtualização existente no Windows e, dentro do ambiente Linux, os dois contêineres compartilhando o kernel.
 
-## Slide 03 - Evidências de namespaces
+## Slide 04 - Protocolo e controle das execuções
 
-Janela: 01:40-02:50.
+Janela: 02:20-03:00.
 
-**Em tela:** Apontar primeiro os PIDs 567 e 612, depois os dois PIDs internos iguais a 1 e as três linhas de handles.
+**Em tela:** Apontar a sequência C1/C2, a imagem fixa e a leitura dos limites antes/depois. Ao terminar, passar para Pedro.
 
-**Próxima ação:** Trocar para o slide 4 na passagem para Christian.
+**Próxima ação:** Avançar ao slide 5 e passar a palavra a Pedro César Figueiredo Carneiro.
+
+### Iasmin Victoria Teixeira Barreto
+
+O protocolo fixa a imagem por digest e usa contêineres novos. Um piloto separado ajuda a definir a duração; depois, o trabalho fica congelado em vinte milhões de iterações. A sequência principal é C1, C2, repetida três vezes.
+
+Mantivemos constantes memória, swap, limite de tarefas, usuário e restrições de privilégio. A quota de CPU é a condição comparada. Os limites são lidos antes e depois do trabalho, e os contêineres criados pelo laboratório são removidos ao final. Pedro vai apresentar as evidências de isolamento da visão dos processos.
+
+## Slide 05 - Namespaces: visões de processos, mounts e rede
+
+Janela: 03:00-03:40.
+
+**Em tela:** Pedro assume. Relacionar cada namespace à visão que ele organiza; separar identificação de namespace de teste de tráfego.
+
+**Próxima ação:** Avançar ao slide 6; Pedro continua.
 
 ### Pedro César Figueiredo Carneiro
 
-Eu sou Pedro. Coletamos os dados enquanto dois contêineres independentes estavam ativos. O Docker informou os PIDs 567 e 612 no host do daemon. Dentro de cada contêiner, o processo inicial tinha PID um. Isso acontece porque a numeração é relativa ao PID namespace de cada contêiner.
+Eu sou Pedro. Os namespaces organizam visões de recursos do kernel. O PID namespace define a numeração de processos vista naquele contexto. O mount namespace organiza a visão das montagens, e o network namespace separa a visão de recursos de rede.
 
-Na tabela, os identificadores de PID, mount e network são diferentes entre A e B. Esses handles sustentam que os contêineres pertenciam a namespaces distintos. O namespace de PID organiza a visão dos processos; o de mount, a visão das montagens; e o de network, os recursos de rede.
+Coletamos os handles de dois contêineres ativos. Handles diferentes identificam namespaces diferentes nesta execução. Isso não demonstra isolamento absoluto nem mede tráfego de rede: a rede dos contêineres estava desativada. No próximo slide, veremos os identificadores e a relação entre o PID interno e o informado pelo daemon.
 
-A diferença dos identificadores não comprova isolamento absoluto. A rede estava desativada, e não fizemos um teste de tráfego. Christian vai explicar o trabalho usado para comparar as quotas de CPU.
+## Slide 06 - Evidências de namespaces e PIDs
 
-## Slide 04 - Carga determinística e protocolo
+Janela: 03:40-04:30.
 
-Janela: 02:50-04:00.
+**Em tela:** Apontar PIDs 567/612 no host do daemon, PID interno 1/1 e handles distintos. Ao terminar, passar para Christian.
 
-**Em tela:** Apontar vinte milhões, o checksum e a ordem C1/C2. A fórmula do slide é uma operação de acumulação, não inferência de IA.
+**Próxima ação:** Avançar ao slide 7 e passar a palavra a Christian Will Silva Santos Nunes.
 
-**Próxima ação:** Trocar para o slide 5 na passagem para Marcos.
+### Pedro César Figueiredo Carneiro
 
-### Christian Will Silva Santos Nunes
+O Docker informou os PIDs 567 e 612 no host do daemon. Dentro de cada contêiner, o processo inicial tinha PID um. Não existe contradição: a numeração é relativa ao PID namespace.
 
-Eu sou Christian. Para comparar as quotas, usamos uma carga de CPU com uma única thread e vinte milhões de iterações. O laço acumula uma expressão aritmética e limita o resultado a trinta e dois bits. Uma fórmula fechada calcula o checksum esperado de forma independente, e as seis execuções chegaram ao mesmo resultado indicado no slide.
+As três linhas seguintes mostram handles distintos de PID, mount e network entre A e B. Isso sustenta a separação dessas visões na coleta. Os números são identificadores daquele momento, não valores fixos que outra reprodução precisa repetir.
 
-Primeiro fizemos um piloto separado, com um milhão de iterações. Depois congelamos o trabalho principal e mantivemos a mesma quantidade nas seis medições. Cada execução usou um contêiner novo, alternando C1 e C2 três vezes.
+Essa evidência descreve isolamento de visão. A capacidade de CPU e os demais limites serão tratados pelos cgroups. Christian vai mostrar como garantimos que as seis execuções fizeram o mesmo trabalho e como conferir os registros.
 
-Assim, a comparação mantém o trabalho e a imagem, variando a quota de CPU. O piloto não entra nas estatísticas. A carga não utiliza LLM, GPU ou espera simulada. Marcos vai mostrar os limites que realmente observamos no kernel.
+## Slide 07 - Carga determinística e checksum
 
-## Slide 05 - Limites efetivos do cgroup
+Janela: 04:30-05:15.
 
-Janela: 04:00-05:00.
+**Em tela:** Christian assume. Apontar N fixo, expressão do checksum e oráculo independente. Não tratar a carga como inferência de LLM.
 
-**Em tela:** Apontar cpu.max em C1 e C2, depois memória, swap e tarefas. Ler os valores como microssegundos por período.
-
-**Próxima ação:** Trocar para o slide 6 na passagem para Sibele.
-
-### Marcos Vinícius Dantas Aguiar
-
-Eu sou Marcos. C1 recebeu quota de meia CPU, e C2, quota de uma CPU. Confirmamos esses limites lendo os arquivos do cgroup antes e depois do trabalho, além de registrar a configuração do Docker.
-
-Em C1, cpu ponto max mostrou cinquenta mil por cem mil microssegundos. Isso significa até cinquenta milissegundos de tempo agregado de CPU por período de cem milissegundos. A quota não reserva um núcleo nem define afinidade.
-
-As duas condições mantiveram duzentos e cinquenta e seis mebibytes de memória, swap adicional zero e limite de sessenta e quatro tarefas, incluindo threads. Também conferimos os arquivos de memória e tarefas. Não provocamos esgotamento de recursos. Sibele apresenta agora os tempos medidos.
-
-## Slide 06 - Seis medições de tempo decorrido
-
-Janela: 05:00-06:20.
-
-**Em tela:** Apontar azul para C1, verde para C2, os três pares e as medianas abaixo do gráfico.
-
-**Próxima ação:** Trocar para o slide 7; Marcos começa e Sibele continua sem trocar novamente.
-
-### Sibele Oliveira Cruz
-
-Eu sou Sibele. Cada par de barras representa uma repetição, com azul para meia CPU e verde para uma CPU. As seis execuções fizeram o mesmo trabalho e passaram na verificação de correção. Medimos o tempo do laço, excluindo a criação do contêiner e a inicialização do Python.
-
-A mediana foi aproximadamente sete vírgula zero sete quatro segundos em C1 e três vírgula três oito quatro segundos em C2. A razão entre essas medianas foi dois vírgula zero nove. Isso mostra uma redução observada do tempo quando aumentamos a quota neste ambiente.
-
-Também precisamos olhar a variação. C1 apresentou tempos de cerca de seis vírgula trinta e nove a oito vírgula vinte e um segundos; C2 ficou entre três vírgula vinte e sete e três vírgula cinquenta. Temos apenas três repetições por condição, então esse resultado não demonstra um ganho universal de duas vezes. Marcos vai relacionar esses tempos aos contadores de throttling.
-
-## Slide 07 - Throttling e escopos de memória
-
-Janela: 06:20-07:20.
-
-**Em tela:** Marcos aponta a tabela superior; Sibele assume ao final da passagem e aponta as três definições abaixo. Manter o slide.
-
-**Próxima ação:** Trocar para o slide 8 após Sibele anunciar Silas.
-
-### Marcos Vinícius Dantas Aguiar
-
-Em C1, o contador de períodos com throttling aumentou nas três execuções: setenta e um, oitenta e dois e sessenta e quatro. Também houve aumento do tempo de throttling. Em C2, esses deltas foram zero na janela observada. Junto com cpu ponto max e com os tempos, isso sustenta que a quota restringiu a carga em C1. Sibele explica agora os escopos da memória.
-
-### Sibele Oliveira Cruz
-
-RSS máximo descreve páginas residentes do processo. Memory current mostra o uso contabilizado no grupo em instantes de coleta. Memory peak registra o pico desde a criação do cgroup, incluindo a inicialização. Essas medidas têm escopos diferentes e não são todas uma média de RAM. O limite foi confirmado sem provocar OOM. Silas vai apresentar a restrição de escrita.
-
-## Slide 08 - Mount read-only e menor privilégio
-
-Janela: 07:20-08:30.
-
-**Em tela:** Apontar leitura permitida, criação negada, EROFS e os controles de privilégio. Não tentar escrever em outro diretório do host.
-
-**Próxima ação:** Trocar para o slide 9 quando Silas passar a palavra a Christian.
-
-### Silas Santos da Silva
-
-Eu sou Silas. Criamos um documento sintético e montamos seu diretório em barra dados com a opção somente leitura. O contêiner conseguiu ler o documento, mas a tentativa controlada de criar um arquivo nesse mesmo diretório foi negada. O erro foi trinta, EROFS, que indica sistema de arquivos somente leitura.
-
-Também observamos a opção ro no ponto de montagem. A execução usou usuário não root, capabilities efetivas zeradas e a restrição de novos privilégios ativada. Cada mecanismo tem um papel: o mount namespace define a visão das montagens, a opção ro restringe escrita e a identidade limita ações permitidas.
-
-Essa negação comprova a restrição daquele mount, sem demonstrar segurança absoluta. O teste ficou limitado ao diretório sintético. Christian vai mostrar como auditamos as evidências preservadas.
-
-## Slide 09 - Evidência selecionada
-
-Janela: 08:30-09:30.
-
-**Em tela:** 0-10 s: explicar no slide. 10-30 s: terminal preparado, executar o auditor e apontar o resultado. 30-50 s: mostrar C1-1.json já aberto. 50-60 s: voltar e passar a palavra. Comandos na página de operação.
-
-**Próxima ação:** Retornar aos slides e avançar para o 10; Iasmin assume.
+**Próxima ação:** Avançar ao slide 8; Christian continua.
 
 ### Christian Will Silva Santos Nunes
 
-Vou mostrar uma evidência verificável. Este comando audita o lote já coletado; ele não repete os experimentos. O resultado informa seis execuções principais válidas e sessenta e oito arquivos conferidos.
+Eu sou Christian. A carga executa vinte milhões de iterações de um cálculo aritmético, em uma thread e com memória constante. Cada iteração acumula i ao quadrado, mais três i, mais sete, com resultado limitado a trinta e dois bits.
 
-No registro C1 um, podemos localizar cpu ponto max com a quota de meia CPU e os deltas dos contadores. O auditor também recalcula o checksum e confere limites, ordem das execuções e limpeza. Assim, a interpretação pode ser confrontada com os arquivos, além dos slides. Iasmin e Silas encerram discutindo os limites do estudo.
+O checksum esperado também é calculado por uma fórmula fechada independente do laço. Nas seis execuções, o valor foi dois bilhões, quinhentos e oitenta e nove milhões, duzentos e sessenta e um mil, quinhentos e sessenta e oito. A quantidade de trabalho e o resultado correto são comuns às duas condições; a quota é a variável comparada.
 
-## Slide 10 - Limitações e relação com inferência
+## Slide 08 - Auditoria e demonstração dos registros
 
-Janela: 09:30-10:30.
+Janela: 05:15-06:15.
 
-**Em tela:** Iasmin apresenta as três primeiras linhas; Silas continua com a relação com servidores e o risco compartilhado. Manter o slide entre os locutores.
+**Em tela:** Executar o auditor do lote existente. Ampliar o terminal e mostrar valid=true, main_runs=6, verified_files=68. Depois abrir runs/C1-1.json. Se houver falha atual, explicar e abrir os registros preservados.
 
-**Próxima ação:** Trocar para o slide 11 após Silas passar a palavra a Bruno.
+**Próxima ação:** Avançar ao slide 9 e passar a palavra a Marcos Vinícius Dantas Aguiar.
 
-### Iasmin Victoria Teixeira Barreto
+### Christian Will Silva Santos Nunes
 
-Nossa principal ameaça à validade é o host compartilhado. Fizemos três repetições por condição, sem isolar carga externa, frequência ou temperatura. Além disso, a visão de proc acessível via WSL não permitiu localizar os ancestrais reais dos contêineres. Por isso, os limites externos permanecem não confirmados. As leituras dos limites locais continuam registradas, mas a generalização precisa respeitar essas condições.
+Vou mostrar uma verificação dos arquivos já coletados. Este comando não repete o experimento: confere a integridade e a consistência do lote preservado. O resultado esperado para o lote publicado é valid igual a true, seis execuções principais e sessenta e oito arquivos verificados.
+
+O auditor verifica hashes, checksums, limites e limpeza. No registro C1-1, podemos localizar o número de iterações, o checksum e cpu.max. Os contadores antes e depois permitem calcular o throttling. Uma auditoria de integridade não é uma assinatura independente da origem dos dados. Marcos vai explicar o significado dos limites locais e desses contadores.
+
+## Slide 09 - Limites efetivos do cgroup v2
+
+Janela: 06:15-07:00.
+
+**Em tela:** Marcos assume. Apontar cpu.max nas duas condições e os três limites mantidos constantes.
+
+**Próxima ação:** Avançar ao slide 10; Marcos continua.
+
+### Marcos Vinícius Dantas Aguiar
+
+Eu sou Marcos. C1 tem quota de meia CPU e C2, de uma CPU. O arquivo cpu.max mostrou cinquenta mil por cem mil microssegundos em C1 e cem mil por cem mil em C2. Portanto, C1 dispõe de cinquenta milissegundos de tempo agregado de CPU por período de cem milissegundos.
+
+Isso é quota, não afinidade ou reserva de um núcleo. Memória, swap adicional e tarefas ficaram fixos em 256 mebibytes, zero e sessenta e quatro. Essas condições foram confirmadas por leituras dos arquivos do kernel antes e depois do cálculo, além das opções usadas no Docker.
+
+## Slide 10 - Throttling durante a carga
+
+Janela: 07:00-07:45.
+
+**Em tela:** Apontar os deltas das três repetições. Relacionar a quota com a restrição observada; passar para Sibele ao terminar.
+
+**Próxima ação:** Avançar ao slide 11 e passar a palavra a Sibele Oliveira Cruz.
+
+### Marcos Vinícius Dantas Aguiar
+
+Para interpretar throttling, comparamos os contadores antes e depois da carga. Nas três execuções de C1, nr_throttled aumentou setenta e um, oitenta e dois e sessenta e quatro. O tempo associado à restrição também cresceu nas três.
+
+Em C2, os deltas desses campos foram zero na janela observada. Isso não prova ausência de restrições em toda a hierarquia externa. Os contadores locais ajudam a explicar por que uma quota menor pode aumentar o tempo decorrido para o mesmo cálculo. Sibele vai mostrar os seis tempos e distinguir as métricas de memória.
+
+## Slide 11 - Seis medições de tempo decorrido
+
+Janela: 07:45-08:45.
+
+**Em tela:** Sibele assume. Ler o gráfico por pares, apontar as medianas e n=3. Explicar a razão entre medianas.
+
+**Próxima ação:** Avançar ao slide 12; Sibele continua.
+
+### Sibele Oliveira Cruz
+
+Eu sou Sibele. Cada par de barras representa uma repetição: azul para meia CPU e a segunda cor para uma CPU. As seis execuções concluíram o mesmo trabalho com o checksum correto. O tempo representado é o do cálculo, sem incluir a inicialização dos contêineres.
+
+A mediana foi aproximadamente sete vírgula zero setenta e quatro segundos em C1 e três vírgula trezentos e oitenta e quatro em C2. A razão entre essas medianas foi dois vírgula zero noventa. As três observações de C1 foram maiores que as três de C2 nesta amostra.
+
+São apenas três repetições por condição, em host compartilhado. Portanto, apresentamos os seis valores e a variação, sem concluir que qualquer carga terá exatamente esse ganho. Os deltas de throttling mostrados por Marcos ajudam a interpretar a diferença observada.
+
+## Slide 12 - Memória: processo e cgroup
+
+Janela: 08:45-09:25.
+
+**Em tela:** Distinguir RSS máximo, memory.current e memory.peak. Ao terminar, passar para Silas, que segue até o encerramento.
+
+**Próxima ação:** Avançar ao slide 13 e passar a palavra a Silas Santos da Silva.
+
+### Sibele Oliveira Cruz
+
+As métricas de memória têm escopos diferentes. O RSS máximo descreve páginas residentes do processo. memory.current mostra o uso contabilizado do grupo nos instantes coletados. memory.peak cobre o pico desde a criação do cgroup, inclusive a inicialização.
+
+Esses valores não devem ser chamados de RAM média, nem confundidos com memória de GPU. O limite de 256 mebibytes foi confirmado, mas não provocamos esgotamento de memória. Silas assume agora para mostrar a restrição de escrita e encerrar com os limites das conclusões.
+
+## Slide 13 - Mount read-only e menor privilégio
+
+Janela: 09:25-10:15.
+
+**Em tela:** Silas assume. Mostrar leitura permitida e escrita negada. No vídeo, abrir mount-readonly.json e apontar errno, UID e controles.
+
+**Próxima ação:** Avançar ao slide 14; Silas continua.
 
 ### Silas Santos da Silva
 
-Em um servidor de inferência, quotas podem reduzir o impacto de uma carga sobre as demais, e um corpus somente leitura reduz alterações indevidas nos documentos. Ainda permanecem riscos ligados ao host, ao kernel e ao runtime compartilhados. Nosso teste usou aritmética Python, então não mede desempenho de LLM ou GPU. Bruno encerra retomando os resultados e a participação da equipe.
+Eu sou Silas. Criamos um documento sintético e montamos seu diretório como somente leitura. A leitura funcionou. Ao tentar criar um novo arquivo no mesmo diretório, a operação foi negada com errno trinta, EROFS: sistema de arquivos somente leitura.
 
-## Slide 11 - Equipe e revisão final
+O processo também executou com UID 65534, capabilities efetivas zeradas e NoNewPrivs igual a um. A restrição da montagem soma-se aos controles de menor privilégio. O teste comprova essa negação de escrita no mount observado. Ele não demonstra segurança absoluta, porque kernel, runtime e outros componentes permanecem compartilhados.
 
-Janela: 10:30-11:00.
+## Slide 14 - Limitações, aplicação e conclusão
 
-**Em tela:** Manter a tabela da equipe, identificada como distribuição simulada de contribuições. Antes da apresentação final, conferir as atribuições com o trabalho efetivo e atualizar as pendências do rodapé.
+Janela: 10:15-11:00.
 
-**Próxima ação:** Encerrar a exposição. Abrir o período separado de 3-5 minutos para perguntas.
+**Em tela:** Silas permanece até o encerramento. Mostrar limitações, conclusão e links. Não retornar a apresentadores anteriores.
 
-### Bruno Amancio Ferreira
+**Próxima ação:** Encerrar a exposição e abrir o período de perguntas.
 
-Para concluir, observamos namespaces distintos, limites efetivos de cgroup e uma restrição real de escrita. Com o mesmo trabalho, a quota maior apresentou menor tempo mediano nesta execução. O repositório reúne código, dados e documentação para conferência. Registramos a assistência do Codex, e a revisão e a responsabilidade acadêmica pertencem à equipe. Obrigado. Estamos disponíveis para as perguntas.
+### Silas Santos da Silva
+
+A amostra tem três repetições por condição em um host compartilhado. Frequência, temperatura e carga externa não foram isoladas, e não confirmamos os limites ancestrais externos pela visão disponível.
+
+Em um servidor de inferência, quotas, tetos de memória e tarefas, corpus somente leitura e menor privilégio podem reduzir o impacto de uma carga. Este experimento, porém, não executou LLM ou GPU.
+
+Concluímos que houve namespaces distintos, limites locais confirmados, throttling em C1 e escrita negada. O repositório reúne dados e materiais, e o vídeo está no link indicado. Declaramos o apoio do Codex e a responsabilidade de revisão da equipe. Obrigado; estamos disponíveis para perguntas.
 
 ## Apoio à demonstração
 

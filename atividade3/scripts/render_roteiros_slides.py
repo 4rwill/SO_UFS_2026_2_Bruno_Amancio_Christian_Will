@@ -22,7 +22,7 @@ def render(data=None, executable=None):
         raise ValueError('O PDF dos slides mudou; sincronizar os roteiros com build_slides.py')
     count = len(PdfReader(source).pages)
     if count != len(data['slides']):
-        raise ValueError('Quantidade de páginas diferente dos 11 slides do roteiro')
+        raise ValueError('Quantidade de páginas diferente dos slides do roteiro')
     renderer = str(executable) if executable else shutil.which('pdftoppm')
     if not renderer:
         raise RuntimeError('Instalar Poppler (pdftoppm) ou indicar --pdftoppm')

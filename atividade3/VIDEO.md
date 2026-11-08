@@ -1,9 +1,9 @@
 # Vídeo da Atividade 3
 
-**URL:** pendente de gravação e publicação pela equipe.
+**Link informado pela equipe:** [Vídeo no Google Drive](https://drive.google.com/drive/folders/1yPalBhHtxjZmD2yZngRQVawkAElJC-Hj?usp=sharing).
 
-O vídeo deve ter participação identificável de todos. O enunciado da Atividade 3 não estabelece duração máxima específica para o vídeo. O [roteiro completo em PDF](output/pdf/roteiro_video.pdf) propõe 15 minutos, com falas dos sete integrantes, orientação de tela e demonstração dos registros. A apresentação tem 10-12 minutos e 3-5 minutos de perguntas, com [roteiro próprio](output/pdf/roteiro_apresentacao.pdf).
+O endereço aponta para uma pasta do Drive. Conferir se a gravação está disponível nela e se o docente consegue abri-la sem solicitar permissão. O acesso externo e o conteúdo do vídeo não foram verificados pelo conector nesta revisão.
 
-Usar docs/apresentacao.md como roteiro. Depois de publicar e conferir acesso, inserir a mesma URL aqui, no README e na macro `\urlvideo` de deliverables/relatorio.tex, regenerando o PDF. Disponibilizar no Classroom somente o link, conforme o enunciado.
+O link também está registrado no README, no relatório LaTeX e no encerramento dos slides. No Classroom, disponibilizar o link conforme o enunciado.
 
-Não há comprovação de gravação, publicação ou submissão nesta versão.
+O [roteiro do vídeo](output/pdf/roteiro_video.pdf) tem alvo de 15 minutos; a [apresentação](output/pdf/roteiro_apresentacao.pdf), 11 minutos e perguntas separadas de 3-5 minutos. São 14 slides, com um apresentador por slide e sete blocos contínuos: Bruno, Iasmin, Pedro, Christian, Marcos, Sibele e Silas.

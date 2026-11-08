@@ -1,261 +1,367 @@
-% !TeX encoding = UTF-8
-% !TeX program = tectonic
-% Também compatível com pdfLaTeX em duas passagens.
-% Apresentação oficial da Atividade 3, convertida para LaTeX Beamer.
-% Autocontida: diagrama, tabelas e gráfico vetoriais, sem arquivos externos.
-% A ordem dos 11 frames corresponde a docs/roteiros_falas.json.
+% Overleaf: compilador pdfLaTeX. Arquivo autossuficiente.
+% Também compila com Tectonic. 14 slides; apresentação de 11 minutos.
+% Para ensaio com as falas, troque \notasfalse por \notastrue.
 \documentclass[aspectratio=169,11pt]{beamer}
-\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
-\usepackage{helvet}
-\usepackage{amsmath,booktabs,tabularx,array}
-\usepackage{pgfplots}
+\usepackage{lmodern}
+\usepackage{amsmath,booktabs,tabularx,array,listings}
+\usepackage{pgfplots,xurl}
 \pgfplotsset{compat=1.18}
-\usepackage{xurl}
-\renewcommand{\familydefault}{\sfdefault}
+\usetheme{Madrid}
 \usefonttheme{professionalfonts}
-\definecolor{tinta}{HTML}{14364D}
-\definecolor{azul}{HTML}{2463A6}
+\definecolor{azul}{HTML}{163D69}
+\definecolor{azulmedio}{HTML}{25649A}
+\definecolor{azulclaro}{HTML}{EDF3F9}
+\definecolor{cinza}{HTML}{495566}
 \definecolor{verde}{HTML}{20836E}
-\definecolor{cinza}{HTML}{506473}
-\definecolor{fundo}{HTML}{EAF0F5}
-\definecolor{linha}{HTML}{CAD6E0}
-\setbeamercolor{normal text}{fg=tinta,bg=white}
-\setbeamercolor{frametitle}{fg=tinta,bg=white}
-\setbeamercolor{title}{fg=tinta}
 \setbeamercolor{structure}{fg=azul}
-\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
-\setbeamersize{text margin left=8mm,text margin right=8mm}
+\setbeamercolor{palette primary}{bg=azul,fg=white}
+\setbeamercolor{frametitle}{bg=azul,fg=white}
+\setbeamercolor{framesubtitle}{fg=white}
+\setbeamercolor{title}{bg=azul,fg=white}
+\setbeamercolor{block title}{bg=azulclaro,fg=azul}
+\setbeamercolor{block body}{bg=azulclaro!55,fg=black}
+\setbeamercolor{alerted text}{fg=azulmedio}
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\small,series=\mdseries}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\footnotesize}
+\setbeamerfont{date}{size=\footnotesize}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{headline}{}
-\setbeamertemplate{frametitle}{\vspace*{4mm}\insertframetitle\par\vspace{1mm}}
-\setbeamertemplate{footline}{\hfill{\color{cinza}\scriptsize\insertframenumber/\inserttotalframenumber}\hspace{5mm}\vspace{2mm}}
-\setbeameroption{hide notes}
-\setlength{\parskip}{5pt}
-\hypersetup{pdftitle={Virtualização, namespaces e cgroups - Atividade 3},
- pdfauthor={Equipe GenResearch - Universidade Federal de Sergipe},
- colorlinks=true,urlcolor=azul}
-\newcommand{\destaque}[1]{{\color{azul}\bfseries #1}}
-\newcommand{\observacao}[1]{{\small\color{cinza}#1}}
-
+\setbeamertemplate{blocks}[default]
+\setbeamertemplate{itemize items}[circle]
+\setbeamersize{text margin left=7mm,text margin right=7mm}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=.82\paperwidth,ht=2.6ex,dp=1.2ex,leftskip=7mm]{palette primary}%
+  \scriptsize UFS \enspace|\enspace Sistemas Operacionais \enspace|\enspace Atividade 3
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.18\paperwidth,ht=2.6ex,dp=1.2ex,rightskip=7mm plus1fil]{palette primary}%
+  \hfill\scriptsize\insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}}}
+\newif\ifnotas
+\notasfalse
+\ifnotas
+  \setbeameroption{show notes}
+\else
+  \setbeameroption{hide notes}
+\fi
+\setbeamertemplate{note page}[plain]
+\newcommand{\apresenta}[1]{\framesubtitle{Apresenta: #1}}
+\newcommand{\fonte}[1]{\par\vfill{\fontsize{7}{8}\selectfont\color{cinza}Fonte: #1\par}}
+\newcommand{\fala}[4]{\note{\textbf{Tempo: #1 s. Apresentador: #2.}\par\medskip #3\par\medskip\textbf{Transição:} #4}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{1.17}
+\lstset{basicstyle=\ttfamily\fontsize{9}{10.5}\selectfont,
+  backgroundcolor=\color{azulclaro},frame=none,
+  xleftmargin=1mm,xrightmargin=1mm,aboveskip=5pt,belowskip=5pt,
+  columns=fullflexible,keepspaces=true,showstringspaces=false,
+  breaklines=true,breakatwhitespace=false,tabsize=2}
+\title[Virtualização, namespaces e cgroups]{VIRTUALIZAÇÃO, NAMESPACES E CGROUPS}
+\subtitle{Laboratório de contêineres Linux -- Atividade 3}
+\author[Equipe GenResearch]{\texorpdfstring{%
+\begin{tabular}{c@{\hspace{4mm}}c}
+Bruno Amancio Ferreira & Christian Will Silva Santos Nunes\\
+Iasmin Victoria Teixeira Barreto & Marcos Vinícius Dantas Aguiar\\
+Pedro César Figueiredo Carneiro & Sibele Oliveira Cruz\\
+\multicolumn{2}{c}{Silas Santos da Silva}
+\end{tabular}}{Equipe GenResearch}}
+\institute[UFS]{\textbf{Universidade Federal de Sergipe}\\Disciplina: Sistemas Operacionais -- 2026.2\\Equipe GenResearch}
+\date{São Cristóvão/SE -- Novembro/2026\\Apresentação: 11 de novembro de 2026}
+\hypersetup{pdftitle={Virtualização, namespaces e cgroups -- Atividade 3},
+ pdfauthor={Equipe GenResearch -- UFS},colorlinks=true,urlcolor=azul}
 \begin{document}
 
 % ROTEIRO_SLIDE 01: Virtualização, namespaces e cgroups
-\begin{frame}[t]
-\vspace{8mm}
-{\fontsize{26}{31}\selectfont\bfseries Virtualização,\\namespaces e cgroups\par}
-\vspace{6mm}
-{\large\color{azul} Sistemas Operacionais, Atividade 3\par}
-\vspace{5mm}
-\observacao{Equipe GenResearch\\Universidade Federal de Sergipe, 2026.2}
-\note{Bruno: abertura de 40 segundos na apresentação. Objetivo: observar mecanismos do SO com evidências reais. Os scripts são próprios, sem o kit do docente. O roteiro completo está em docs/roteiros\_falas.json.}
+% ROTEIRO_APRESENTADOR: bruno
+\begin{frame}[t]{Virtualização, namespaces e cgroups}
+\apresenta{Bruno Amancio Ferreira}
+\begin{center}
+\begin{beamercolorbox}[sep=5pt,center,rounded=true]{title}
+{\usebeamerfont{title}\inserttitle\par}
+\vspace{2pt}{\usebeamerfont{subtitle}\insertsubtitle\par}
+\end{beamercolorbox}
+\vspace{5pt}{\usebeamerfont{author}\insertauthor\par}
+\vspace{6pt}{\usebeamerfont{institute}\insertinstitute\par}
+\vspace{5pt}{\usebeamerfont{date}\insertdate\par}
+\end{center}
+\fala{25}{Bruno Amancio Ferreira}{Olá, eu sou Bruno, da equipe GenResearch. Vamos apresentar a Atividade 3 de Sistemas Operacionais: um laboratório próprio para observar namespaces, limites de cgroups e montagem somente leitura em contêineres Linux. O trabalho reúne seis medições reais e registros que permitem conferir os resultados.}{Avançar ao slide 2; Bruno continua.}
 \end{frame}
 
-% ROTEIRO_SLIDE 02: Ambiente e kernel compartilhado
+% ROTEIRO_SLIDE 02: Objetivo e percurso do laboratório
+% ROTEIRO_APRESENTADOR: bruno
+\begin{frame}[t]{Objetivo e percurso do laboratório}
+\apresenta{Bruno Amancio Ferreira}
+\begin{block}{Pergunta do experimento}
+Como namespaces alteram a visão dos processos e como cgroups limitam recursos sob um kernel compartilhado?
+\end{block}
+\begin{itemize}
+\item \textbf{Isolamento de visão:} PID, mount e network namespaces.
+\item \textbf{Controle de recursos:} quotas e arquivos efetivos do kernel.
+\item \textbf{Acesso aos dados:} leitura permitida e escrita negada.
+\end{itemize}
+\smallskip
+\small \textbf{Recorte:} carga aritmética, duas quotas de CPU e seis execuções. Scripts próprios, sem kit de apoio; sem LLM ou GPU.
+\par\medskip
+\small Ambiente $\rightarrow$ isolamento $\rightarrow$ carga $\rightarrow$ recursos $\rightarrow$ resultados $\rightarrow$ restrições.
+\fonte{Relatório, seções 1 e 4; manifesto do lote principal.}
+\fala{60}{Bruno Amancio Ferreira}{A pergunta é como namespaces alteram a visão dos processos e como cgroups limitam recursos sob um kernel compartilhado. Observamos três aspectos: os identificadores de PID, mount e network; os limites efetivos de CPU, memória, swap e tarefas; e o comportamento de uma montagem somente leitura.\par\medskip A carga é um cálculo aritmético em Python, sem LLM ou GPU. Comparamos meia CPU e uma CPU, usando o mesmo trabalho e três repetições por condição. Os resultados incluem os arquivos brutos, a análise e um auditor de integridade. Primeiro veremos o ambiente e o protocolo, depois o isolamento, a carga, os limites e os resultados. Silas encerra com as restrições de acesso e as limitações. Iasmin assume agora para mostrar onde os contêineres executam.}{Avançar ao slide 3 e passar a palavra a Iasmin Victoria Teixeira Barreto.}
+\end{frame}
+
+% ROTEIRO_SLIDE 03: Ambiente e kernel compartilhado
+% ROTEIRO_APRESENTADOR: iasmin
 \begin{frame}[t]{Ambiente e kernel compartilhado}
-\centering
-\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={align=center,font=\small}]
-\draw[linha,fill=fundo] (0,4.0) rectangle (14.2,4.8);
+\apresenta{Iasmin Victoria Teixeira Barreto}
+\begin{center}
+\begin{tikzpicture}[x=.90cm,y=.76cm,every node/.style={align=center,font=\small}]
+\draw[azul!35,fill=azulclaro] (0,4.0) rectangle (14.2,4.8);
 \node at (7.1,4.4) {Hardware físico e host Windows 10};
-\draw[linha,fill=fundo!35] (0.3,0) rectangle (13.9,3.7);
-\node at (7.1,3.31) {Virtualização WSL2, ambiente Linux intermediário};
-\node[font=\large\bfseries,text=azul] at (7.1,2.66) {Kernel Linux compartilhado};
-\node[text=cinza] at (7.1,2.12) {Docker Desktop, cgroup v2, 12 CPUs lógicas, 3,72 GiB};
-\draw[linha,fill=white] (0.8,0.35) rectangle (6.7,1.6);
-\draw[linha,fill=white] (7.5,0.35) rectangle (13.4,1.6);
-\node[text width=5.7cm] at (3.75,0.975) {Contêiner A\\Python e espaço de usuário Debian};
-\node[text width=5.7cm] at (10.45,0.975) {Contêiner B\\Python e espaço de usuário Debian};
+\draw[azul!35,fill=azulclaro!50] (.3,0) rectangle (13.9,3.7);
+\node at (7.1,3.3) {Infraestrutura WSL2 / ambiente Linux do Docker Desktop};
+\node[font=\normalsize\bfseries,text=azul] at (7.1,2.65) {Kernel Linux compartilhado};
+\node[font=\footnotesize] at (7.1,2.12) {cgroup v2; 12 CPUs lógicas; 3,72 GiB anunciados pelo daemon};
+\draw[azul!35,fill=white] (.8,.3) rectangle (6.7,1.6);
+\draw[azul!35,fill=white] (7.5,.3) rectangle (13.4,1.6);
+\node[text width=5.2cm] at (3.75,.95) {Contêiner A\\Python / espaço de usuário Debian};
+\node[text width=5.2cm] at (10.45,.95) {Contêiner B\\Python / espaço de usuário Debian};
 \end{tikzpicture}
-\par\vspace{1mm}
-\observacao{O kernel pertence ao ambiente Linux intermediário.}
-\note{Iasmin, 60 segundos. Ubuntu foi usado para análise e não deve ser confundido com o ambiente efetivo do daemon. Fonte: docker-environment.json e linux-environment.json do lote 20261108T013949Z-19921f7f; inventário complementar em results/evidence/host-20261108T014504Z/environment.json. Referência: https://man7.org/linux/man-pages/man7/namespaces.7.html.}
+\end{center}
+\small O Ubuntu usado na análise é distinto do ambiente efetivo do daemon.
+\fonte{Inventário do host; docker-environment.json; linux-environment.json; relatório, seção 2.}
+\fala{55}{Iasmin Victoria Teixeira Barreto}{Eu sou Iasmin. O host físico utiliza Windows 10. A infraestrutura WSL2 fornece o ambiente Linux em que executa o Docker Desktop. O kernel compartilhado pertence a esse ambiente Linux intermediário. As imagens dos contêineres fornecem Python e o espaço de usuário Debian, sem iniciar um kernel próprio.\par\medskip O daemon anunciou doze CPUs lógicas e aproximadamente 3,72 gibibytes de RAM. Esses recursos descrevem a camada do daemon. O Ubuntu usado na análise também deve ser distinguido desse ambiente. O diagrama mostra a camada de virtualização existente no Windows e, dentro do ambiente Linux, os dois contêineres compartilhando o kernel.}{Avançar ao slide 4; Iasmin continua.}
 \end{frame}
 
-% ROTEIRO_SLIDE 03: Evidências de namespaces
-\begin{frame}[t]{Evidências de namespaces}
-\vspace{2mm}
-\begin{center}\small
-\begin{tabular}{lll}
-\toprule
-\textbf{Recurso} & \textbf{Contêiner A} & \textbf{Contêiner B}\\\midrule
-PID no host do daemon & 567 & 612\\[2pt]
-PID interno & 1 & 1\\[2pt]
-PID namespace & \texttt{pid:[4026532292]} & \texttt{pid:[4026532483]}\\[2pt]
-Mount namespace & \texttt{mnt:[4026532287]} & \texttt{mnt:[4026532480]}\\[2pt]
+% ROTEIRO_SLIDE 04: Protocolo e controle das execuções
+% ROTEIRO_APRESENTADOR: iasmin
+\begin{frame}[t]{Protocolo e controle das execuções}
+\apresenta{Iasmin Victoria Teixeira Barreto}
+\begin{tabularx}{\textwidth}{@{}P{37mm}Y@{}}
+\toprule\textbf{Controle} & \textbf{Procedimento}\\\midrule
+Imagem e instância & Imagem fixa por digest; contêiner novo a cada execução.\\[3pt]
+Piloto separado & 1.000.000 de iterações; trabalho principal congelado depois.\\[3pt]
+Matriz principal & C1/C2, C1/C2, C1/C2; três repetições por condição.\\[3pt]
+Condições constantes & Memória, swap, tarefas, usuário e controles de privilégio.\\[3pt]
+Conferência & Leitura dos limites antes/depois; watchdogs e limpeza.\\\bottomrule
+\end{tabularx}
+\begin{block}{Variável comparada}
+Quota de CPU: C1 = 0,5 CPU \quad|\quad C2 = 1 CPU.
+\end{block}
+\fonte{manifest.json; runs/pilot-0.json; relatório, seção 4.}
+\fala{40}{Iasmin Victoria Teixeira Barreto}{O protocolo fixa a imagem por digest e usa contêineres novos. Um piloto separado ajuda a definir a duração; depois, o trabalho fica congelado em vinte milhões de iterações. A sequência principal é C1, C2, repetida três vezes.\par\medskip Mantivemos constantes memória, swap, limite de tarefas, usuário e restrições de privilégio. A quota de CPU é a condição comparada. Os limites são lidos antes e depois do trabalho, e os contêineres criados pelo laboratório são removidos ao final. Pedro vai apresentar as evidências de isolamento da visão dos processos.}{Avançar ao slide 5 e passar a palavra a Pedro César Figueiredo Carneiro.}
+\end{frame}
+
+% ROTEIRO_SLIDE 05: Namespaces: visões de processos, mounts e rede
+% ROTEIRO_APRESENTADOR: pedro
+\begin{frame}[t]{Namespaces: visões de processos, mounts e rede}
+\apresenta{Pedro César Figueiredo Carneiro}
+\begin{tabularx}{\textwidth}{@{}P{31mm}YY@{}}
+\toprule\textbf{Namespace} & \textbf{Visão organizada} & \textbf{Evidência coletada}\\\midrule
+PID & Numeração e visibilidade dos processos. & PID interno, PID do daemon e handle.\\[8pt]
+Mount & Montagens vistas pelos processos. & Handle do mount namespace.\\[8pt]
+Network & Recursos e configuração de rede. & Handle do network namespace.\\\bottomrule
+\end{tabularx}
+\begin{block}{Escopo da evidência}
+Dois contêineres ativos, com identificadores distintos. Rede desativada: não foi realizado teste de tráfego.
+\end{block}
+\fonte{namespaces.json; Linux man-pages, namespaces(7); relatório, seção 3.}
+\fala{40}{Pedro César Figueiredo Carneiro}{Eu sou Pedro. Os namespaces organizam visões de recursos do kernel. O PID namespace define a numeração de processos vista naquele contexto. O mount namespace organiza a visão das montagens, e o network namespace separa a visão de recursos de rede.\par\medskip Coletamos os handles de dois contêineres ativos. Handles diferentes identificam namespaces diferentes nesta execução. Isso não demonstra isolamento absoluto nem mede tráfego de rede: a rede dos contêineres estava desativada. No próximo slide, veremos os identificadores e a relação entre o PID interno e o informado pelo daemon.}{Avançar ao slide 6; Pedro continua.}
+\end{frame}
+
+% ROTEIRO_SLIDE 06: Evidências de namespaces e PIDs
+% ROTEIRO_APRESENTADOR: pedro
+\begin{frame}[t]{Evidências de namespaces e PIDs}
+\apresenta{Pedro César Figueiredo Carneiro}
+\small
+\begin{tabularx}{\textwidth}{@{}P{42mm}YY@{}}
+\toprule\textbf{Recurso} & \textbf{Contêiner A} & \textbf{Contêiner B}\\\midrule
+PID no host do daemon & 567 & 612\\[3pt]
+PID interno & 1 & 1\\[3pt]
+PID namespace & \texttt{pid:[4026532292]} & \texttt{pid:[4026532483]}\\[3pt]
+Mount namespace & \texttt{mnt:[4026532287]} & \texttt{mnt:[4026532480]}\\[3pt]
 Network namespace & \texttt{net:[4026532405]} & \texttt{net:[4026532485]}\\\bottomrule
-\end{tabular}
-\end{center}
-\vspace{3mm}
-\destaque{Cada PID namespace possui sua própria numeração.}
-
-\observacao{Handles distintos identificam namespaces distintos nesta execução.}
-\note{Pedro, 70 segundos. Os dois contêineres estavam ativos durante a coleta e tinham o processo inicial Python. A rede estava desativada, sem teste de tráfego. Fonte: namespaces.json no lote principal. Referência: https://man7.org/linux/man-pages/man7/namespaces.7.html.}
+\end{tabularx}
+\begin{block}{Dois processos podem ser PID 1}
+A numeração é relativa ao PID namespace. Handles distintos identificam contextos distintos nesta coleta.
+\end{block}
+\fonte{namespaces.json; relatório, tabela dos namespaces.}
+\fala{50}{Pedro César Figueiredo Carneiro}{O Docker informou os PIDs 567 e 612 no host do daemon. Dentro de cada contêiner, o processo inicial tinha PID um. Não existe contradição: a numeração é relativa ao PID namespace.\par\medskip As três linhas seguintes mostram handles distintos de PID, mount e network entre A e B. Isso sustenta a separação dessas visões na coleta. Os números são identificadores daquele momento, não valores fixos que outra reprodução precisa repetir.\par\medskip Essa evidência descreve isolamento de visão. A capacidade de CPU e os demais limites serão tratados pelos cgroups. Christian vai mostrar como garantimos que as seis execuções fizeram o mesmo trabalho e como conferir os registros.}{Avançar ao slide 7 e passar a palavra a Christian Will Silva Santos Nunes.}
 \end{frame}
 
-% ROTEIRO_SLIDE 04: Carga determinística e protocolo
-\begin{frame}[t]{Carga determinística e protocolo}
-\vspace{2mm}
-{\fontsize{23}{27}\selectfont\color{azul}\bfseries 20.000.000 de iterações\par}
-\vspace{4mm}
-{\small\texttt{checksum = (checksum + i*i + 3*i + 7) \& 0xffffffff}}
-\vspace{3mm}
-
-Fórmula independente confirma o resultado 2589261568.
-\vspace{2mm}
-
-Piloto separado, N congelado, contêiner novo a cada execução.
-\vspace{2mm}
-
-Ordem: C1/C2, C1/C2, C1/C2. Três repetições por condição.
-\note{Christian, 70 segundos. Uma thread e memória constante. Piloto de um milhão de iterações, separado das seis observações. Watchdogs de 60 segundos internamente e 90 segundos externamente. O checksum esperado vem da soma fechada de i ao quadrado mais 3i mais 7, módulo 2 elevado a 32. Fonte: manifest.json e runs do lote principal.}
+% ROTEIRO_SLIDE 07: Carga determinística e checksum
+% ROTEIRO_APRESENTADOR: christian
+\begin{frame}[t,fragile]{Carga determinística e checksum}
+\apresenta{Christian Will Silva Santos Nunes}
+\textbf{Trabalho fixo: 20.000.000 de iterações}\par\medskip
+\begin{lstlisting}
+checksum = (checksum + i*i + 3*i + 7) & 0xffffffff
+\end{lstlisting}
+\begin{itemize}
+\item Uma thread; memória constante; mesmo trabalho nas duas condições.
+\item Oráculo independente por fórmula fechada, módulo $2^{32}$.
+\item Seis execuções concluídas com \texttt{checksum = 2589261568}.
+\end{itemize}
+\begin{block}{Tempo medido}
+Duração do laço; exclui a inicialização do Docker e do Python.
+\end{block}
+\fonte{Snapshots dos scripts, manifest.json e runs; relatório, seção 4.1.}
+\fala{45}{Christian Will Silva Santos Nunes}{Eu sou Christian. A carga executa vinte milhões de iterações de um cálculo aritmético, em uma thread e com memória constante. Cada iteração acumula i ao quadrado, mais três i, mais sete, com resultado limitado a trinta e dois bits.\par\medskip O checksum esperado também é calculado por uma fórmula fechada independente do laço. Nas seis execuções, o valor foi dois bilhões, quinhentos e oitenta e nove milhões, duzentos e sessenta e um mil, quinhentos e sessenta e oito. A quantidade de trabalho e o resultado correto são comuns às duas condições; a quota é a variável comparada.}{Avançar ao slide 8; Christian continua.}
 \end{frame}
 
-% ROTEIRO_SLIDE 05: Limites efetivos do cgroup
-\begin{frame}[t]{Limites efetivos do cgroup}
-\vspace{3mm}
-\begin{center}\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{lllll}
-\toprule
-\textbf{Condição} & \textbf{cpu.max ($\mu$s)} & \textbf{Memória} & \textbf{Swap adicional} & \textbf{Tarefas}\\\midrule
-C1: 0,5 CPU & 50000 100000 & 256 MiB & 0 & 64\\[5pt]
+% ROTEIRO_SLIDE 08: Auditoria e demonstração dos registros
+% ROTEIRO_APRESENTADOR: christian
+\begin{frame}[t,fragile]{Auditoria e demonstração dos registros}
+\apresenta{Christian Will Silva Santos Nunes}
+\textbf{Verificação do lote preservado}
+\begin{lstlisting}
+python atividade3/scripts/audit.py \
+  atividade3/results/raw/20261108T013949Z-19921f7f
+\end{lstlisting}
+\small
+\begin{tabularx}{\textwidth}{@{}P{38mm}Y@{}}
+\toprule\textbf{Saída / registro} & \textbf{O que conferir}\\\midrule
+Auditor & \texttt{valid=true}; \texttt{main\_runs=6}; \texttt{verified\_files=68}.\\[4pt]
+\texttt{runs/C1-1.json} & N, checksum, \texttt{cpu.max} e deltas dos contadores.\\[4pt]
+Integridade & Hashes, limites observados e limpeza; não é assinatura de origem.\\\bottomrule
+\end{tabularx}
+\par\medskip
+\small A demonstração verifica arquivos existentes; não repete as seis medições.
+\fonte{audit.py; lote 20261108T013949Z-19921f7f; runs/C1-1.json.}
+\fala{60}{Christian Will Silva Santos Nunes}{Vou mostrar uma verificação dos arquivos já coletados. Este comando não repete o experimento: confere a integridade e a consistência do lote preservado. O resultado esperado para o lote publicado é valid igual a true, seis execuções principais e sessenta e oito arquivos verificados.\par\medskip O auditor verifica hashes, checksums, limites e limpeza. No registro C1-1, podemos localizar o número de iterações, o checksum e cpu.max. Os contadores antes e depois permitem calcular o throttling. Uma auditoria de integridade não é uma assinatura independente da origem dos dados. Marcos vai explicar o significado dos limites locais e desses contadores.}{Avançar ao slide 9 e passar a palavra a Marcos Vinícius Dantas Aguiar.}
+\end{frame}
+
+% ROTEIRO_SLIDE 09: Limites efetivos do cgroup v2
+% ROTEIRO_APRESENTADOR: marcos
+\begin{frame}[t]{Limites efetivos do cgroup v2}
+\apresenta{Marcos Vinícius Dantas Aguiar}
+\small
+\begin{tabularx}{\textwidth}{@{}P{23mm}P{34mm}YYY@{}}
+\toprule\textbf{Condição} & \textbf{cpu.max ($\mu$s)} & \textbf{Memória} & \textbf{Swap extra} & \textbf{Tarefas}\\\midrule
+C1: 0,5 CPU & 50000 100000 & 256 MiB & 0 & 64\\[6pt]
 C2: 1 CPU & 100000 100000 & 256 MiB & 0 & 64\\\bottomrule
-\end{tabular}
-\end{center}
-\vspace{4mm}
-{\large\destaque{50 ms de CPU por período de 100 ms em C1.}}
-\vspace{3mm}
-
-{\small\texttt{cpu.max}, \texttt{memory.max}, \texttt{memory.swap.max} e \texttt{pids.max}}
-
-\observacao{Leituras antes e depois de cada trabalho confirmam os limites locais.}
-\note{Marcos, 60 segundos. As flags do Docker não são usadas sozinhas como prova. memory.max foi 268435456 bytes, memory.swap.max zero e pids.max 64. Quota de CPU não é afinidade nem reserva de núcleo. Não foi provocado OOM ou esgotamento de tarefas. Referências: https://docs.kernel.org/admin-guide/cgroup-v2.html e https://docs.docker.com/engine/containers/resource_constraints/.}
+\end{tabularx}
+\begin{block}{Interpretação de C1}
+50 ms de tempo agregado de CPU por período de 100 ms. Quota não define afinidade nem reserva de núcleo.
+\end{block}
+\small \texttt{cpu.max}, \texttt{memory.max}, \texttt{memory.swap.max} e \texttt{pids.max}: leituras antes e depois da carga.
+\fonte{Leituras de cpu.max, memory.max, memory.swap.max e pids.max; documentação cgroup v2.}
+\fala{45}{Marcos Vinícius Dantas Aguiar}{Eu sou Marcos. C1 tem quota de meia CPU e C2, de uma CPU. O arquivo cpu.max mostrou cinquenta mil por cem mil microssegundos em C1 e cem mil por cem mil em C2. Portanto, C1 dispõe de cinquenta milissegundos de tempo agregado de CPU por período de cem milissegundos.\par\medskip Isso é quota, não afinidade ou reserva de um núcleo. Memória, swap adicional e tarefas ficaram fixos em 256 mebibytes, zero e sessenta e quatro. Essas condições foram confirmadas por leituras dos arquivos do kernel antes e depois do cálculo, além das opções usadas no Docker.}{Avançar ao slide 10; Marcos continua.}
 \end{frame}
 
-% ROTEIRO_SLIDE 06: Seis medições de tempo decorrido
+% ROTEIRO_SLIDE 10: Throttling durante a carga
+% ROTEIRO_APRESENTADOR: marcos
+\begin{frame}[t]{Throttling durante a carga}
+\apresenta{Marcos Vinícius Dantas Aguiar}
+\small
+\begin{tabularx}{\textwidth}{@{}P{41mm}YY@{}}
+\toprule\textbf{Condição} & \textbf{Delta nr\_throttled} & \textbf{Delta throttled (s)}\\\midrule
+C1: repetições 1/2/3 & 71 / 82 / 64 & 3,545 / 4,088 / 3,192\\[7pt]
+C2: repetições 1/2/3 & 0 / 0 / 0 & 0 / 0 / 0\\\bottomrule
+\end{tabularx}
+\begin{block}{Contadores locais, na janela observada}
+Os deltas positivos sustentam throttling nas três execuções de C1. Zero em C2 não comprova ausência de limites ancestrais externos.
+\end{block}
+\small Configuração $\rightarrow$ leitura efetiva do kernel $\rightarrow$ contadores $\rightarrow$ interpretação dos tempos.
+\fonte{cpu\_stat\_delta nos seis registros; relatório, seção 6; documentação cgroup v2.}
+\fala{45}{Marcos Vinícius Dantas Aguiar}{Para interpretar throttling, comparamos os contadores antes e depois da carga. Nas três execuções de C1, nr\_throttled aumentou setenta e um, oitenta e dois e sessenta e quatro. O tempo associado à restrição também cresceu nas três.\par\medskip Em C2, os deltas desses campos foram zero na janela observada. Isso não prova ausência de restrições em toda a hierarquia externa. Os contadores locais ajudam a explicar por que uma quota menor pode aumentar o tempo decorrido para o mesmo cálculo. Sibele vai mostrar os seis tempos e distinguir as métricas de memória.}{Avançar ao slide 11 e passar a palavra a Sibele Oliveira Cruz.}
+\end{frame}
+
+% ROTEIRO_SLIDE 11: Seis medições de tempo decorrido
+% ROTEIRO_APRESENTADOR: sibele
 \begin{frame}[t]{Seis medições de tempo decorrido}
-\vspace{-1mm}
+\apresenta{Sibele Oliveira Cruz}
 \begin{center}
 \begin{tikzpicture}
-\begin{axis}[ybar,width=0.97\textwidth,height=4.55cm,
- bar width=16pt,ymin=0,ymax=10,xmin=0.5,xmax=3.5,
- xtick={1,2,3},xticklabels={Repetição 1,Repetição 2,Repetição 3},
- ytick={0,2,4,6,8,10},ylabel={Tempo decorrido (s)},
- axis lines=left,ymajorgrids=true,grid style={linha},
- tick label style={font=\scriptsize},label style={font=\small},
- legend style={font=\scriptsize,draw=none,at={(0.5,-0.18)},anchor=north,legend columns=2},
- nodes near coords,point meta=y,
- nodes near coords style={font=\scriptsize,/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use comma},
- /pgf/number format/use comma]
-\addplot[fill=azul,draw=azul] coordinates {(1,7.073924493) (2,8.205041561) (3,6.385169526)};
+\begin{axis}[ybar,width=.96\textwidth,height=3.5cm,
+bar width=13pt,ymin=0,ymax=10,xmin=.5,xmax=3.5,
+xtick={1,2,3},xticklabels={Repetição 1,Repetição 2,Repetição 3},
+ytick={0,2,4,6,8,10},ylabel={Tempo decorrido (s)},
+axis lines=left,ymajorgrids=true,grid style={azul!15},
+tick label style={font=\scriptsize},label style={font=\small},
+legend style={font=\scriptsize,draw=none,at={(.5,-.20)},anchor=north,legend columns=2},
+nodes near coords,point meta=y,
+nodes near coords style={font=\scriptsize,/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use comma},
+/pgf/number format/use comma]
+\addplot[fill=azulmedio,draw=azulmedio] coordinates {(1,7.073924493) (2,8.205041561) (3,6.385169526)};
 \addplot[fill=verde,draw=verde] coordinates {(1,3.495205679) (2,3.384014666) (3,3.273737585)};
 \legend{C1: 0{,}5 CPU,C2: 1 CPU}
 \end{axis}
 \end{tikzpicture}
 \end{center}
-\vspace{-1mm}
-\destaque{Medianas: 7,074 s em C1 e 3,384 s em C2}
-
-\observacao{Razão observada: 2,090 vezes. $n=3$ por condição.}
-\note{Sibele, 80 segundos. Gráfico vetorial com os seis tempos reais do laço, sem startup Docker ou Python e sem piloto. Os dados brutos conservam sua precisão original; rótulos são arredondados. Fonte: runs.csv e analysis.json em results/analysis/20261108T013949Z-19921f7f. A razão é entre medianas, sem demonstrar ganho universal.}
+\vspace{-2mm}
+\small\textbf{Medianas: 7,074 s (C1) e 3,384 s (C2).} Razão: 2,090; $n=3$ por condição.
+\par\smallskip
+\small Resultado desta amostra, em host compartilhado; sem prova de ganho universal.
+\fonte{runs.csv e analysis.json; relatório, seção 5.}
+\fala{60}{Sibele Oliveira Cruz}{Eu sou Sibele. Cada par de barras representa uma repetição: azul para meia CPU e a segunda cor para uma CPU. As seis execuções concluíram o mesmo trabalho com o checksum correto. O tempo representado é o do cálculo, sem incluir a inicialização dos contêineres.\par\medskip A mediana foi aproximadamente sete vírgula zero setenta e quatro segundos em C1 e três vírgula trezentos e oitenta e quatro em C2. A razão entre essas medianas foi dois vírgula zero noventa. As três observações de C1 foram maiores que as três de C2 nesta amostra.\par\medskip São apenas três repetições por condição, em host compartilhado. Portanto, apresentamos os seis valores e a variação, sem concluir que qualquer carga terá exatamente esse ganho. Os deltas de throttling mostrados por Marcos ajudam a interpretar a diferença observada.}{Avançar ao slide 12; Sibele continua.}
 \end{frame}
 
-% ROTEIRO_SLIDE 07: Throttling e escopos de memória
-\begin{frame}[t]{Throttling e escopos de memória}
-\vspace{2mm}
-\begin{center}\small
-\begin{tabular}{lll}
-\toprule
-\textbf{Condição} & \textbf{Delta nr\_throttled} & \textbf{Delta throttled (s)}\\\midrule
-C1: repetições 1/2/3 & 71 / 82 / 64 & 3,545 / 4,088 / 3,192\\[4pt]
-C2: repetições 1/2/3 & 0 / 0 / 0 & 0 / 0 / 0\\\bottomrule
-\end{tabular}
-\end{center}
-\vspace{3mm}
-\textbf{RSS máximo:} páginas residentes do processo.
-\vspace{1mm}
-
-\textbf{memory.current:} snapshots do uso contabilizado no grupo.
-\vspace{1mm}
-
-\textbf{memory.peak:} pico desde a criação do cgroup.
-\note{Marcos fala 30 segundos e Sibele 30 segundos na apresentação, mantendo este frame. Deltas positivos em C1 sustentam throttling durante o trabalho; zero em C2 vale para a janela observada. Não chamar os três campos de RAM média. Fonte: registros brutos e runs.csv. Referência: https://docs.kernel.org/admin-guide/cgroup-v2.html.}
+% ROTEIRO_SLIDE 12: Memória: processo e cgroup
+% ROTEIRO_APRESENTADOR: sibele
+\begin{frame}[t]{Memória: processo e cgroup}
+\apresenta{Sibele Oliveira Cruz}
+\begin{tabularx}{\textwidth}{@{}P{39mm}Y@{}}
+\toprule\textbf{Métrica} & \textbf{Escopo e janela}\\\midrule
+RSS máximo & Páginas residentes do processo; máximo observado.\\[8pt]
+\texttt{memory.current} & Uso contabilizado no cgroup, nos instantes coletados.\\[8pt]
+\texttt{memory.peak} & Pico desde a criação do cgroup, incluindo inicialização.\\\bottomrule
+\end{tabularx}
+\begin{block}{Interpretação}
+Escopos diferentes: não chamar de RAM média nem de VRAM. Limite de 256 MiB confirmado; sem teste de OOM ou esgotamento de tarefas.
+\end{block}
+\fonte{Registros das seis execuções; relatório, seção 6; documentação cgroup v2.}
+\fala{40}{Sibele Oliveira Cruz}{As métricas de memória têm escopos diferentes. O RSS máximo descreve páginas residentes do processo. memory.current mostra o uso contabilizado do grupo nos instantes coletados. memory.peak cobre o pico desde a criação do cgroup, inclusive a inicialização.\par\medskip Esses valores não devem ser chamados de RAM média, nem confundidos com memória de GPU. O limite de 256 mebibytes foi confirmado, mas não provocamos esgotamento de memória. Silas assume agora para mostrar a restrição de escrita e encerrar com os limites das conclusões.}{Avançar ao slide 13 e passar a palavra a Silas Santos da Silva.}
 \end{frame}
 
-% ROTEIRO_SLIDE 08: Mount read-only e menor privilégio
+% ROTEIRO_SLIDE 13: Mount read-only e menor privilégio
+% ROTEIRO_APRESENTADOR: silas
 \begin{frame}[t]{Mount read-only e menor privilégio}
-\vspace{3mm}
-{\large\bfseries\color{verde}Leitura do documento: permitida\par}
-\vspace{3mm}
-{\large\destaque{Criação de arquivo em /dados: negada}\par}
-\vspace{3mm}
-errno 30, EROFS, Read-only file system
-\vspace{3mm}
-
-UID 65534, CapEff zero, NoNewPrivs = 1
-\vspace{4mm}
-
-\observacao{A restrição da montagem soma-se aos controles de privilégio.}
-\note{Silas, 70 segundos. O documento e o diretório são sintéticos. mountinfo registra ro, UID é não root, capabilities efetivas estão zeradas e NoNewPrivs é um. O teste evidencia uma restrição daquele mount, não isolamento absoluto. Fonte: mount-readonly.json do lote principal.}
+\apresenta{Silas Santos da Silva}
+\begin{columns}[T,onlytextwidth]
+\column{.48\textwidth}
+\textbf{Montagem somente leitura}\par\medskip
+Leitura do documento: \textbf{permitida}.\par\medskip
+Criação de arquivo em \texttt{/dados}: \textbf{negada}.\par\medskip
+\texttt{errno 30 / EROFS}\par
+\small Read-only file system.
+\column{.48\textwidth}
+\textbf{Menor privilégio}\par\medskip
+UID \textbf{65534}; usuário não root.\par\medskip
+Capabilities efetivas: \textbf{zero}.\par\medskip
+\texttt{NoNewPrivs = 1}.\par\medskip
+\small Documento e diretório sintéticos.
+\end{columns}
+\par\medskip
+\begin{block}{Escopo do teste}
+Evidência da restrição daquele mount; não demonstra isolamento absoluto.
+\end{block}
+\fonte{mount-readonly.json; relatório, seção 3.1; documentação Docker run.}
+\fala{50}{Silas Santos da Silva}{Eu sou Silas. Criamos um documento sintético e montamos seu diretório como somente leitura. A leitura funcionou. Ao tentar criar um novo arquivo no mesmo diretório, a operação foi negada com errno trinta, EROFS: sistema de arquivos somente leitura.\par\medskip O processo também executou com UID 65534, capabilities efetivas zeradas e NoNewPrivs igual a um. A restrição da montagem soma-se aos controles de menor privilégio. O teste comprova essa negação de escrita no mount observado. Ele não demonstra segurança absoluta, porque kernel, runtime e outros componentes permanecem compartilhados.}{Avançar ao slide 14; Silas continua.}
 \end{frame}
 
-% ROTEIRO_SLIDE 09: Evidência selecionada
-\begin{frame}[t,fragile]{Evidência selecionada}
-\vspace{3mm}
-{\large\destaque{Auditoria do lote publicado}\par}
-\vspace{5mm}
-\begin{small}
-\begin{verbatim}
-python atividade3/scripts/audit.py \
-  atividade3/results/raw/20261108T013949Z-19921f7f
-\end{verbatim}
-\end{small}
-\vspace{4mm}
-{\large\bfseries 6 execuções válidas, 68 arquivos conferidos\par}
-\vspace{4mm}
-\observacao{Checksum independente, limites do kernel e limpeza confirmados.}
-\note{Christian, 60 segundos na apresentação; no vídeo, reservar o tempo previsto no roteiro para os registros. Executar apenas auditoria do lote existente. Preparar runs/C1-1.json e mount-readonly.json no editor. Se o comando atual falhar, explicar o erro sem afirmar sucesso. Os registros não são novas medições ao vivo.}
-\end{frame}
-
-% ROTEIRO_SLIDE 10: Limitações e relação com inferência
-\begin{frame}[t]{Limitações e relação com inferência}
-\vspace{3mm}
-{\large\destaque{Host compartilhado e três repetições}\par}
-\vspace{2mm}
-Ruído, frequência e temperatura não foram isolados.
-\vspace{3mm}
-
-Ancestrais externos não confirmados pela visão disponível.
-\vspace{3mm}
-
-Quotas e corpus read-only reduzem o impacto de uma carga.
-\vspace{3mm}
-
-\observacao{Kernel e runtime compartilhados mantêm riscos comuns.}
-\note{Iasmin fala 30 segundos e Silas 30 segundos, mantendo o frame. A carga é aritmética Python, sem LLM, GPU ou VRAM. O PID de inspect não estava visível no proc acessível via WSL; não presumir que os ancestrais estavam ilimitados. Referências: documentação de namespaces, cgroup v2 e restrições de recursos do Docker, citadas no relatório.}
-\end{frame}
-
-% ROTEIRO_SLIDE 11: Equipe e revisão final
-\begin{frame}[t]{Equipe e revisão final}
-\vspace{1mm}
-\begin{center}\small
-\begin{tabular}{ll}
-\toprule\textbf{Integrante} & \textbf{Contribuição simulada}\\\midrule
-Bruno Amancio Ferreira & Integração do relatório e revisão\\[2pt]
-Christian Will Silva Santos Nunes & Carga, auditor e demonstração\\[2pt]
-Iasmin Victoria Teixeira Barreto & Ambiente, diagrama e método\\[2pt]
-Marcos Vinícius Dantas Aguiar & Quotas e análise de throttling\\[2pt]
-Pedro César Figueiredo Carneiro & Coleta de namespaces e PIDs\\[2pt]
-Sibele Oliveira Cruz & CSV, gráficos e métricas\\[2pt]
-Silas Santos da Silva & Teste read-only e menor privilégio\\\bottomrule
-\end{tabular}
-\end{center}
-\vspace{2mm}
-\observacao{Divisão simulada; confirmar o trabalho efetivo antes da entrega.}
-
-\observacao{Assistência: Codex. Vídeo e commit final permanecem pendentes.}
-\note{Bruno encerra em 30 segundos na apresentação. A tabela apresenta uma divisão simulada solicitada pelo usuário, detalhada em docs/contribuicoes.md; não comprova trabalho realizado. As atribuições precisam ser conferidas com as contribuições efetivas antes da entrega. A participação de todos no vídeo e a submissão ainda dependem da equipe. A declaração de IA e os prompts estão no relatório e em docs/uso\_ia.md.}
+% ROTEIRO_SLIDE 14: Limitações, aplicação e conclusão
+% ROTEIRO_APRESENTADOR: silas
+\begin{frame}[t]{Limitações, aplicação e conclusão}
+\apresenta{Silas Santos da Silva}
+\small
+\begin{itemize}
+\item \textbf{Evidências:} namespaces distintos, limites locais confirmados, throttling em C1 e escrita negada.
+\item \textbf{Limites:} três repetições; host compartilhado; frequência, temperatura e carga externa não isoladas; ancestrais externos não confirmados.
+\item \textbf{Inferência compartilhada:} quotas, tetos e menor privilégio reduzem o impacto de uma carga; kernel e runtime continuam comuns. Não houve LLM ou GPU nesta carga.
+\end{itemize}
+\smallskip
+\href{https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will}{\textbf{Repositório: código, dados e materiais}}
+\quad|\quad
+\href{https://drive.google.com/drive/folders/1yPalBhHtxjZmD2yZngRQVawkAElJC-Hj?usp=sharing}{\textbf{Vídeo no Google Drive}}
+\par\medskip
+\footnotesize Apoio do Codex na preparação, execução e redação; revisão e responsabilidade acadêmica da equipe.
+\fonte{Relatório, seções 7 e 8; Linux namespaces, cgroup v2 e documentação Docker.}
+\fala{45}{Silas Santos da Silva}{A amostra tem três repetições por condição em um host compartilhado. Frequência, temperatura e carga externa não foram isoladas, e não confirmamos os limites ancestrais externos pela visão disponível.\par\medskip Em um servidor de inferência, quotas, tetos de memória e tarefas, corpus somente leitura e menor privilégio podem reduzir o impacto de uma carga. Este experimento, porém, não executou LLM ou GPU.\par\medskip Concluímos que houve namespaces distintos, limites locais confirmados, throttling em C1 e escrita negada. O repositório reúne dados e materiais, e o vídeo está no link indicado. Declaramos o apoio do Codex e a responsabilidade de revisão da equipe. Obrigado; estamos disponíveis para perguntas.}{Encerrar a exposição e abrir o período de perguntas.}
 \end{frame}
 
 \end{document}

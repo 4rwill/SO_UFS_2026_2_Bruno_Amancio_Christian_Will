@@ -3,7 +3,7 @@
 % Formatação baseada em atividade2/deliverables/relatorio.tex.
 % Arquivo independente: gráficos e diagrama vetoriais incorporados, sem .bib.
 % Compilar duas vezes com pdfLaTeX, ou usar Tectonic.
-% Antes da entrega: confirmar contribuições, URL do vídeo e commit final.
+% Materiais da Atividade 3: equipe, evidências, vídeo e referência do repositório.
 \documentclass[12pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -45,7 +45,7 @@
 \newcommand{\fontepropria}{\par\smallskip\noindent{\footnotesize\textit{Fonte: elaboração com base no lote experimental da Atividade 3 (2026).}}\par}
 \newcommand{\pendencia}[1]{\par\smallskip\noindent{\small\textbf{A completar antes da entrega:} #1}\par}
 % Campos que dependem da equipe; editar aqui antes da submissão.
-\newcommand{\urlvideo}{\textit{Pendente de gravação e publicação.}}
+\newcommand{\urlvideo}{\url{https://drive.google.com/drive/folders/1yPalBhHtxjZmD2yZngRQVawkAElJC-Hj?usp=sharing}}
 \newcommand{\commitfinal}{\textit{A confirmar após a revisão dos materiais da entrega.}}
 \newcommand{\titulotrabalho}{VIRTUALIZAÇÃO, NAMESPACES E CGROUPS: LABORATÓRIO DE CONTÊINERES LINUX}
 \newcommand{\integrantes}{Bruno Amancio Ferreira\\Christian Will Silva Santos Nunes\\Iasmin Victoria Teixeira Barreto\\Marcos Vinícius Dantas Aguiar\\Pedro César Figueiredo Carneiro\\Sibele Oliveira Cruz\\Silas Santos da Silva}
@@ -106,20 +106,21 @@ Este relatório apresenta um laboratório reprodutível de contêineres Linux pa
 
 \secao{Contribuições, introdução e problema}
 \begin{table}[H]
-\centering\caption{Distribuição simulada de contribuições dos integrantes}\label{tab:contribuicoes}
+\centering\caption{Participação na apresentação e revisão temática}\label{tab:contribuicoes}
 \begin{singlespace}\small
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.49\textwidth}X}
-\toprule\textbf{Integrante} & \textbf{Contribuição simulada}\\\midrule
-Bruno Amancio Ferreira & Organização, integração do relatório LaTeX e revisão geral dos materiais.\\
-Christian Will Silva Santos Nunes & Carga determinística, checksum, auditor e preparação da demonstração.\\
-Iasmin Victoria Teixeira Barreto & Inventário Windows/WSL2/Docker, diagrama das camadas e protocolo experimental.\\
-Marcos Vinícius Dantas Aguiar & Quotas de CPU, memória, swap e tarefas; análise do throttling.\\
-Pedro César Figueiredo Carneiro & Coleta e comparação dos namespaces PID, mount e network e dos PIDs internos.\\
-Sibele Oliveira Cruz & CSV, medianas, variação, gráficos e interpretação das métricas de memória.\\
-Silas Santos da Silva & Teste read-only, controles de menor privilégio, riscos e limitações.\\\bottomrule
+\toprule\textbf{Integrante} & \textbf{Slides e temas da exposição}\\\midrule
+Bruno Amancio Ferreira & 1-2: Abertura, objetivo, organização e percurso do laboratório.\\
+Iasmin Victoria Teixeira Barreto & 3-4: Ambiente Windows/WSL2/Docker, diagrama e protocolo experimental.\\
+Pedro César Figueiredo Carneiro & 5-6: Namespaces PID, mount e network; numeração dos processos.\\
+Christian Will Silva Santos Nunes & 7-8: Carga determinística, checksum, auditoria e demonstração.\\
+Marcos Vinícius Dantas Aguiar & 9-10: Limites efetivos do cgroup v2, quotas e throttling.\\
+Sibele Oliveira Cruz & 11-12: Seis medições, medianas, gráficos e escopos de memória.\\
+Silas Santos da Silva & 13-14: Montagem read-only, menor privilégio, limitações e conclusão.\\
+\bottomrule
 \end{tabularx}\end{singlespace}
 \end{table}
-Os nomes são os da equipe da Atividade 2. A Tabela~\ref{tab:contribuicoes} apresenta uma distribuição simulada, elaborada a pedido do usuário e alinhada às falas dos integrantes. Não é um registro verificado de trabalho realizado. A equipe deve conferir e ajustar as atribuições às contribuições efetivas antes da entrega. A revisão final e a participação no vídeo são responsabilidades compartilhadas. O detalhamento está em \path{atividade3/docs/contribuicoes.md}; a assistência de IA está declarada na Seção~\ref{sec:ia}.
+Os nomes são os da equipe da Atividade 2. A Tabela~\ref{tab:contribuicoes} organiza a participação na exposição e a revisão temática. Cada integrante apresenta dois slides consecutivos, com um único apresentador por slide. A integração e a conferência final dos materiais cabem à equipe. O detalhamento está em \path{atividade3/docs/contribuicoes.md}; a assistência de IA está declarada na Seção~\ref{sec:ia}.
 
 A pergunta norteadora é: \textit{como namespaces alteram a visão de processos, mounts e rede, e como cgroups limitam recursos sem transformar um contêiner em uma máquina virtual independente?} O objetivo é responder com comandos, dados e interpretação, conforme o enunciado \cite{enunciado}.
 
@@ -360,7 +361,7 @@ Em um servidor de inferência compartilhado, quotas de CPU limitam a capacidade 
 
 Conclui-se que o laboratório evidenciou visões distintas de PID, mount e network, limites efetivos de cgroup v2 e negação de escrita no mount read-only. Com trabalho fixo e checksum comum, a mediana de wall caiu de 7,0739 para 3,3840 s ao elevar a quota de 0,5 para 1 CPU. Os contadores sustentam a ocorrência de throttling em C1. Os resultados se restringem a esta carga aritmética, sem avaliar LLM, GPU, rede, armazenamento sob carga, esgotamento de RAM ou isolamento absoluto entre usuários.
 
-\pendencia{Confirmar contribuições efetivas e nomes; revisar o conteúdo; gravar e hospedar o vídeo; inserir sua URL no README, neste relatório e em VIDEO.md; ensaiar a participação de todos; registrar o commit final e submeter até 10/11/2026. A apresentação ocorre em 11/11/2026, com 10--12 minutos de exposição e 3--5 minutos de perguntas. Não há comprovação de submissão nesta versão.}
+A entrega está prevista para 10/11/2026 e a apresentação para 11/11/2026, com 10--12 minutos de exposição e 3--5 minutos de perguntas. O vídeo está indicado na introdução e em \path{atividade3/VIDEO.md}. A publicação dos materiais no repositório não comprova a submissão no Classroom.
 
 \begingroup
 \renewcommand{\section}[2]{}

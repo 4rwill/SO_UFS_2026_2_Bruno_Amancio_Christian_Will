@@ -8,8 +8,8 @@ Entrega prevista: **10/11/2026**. Apresentação: **11/11/2026**, 10-12 minutos 
 
 - **Executado e auditado:** dois contêineres, três namespaces distintos, leitura e escrita negada em mount read-only, piloto e seis execuções válidas.
 - **Resultados:** 20.000.000 de iterações por execução, checksum 2589261568. Mediana de wall: 7,0739 s em 0,5 CPU e 3,3840 s em 1 CPU. Razão observada: 2,090 vezes.
-- **Pendente da equipe:** revisão, contribuições efetivas, gravação e URL do vídeo, ensaio, commit final e submissão. A atividade ainda não está entregue.
-- **Contribuições:** [distribuição simulada definida para os sete integrantes](docs/contribuicoes.md), refletida no relatório e no slide 11; conferir com o trabalho efetivamente realizado antes da entrega.
+- **Conferência final:** revisar os materiais, ensaiar a sequência, testar acesso ao vídeo e efetuar a submissão. A publicação no GitHub não comprova a entrega acadêmica.
+- **Participação:** [sete blocos de dois slides](docs/contribuicoes.md), com nome do apresentador em cada slide e sem retorno de locutores durante a exposição.
 
 | Artefato | Caminho |
 |---|---|
@@ -101,16 +101,16 @@ O script procura pdfLaTeX ou Tectonic no PATH. pdfLaTeX executa duas passagens; 
 
 O texto em `docs/relatorio.md` é o rascunho anterior e não gera mais o PDF. Atualizações do relatório devem ser feitas no `.tex`, inclusive a URL do vídeo e as contribuições.
 
-A apresentação oficial também usa LaTeX: [deliverables/apresentacao.tex](deliverables/apresentacao.tex), em Beamer 16:9, com os mesmos 11 slides, gráfico, tabelas e diagrama vetoriais. O `.tex` é autocontido e compila com pdfLaTeX ou Tectonic. O resultado fica em `output/slides/apresentacao_atividade3.pdf`.
+A apresentação oficial também usa LaTeX: [deliverables/apresentacao.tex](deliverables/apresentacao.tex), em Beamer 16:9, com 14 slides, tema Madrid, nome do apresentador, gráfico, tabelas e diagrama vetoriais. O `.tex` é autocontido e compila com pdfLaTeX ou Tectonic. O resultado fica em `output/slides/apresentacao_atividade3.pdf`.
 
 ```bash
 python atividade3/scripts/build_slides.py
 ```
 
-Por padrão, esse comando também confere a ordem e os títulos dos slides, atualiza a referência do PDF em `docs/roteiros_falas.json`, renderiza as miniaturas com Poppler e regenera os dois roteiros de falas. Para esse fluxo completo, instalar as dependências de `requirements-roteiros.txt` e disponibilizar `pdftoppm` (Poppler) no PATH. Para compilar apenas os slides, sem sincronizar os roteiros, usar `--skip-roteiros`.
+Por padrão, esse comando também confere a ordem, os títulos e os apresentadores dos slides, atualiza a referência do PDF em `docs/roteiros_falas.json`, renderiza as miniaturas com Poppler e regenera os dois roteiros de falas. Para esse fluxo completo, instalar as dependências de `requirements-roteiros.txt` e disponibilizar `pdftoppm` (Poppler) no PATH. Para compilar apenas os slides, sem sincronizar os roteiros, usar `--skip-roteiros`.
 
 Para selecionar o compilador, os parâmetros `--engine` e `--engine-path` funcionam como no construtor do relatório. A geração oficial dos slides e suas miniaturas não exige Node.js nem bibliotecas de PowerPoint. Os comandos `.mjs` anteriores apenas delegam aos novos scripts Python. O PPTX anterior foi preservado como histórico; os materiais de entrega e os roteiros apontam para o Beamer.
 
-**URL do vídeo: pendente de gravação e publicação pela equipe.** Inserir também na macro `\urlvideo` do relatório LaTeX e em `VIDEO.md`. As contribuições propostas devem ser revisadas por todos. As medições registram o commit base e snapshots/hashes do código ainda não commitado; o commit final da entrega deve ser registrado após a revisão.
+**Vídeo:** [pasta no Google Drive](https://drive.google.com/drive/folders/1yPalBhHtxjZmD2yZngRQVawkAElJC-Hj?usp=sharing). Link informado pela equipe e registrado também no relatório e em `VIDEO.md`; conferir acesso externo e identificação dos participantes. As medições preservam o commit base, os snapshots e os hashes do código executado.
 
 IA: Codex auxiliou código, coleta, auditoria, análise e materiais. O modelo exato desta sessão não foi exposto por uma fonte verificável; não foi presumido. A equipe deve revisar o registro em `docs/uso_ia.md` e explicar os mecanismos e suas contribuições.

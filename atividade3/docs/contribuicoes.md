@@ -1,17 +1,21 @@
-# Equipe e contribuições
+# Participação na apresentação e revisão temática
 
-Equipe mantida a partir da Atividade 2. A pedido do usuário, foi definida a distribuição simulada abaixo, alinhada aos temas e às falas dos sete integrantes. **Esta é uma simulação de responsabilidades, não um registro verificado de trabalho realizado.** A assistência automatizada está em uso_ia.md.
+A exposição segue sete blocos contínuos. Cada integrante apresenta dois slides consecutivos e passa a palavra ao próximo, sem retornar durante a exposição. Cada slide identifica um único apresentador pelo nome completo.
 
-| Integrante | Contribuição simulada | Material sob responsabilidade proposta |
-|---|---|---|
-| Bruno Amancio Ferreira | Organização do trabalho, integração do relatório LaTeX e revisão geral dos materiais de entrega. | Introdução, estrutura do relatório, checklist e encerramento; slides 1 e 11. |
-| Christian Will Silva Santos Nunes | Desenvolvimento e revisão da carga determinística, do checksum independente e do auditor; preparação da reprodução e da demonstração. | Scripts da carga e auditoria, registros das seis execuções e demonstração; slides 4 e 9. |
-| Iasmin Victoria Teixeira Barreto | Levantamento do ambiente Windows/WSL2/Docker, identificação das camadas e definição do protocolo experimental. | Inventário do ambiente, diagrama, metodologia e ameaças à validade; slides 2 e 10. |
-| Marcos Vinícius Dantas Aguiar | Configuração e conferência das quotas de CPU, memória, swap e tarefas; interpretação dos contadores de throttling. | Limites efetivos do cgroup v2 e deltas de cpu.stat; slides 5 e 7. |
-| Pedro César Figueiredo Carneiro | Coleta e comparação dos namespaces PID, mount e network e explicação da numeração interna dos processos. | Tabela dos handles e relação entre PIDs internos e do host do daemon; slide 3. |
-| Sibele Oliveira Cruz | Organização dos resultados em CSV, cálculo das medianas e da variação, elaboração dos gráficos e interpretação dos escopos de memória. | Análise das seis medições, gráfico e distinção entre RSS, memory.current e memory.peak; slides 6 e 7. |
-| Silas Santos da Silva | Preparação do teste de montagem somente leitura, conferência dos controles de menor privilégio e análise de riscos e limitações. | Evidência EROFS, UID, capabilities, NoNewPrivs e relação com inferência em ambiente compartilhado; slides 8 e 10. |
+| Integrante | Slides | Janela na apresentação | Tema sob responsabilidade na exposição |
+|---|---|---|---|
+| Bruno Amancio Ferreira | 1-2 | 00:00-01:25 | Abertura, objetivo, organização e percurso do laboratório |
+| Iasmin Victoria Teixeira Barreto | 3-4 | 01:25-03:00 | Ambiente Windows/WSL2/Docker, diagrama e protocolo experimental |
+| Pedro César Figueiredo Carneiro | 5-6 | 03:00-04:30 | Namespaces PID, mount e network; numeração dos processos |
+| Christian Will Silva Santos Nunes | 7-8 | 04:30-06:15 | Carga determinística, checksum, auditoria e demonstração |
+| Marcos Vinícius Dantas Aguiar | 9-10 | 06:15-07:45 | Limites efetivos do cgroup v2, quotas e throttling |
+| Sibele Oliveira Cruz | 11-12 | 07:45-09:25 | Seis medições, medianas, gráficos e escopos de memória |
+| Silas Santos da Silva | 13-14 | 09:25-11:00 | Montagem read-only, menor privilégio, limitações e conclusão |
 
-Bruno fica com a coordenação e a integração; Christian com código e demonstração; Iasmin com ambiente e método; Marcos com recursos; Pedro com isolamento; Sibele com análise; Silas com acesso e riscos. A revisão final do conteúdo e a participação identificável no vídeo cabem a todos.
+Os temas também organizam a revisão do conteúdo e a preparação para perguntas. A integração e a conferência final dos materiais cabem à equipe. Este quadro descreve a participação na apresentação e a revisão temática; o apoio de IA está declarado em [uso_ia.md](uso_ia.md).
 
-Antes da entrega, cada integrante deve conferir as atribuições e ajustar a tabela ao trabalho que efetivamente realizou. Essa confirmação deve ser refletida no relatório e no slide 11. A distribuição simulada não altera as evidências do experimento nem comprova autoria individual dos arquivos.
+Os roteiros contêm as falas completas e as janelas próprias de cada formato:
+
+- [Apresentação: alvo de 11 minutos](../output/pdf/roteiro_apresentacao.pdf).
+- [Vídeo: roteiro com alvo de 15 minutos](../output/pdf/roteiro_video.pdf).
+- [Slides em LaTeX Beamer](../deliverables/apresentacao.tex).

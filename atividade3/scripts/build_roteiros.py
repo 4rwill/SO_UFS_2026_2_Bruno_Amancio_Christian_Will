@@ -1,4 +1,4 @@
-"""Gera os dois roteiros de falas, com referência aos 11 slides existentes."""
+"""Gera os dois roteiros com um apresentador por slide e blocos contínuos."""
 import hashlib
 import html
 import json
@@ -98,19 +98,24 @@ def load():
     deck = REPO / data['deck']
     if hashlib.sha256(deck.read_bytes()).hexdigest() != data['deck_sha256']:
         raise ValueError('Os slides mudaram: revisar o roteiro antes de gerar os PDFs')
-    if deck.suffix.lower() != '.pdf' or len(PdfReader(deck).pages) != 11:
-        raise ValueError('Os roteiros devem acompanhar as 11 páginas da apresentação Beamer em PDF')
-    assert [s['number'] for s in data['slides']] == list(range(1, 12))
+    count = len(data['slides'])
+    if deck.suffix.lower() != '.pdf' or len(PdfReader(deck).pages) != count:
+        raise ValueError('Os roteiros devem acompanhar as páginas da apresentação Beamer em PDF')
+    assert [s['number'] for s in data['slides']] == list(range(1, count + 1))
     for mode, (_, _, duration) in MODES.items():
         assert sum(s[mode]['seconds'] for s in data['slides']) == duration
-        seen = set()
+        sequence = []
         for slide in data['slides']:
             block = slide[mode]
+            assert len(block['speech']) == 1, 'Cada slide deve ter um único apresentador'
             assert block['seconds'] == sum(p['seconds'] for p in block['speech'])
             for speech in block['speech']:
                 assert speech['paragraphs'] and speech['person'] in data['people']
-                seen.add(speech['person'])
-        assert seen == set(data['people'])
+                assert speech['person'] == slide['presenter']
+                if not sequence or sequence[-1] != speech['person']:
+                    sequence.append(speech['person'])
+        assert sequence == data['speaker_order'], 'Manter a ordem dos blocos de apresentadores'
+        assert len(sequence) == len(set(sequence)) and set(sequence) == set(data['people']), 'Cada integrante fala em um único bloco'
     return data
 
 
@@ -120,8 +125,8 @@ def cover(data, mode):
     target = ('11 minutos, com perguntas separadas de 3-5 minutos.' if mode == 'presentation'
               else '15 minutos como proposta de gravação; o enunciado não fixa uma duração máxima para o vídeo.')
     story.append(para('Duração-alvo: ' + target, 'small'))
-    story.append(para('Texto em FALA é a sugestão de locução. EM TELA orienta o operador. Tempos são estimativas para ensaio, não medições de uma gravação. Todos devem compreender sua parte. A divisão de falas não comprova contribuição técnica efetiva.', 'small'))
-    story.append(para('Sequência dos 11 slides', 'h2'))
+    story.append(para('Texto em FALA orienta a locução; EM TELA orienta o operador. Os tempos são estimativas para ensaio. Cada slide tem um apresentador, identificado no cabeçalho, e cada integrante conclui seu bloco antes de passar a palavra.', 'small'))
+    story.append(para(f"Sequência dos {len(data['slides'])} slides", 'h2'))
     rows = [['Slide e assunto', 'Quem fala', 'Janela']]
     elapsed = 0
     totals = Counter()
@@ -141,7 +146,7 @@ def cover(data, mode):
         rows.append([name, ', '.join(numbers), clock(totals[person])])
     story.append(table(rows, [WIDTH * .64, WIDTH * .19, WIDTH * .17]))
     story.append(Spacer(1, 7))
-    story.append(para('Base: ' + Path(data['deck']).name + ', 11 slides em LaTeX Beamer. O slide 11 contém uma distribuição simulada de contribuições e pendências; conferir com o trabalho efetivo antes da versão final. As instruções de operação e preparação aparecem no final deste PDF.', 'small'))
+    story.append(para('Base: ' + Path(data['deck']).name + f", {len(data['slides'])} slides em LaTeX Beamer. Ordem: " + ' → '.join(data['people'][p].split()[0] for p in data['speaker_order']) + '. As instruções da demonstração e de preparação aparecem no final deste PDF.', 'small'))
     return story
 
 
@@ -173,7 +178,7 @@ def slide_card(data, slide, mode, elapsed):
 
 def demonstration(mode):
     story = [para('Operação da demonstração', 'title'),
-             para('Apoio ao slide 9. Esta página orienta Christian e a pessoa que controla a tela.', 'subtitle'),
+             para('Apoio ao slide 8. Esta página orienta Christian e a pessoa que controla a tela.', 'subtitle'),
              para('Preparar antes de apresentar ou gravar', 'h2')]
     for text in [
         'Abrir o repositório na sua raiz. Usar um ambiente em que python execute a versão configurada. No computador desta equipe, os ensaios anteriores usaram o ambiente Python no Ubuntu WSL.',
@@ -194,7 +199,7 @@ def demonstration(mode):
     story.append(para('Arquivos para deixar abertos', 'h2'))
     story.append(para(SAMPLE + '/runs/C1-1.json', 'code'))
     story.append(para(SAMPLE + '/mount-readonly.json', 'code'))
-    story.append(para('Plano de contingência: se o terminal não responder, mostrar os arquivos locais e explicar que são registros da coleta. Na apresentação, passar ao slide 10 sem consumir o tempo com diagnóstico. No vídeo, interromper o trecho, corrigir o ambiente e gravar novamente, preservando a honestidade sobre o que foi executado.', 'small'))
+    story.append(para('Plano de contingência: se o terminal não responder, mostrar os arquivos locais e explicar que são registros da coleta. Na apresentação, passar ao slide 9 e entregar a palavra a Marcos. No vídeo, corrigir o ambiente antes de refazer o trecho, identificando a auditoria como verificação de uma coleta anterior.', 'small'))
     return story
 
 
@@ -210,10 +215,10 @@ def final_page(mode):
              para('Checklist de operação. A duração de 15 minutos é uma proposta deste roteiro, a ajustar no ensaio.', 'subtitle')]
     instructions = [
         ('Identificação de todos', 'Gravar cada integrante com seu rosto visível ao menos em sua entrada, seu nome completo na tela e áudio reconhecível. Os nomes estão no quadro da primeira página. Não presumir que apenas a narração sem identificação demonstra participação.'),
-        ('Trocas de locutor', 'Nos slides 7 e 10, manter o slide durante a troca e identificar a pessoa que assume. Registrar pausas curtas para facilitar a edição, sem cortar explicações necessárias.'),
-        ('Slides e legibilidade', 'Compartilhar os slides em tela cheia e desligar notificações. Ampliar o terminal e o editor no slide 9. O público deve conseguir ler os campos que sustentam a explicação.'),
+        ('Trocas de locutor', 'Trocar somente ao final do segundo slide de cada integrante: 2→3, 4→5, 6→7, 8→9, 10→11 e 12→13. Cada pessoa conclui seu bloco e não retorna na exposição. Identificar quem assume e manter apenas um locutor por slide.'),
+        ('Slides e legibilidade', 'Compartilhar os slides em tela cheia e desligar notificações. Ampliar o terminal e o editor no slide 8. O público deve conseguir ler os campos que sustentam a explicação.'),
         ('Falas e ritmo', 'Usar as falas como base, com compreensão e linguagem natural. Ensaiar o tempo total. Os números longos de handles e checksum podem ser apontados na tela; não é necessário soletrar todos os dígitos.'),
-        ('Slide 11 antes da gravação final', 'A tabela apresenta uma distribuição simulada de contribuições, detalhada em docs/contribuicoes.md. Conferir as atribuições com o trabalho efetivo de cada integrante antes da gravação final. A divisão simulada e as falas deste roteiro não comprovam autoria individual dos arquivos.'),
+        ('Encerramento', 'Silas apresenta os slides 13 e 14 e encerra o vídeo. Conferir se os sete integrantes foram identificados nos respectivos blocos. Os temas e intervalos estão registrados em docs/contribuicoes.md.'),
         ('Demonstração honesta', 'Apresentar o auditor como verificação de arquivos existentes. O teste de escrita do JSON é uma evidência da coleta anterior. Não narrar essas observações como se os contêineres estivessem sendo executados naquele instante.'),
         ('Revisão e publicação', 'Assistir ao vídeo completo, conferir o áudio de todos, os dados e a duração. Hospedar com acesso adequado ao docente. Inserir a URL no README, em VIDEO.md e na macro urlvideo do relatório LaTeX, recompilando o PDF.'),
         ('Apresentação e entrega', 'O vídeo não substitui a apresentação de 11/11/2026. Preparar a entrega até 10/11/2026. No Classroom, disponibilizar o link do vídeo conforme o enunciado; guardar o comprovante de submissão.'),
@@ -225,8 +230,8 @@ def final_page(mode):
 
 def markdown(data, mode):
     title, stem, duration = MODES[mode]
-    lines = [f'# {title}', '', f'Duração-alvo: {clock(duration)}. Base: 11 slides de `{data["deck"]}`.', '',
-             'Falas sugeridas para ensaio; não comprovam contribuição técnica efetiva. Nos slides 7 e 10 há troca de locutor sem troca de slide.', '']
+    lines = [f'# {title}', '', f'Duração-alvo: {clock(duration)}. Base: {len(data["slides"])} slides de `{data["deck"]}`.', '',
+             'Um apresentador por slide. Cada integrante fala em um único bloco de dois slides, sem retorno na exposição.', '']
     elapsed = 0
     for slide in data['slides']:
         block = slide[mode]
