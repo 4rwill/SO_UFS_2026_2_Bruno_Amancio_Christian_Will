@@ -5,6 +5,8 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from pypdf import PdfReader
+
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
@@ -96,6 +98,8 @@ def load():
     deck = REPO / data['deck']
     if hashlib.sha256(deck.read_bytes()).hexdigest() != data['deck_sha256']:
         raise ValueError('Os slides mudaram: revisar o roteiro antes de gerar os PDFs')
+    if deck.suffix.lower() != '.pdf' or len(PdfReader(deck).pages) != 11:
+        raise ValueError('Os roteiros devem acompanhar as 11 páginas da apresentação Beamer em PDF')
     assert [s['number'] for s in data['slides']] == list(range(1, 12))
     for mode, (_, _, duration) in MODES.items():
         assert sum(s[mode]['seconds'] for s in data['slides']) == duration
@@ -137,7 +141,7 @@ def cover(data, mode):
         rows.append([name, ', '.join(numbers), clock(totals[person])])
     story.append(table(rows, [WIDTH * .64, WIDTH * .19, WIDTH * .17]))
     story.append(Spacer(1, 7))
-    story.append(para('Base: apresentacao_atividade3.pptx, 11 slides. O slide 11 ainda contém proposta de participação e pendências; atualizar com informações confirmadas antes da versão final. As instruções de operação e preparação aparecem no final deste PDF.', 'small'))
+    story.append(para('Base: ' + Path(data['deck']).name + ', 11 slides em LaTeX Beamer. O slide 11 ainda contém proposta de participação e pendências; atualizar com informações confirmadas antes da versão final. As instruções de operação e preparação aparecem no final deste PDF.', 'small'))
     return story
 
 

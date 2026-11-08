@@ -29,7 +29,8 @@ python -m unittest discover -s atividade3/tests -v
 ```
 
 - [Relatório PDF para revisão](atividade3/output/pdf/relatorio_atividade3.pdf)
-- [Apresentação editável](atividade3/output/slides/apresentacao_atividade3.pptx)
+- [Apresentação em PDF](atividade3/output/slides/apresentacao_atividade3.pdf)
+- [Fonte LaTeX Beamer dos slides](atividade3/deliverables/apresentacao.tex)
 - [Dados, CSV e gráfico](atividade3/results/analysis/20261108T013949Z-19921f7f/)
 - [Situação dos requisitos e pendências da equipe](atividade3/docs/status.md)
 

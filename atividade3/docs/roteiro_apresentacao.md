@@ -1,6 +1,6 @@
 # Roteiro da apresentação
 
-Duração-alvo: 11:00. Base: 11 slides de `atividade3/output/slides/apresentacao_atividade3.pptx`.
+Duração-alvo: 11:00. Base: 11 slides de `atividade3/output/slides/apresentacao_atividade3.pdf`.
 
 Falas sugeridas para ensaio; não comprovam contribuição técnica efetiva. Nos slides 7 e 10 há troca de locutor sem troca de slide.
 

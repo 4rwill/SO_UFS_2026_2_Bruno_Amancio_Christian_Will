@@ -1,0 +1,261 @@
+% !TeX encoding = UTF-8
+% !TeX program = tectonic
+% Também compatível com pdfLaTeX em duas passagens.
+% Apresentação oficial da Atividade 3, convertida para LaTeX Beamer.
+% Autocontida: diagrama, tabelas e gráfico vetoriais, sem arquivos externos.
+% A ordem dos 11 frames corresponde a docs/roteiros_falas.json.
+\documentclass[aspectratio=169,11pt]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{helvet}
+\usepackage{amsmath,booktabs,tabularx,array}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xurl}
+\renewcommand{\familydefault}{\sfdefault}
+\usefonttheme{professionalfonts}
+\definecolor{tinta}{HTML}{14364D}
+\definecolor{azul}{HTML}{2463A6}
+\definecolor{verde}{HTML}{20836E}
+\definecolor{cinza}{HTML}{506473}
+\definecolor{fundo}{HTML}{EAF0F5}
+\definecolor{linha}{HTML}{CAD6E0}
+\setbeamercolor{normal text}{fg=tinta,bg=white}
+\setbeamercolor{frametitle}{fg=tinta,bg=white}
+\setbeamercolor{title}{fg=tinta}
+\setbeamercolor{structure}{fg=azul}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamersize{text margin left=8mm,text margin right=8mm}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{frametitle}{\vspace*{4mm}\insertframetitle\par\vspace{1mm}}
+\setbeamertemplate{footline}{\hfill{\color{cinza}\scriptsize\insertframenumber/\inserttotalframenumber}\hspace{5mm}\vspace{2mm}}
+\setbeameroption{hide notes}
+\setlength{\parskip}{5pt}
+\hypersetup{pdftitle={Virtualização, namespaces e cgroups - Atividade 3},
+ pdfauthor={Equipe GenResearch - Universidade Federal de Sergipe},
+ colorlinks=true,urlcolor=azul}
+\newcommand{\destaque}[1]{{\color{azul}\bfseries #1}}
+\newcommand{\observacao}[1]{{\small\color{cinza}#1}}
+
+\begin{document}
+
+% ROTEIRO_SLIDE 01: Virtualização, namespaces e cgroups
+\begin{frame}[t]
+\vspace{8mm}
+{\fontsize{26}{31}\selectfont\bfseries Virtualização,\\namespaces e cgroups\par}
+\vspace{6mm}
+{\large\color{azul} Sistemas Operacionais, Atividade 3\par}
+\vspace{5mm}
+\observacao{Equipe GenResearch\\Universidade Federal de Sergipe, 2026.2}
+\note{Bruno: abertura de 40 segundos na apresentação. Objetivo: observar mecanismos do SO com evidências reais. Os scripts são próprios, sem o kit do docente. O roteiro completo está em docs/roteiros\_falas.json.}
+\end{frame}
+
+% ROTEIRO_SLIDE 02: Ambiente e kernel compartilhado
+\begin{frame}[t]{Ambiente e kernel compartilhado}
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,every node/.style={align=center,font=\small}]
+\draw[linha,fill=fundo] (0,4.0) rectangle (14.2,4.8);
+\node at (7.1,4.4) {Hardware físico e host Windows 10};
+\draw[linha,fill=fundo!35] (0.3,0) rectangle (13.9,3.7);
+\node at (7.1,3.31) {Virtualização WSL2, ambiente Linux intermediário};
+\node[font=\large\bfseries,text=azul] at (7.1,2.66) {Kernel Linux compartilhado};
+\node[text=cinza] at (7.1,2.12) {Docker Desktop, cgroup v2, 12 CPUs lógicas, 3,72 GiB};
+\draw[linha,fill=white] (0.8,0.35) rectangle (6.7,1.6);
+\draw[linha,fill=white] (7.5,0.35) rectangle (13.4,1.6);
+\node[text width=5.7cm] at (3.75,0.975) {Contêiner A\\Python e espaço de usuário Debian};
+\node[text width=5.7cm] at (10.45,0.975) {Contêiner B\\Python e espaço de usuário Debian};
+\end{tikzpicture}
+\par\vspace{1mm}
+\observacao{O kernel pertence ao ambiente Linux intermediário.}
+\note{Iasmin, 60 segundos. Ubuntu foi usado para análise e não deve ser confundido com o ambiente efetivo do daemon. Fonte: docker-environment.json e linux-environment.json do lote 20261108T013949Z-19921f7f; inventário complementar em results/evidence/host-20261108T014504Z/environment.json. Referência: https://man7.org/linux/man-pages/man7/namespaces.7.html.}
+\end{frame}
+
+% ROTEIRO_SLIDE 03: Evidências de namespaces
+\begin{frame}[t]{Evidências de namespaces}
+\vspace{2mm}
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Recurso} & \textbf{Contêiner A} & \textbf{Contêiner B}\\\midrule
+PID no host do daemon & 567 & 612\\[2pt]
+PID interno & 1 & 1\\[2pt]
+PID namespace & \texttt{pid:[4026532292]} & \texttt{pid:[4026532483]}\\[2pt]
+Mount namespace & \texttt{mnt:[4026532287]} & \texttt{mnt:[4026532480]}\\[2pt]
+Network namespace & \texttt{net:[4026532405]} & \texttt{net:[4026532485]}\\\bottomrule
+\end{tabular}
+\end{center}
+\vspace{3mm}
+\destaque{Cada PID namespace possui sua própria numeração.}
+
+\observacao{Handles distintos identificam namespaces distintos nesta execução.}
+\note{Pedro, 70 segundos. Os dois contêineres estavam ativos durante a coleta e tinham o processo inicial Python. A rede estava desativada, sem teste de tráfego. Fonte: namespaces.json no lote principal. Referência: https://man7.org/linux/man-pages/man7/namespaces.7.html.}
+\end{frame}
+
+% ROTEIRO_SLIDE 04: Carga determinística e protocolo
+\begin{frame}[t]{Carga determinística e protocolo}
+\vspace{2mm}
+{\fontsize{23}{27}\selectfont\color{azul}\bfseries 20.000.000 de iterações\par}
+\vspace{4mm}
+{\small\texttt{checksum = (checksum + i*i + 3*i + 7) \& 0xffffffff}}
+\vspace{3mm}
+
+Fórmula independente confirma o resultado 2589261568.
+\vspace{2mm}
+
+Piloto separado, N congelado, contêiner novo a cada execução.
+\vspace{2mm}
+
+Ordem: C1/C2, C1/C2, C1/C2. Três repetições por condição.
+\note{Christian, 70 segundos. Uma thread e memória constante. Piloto de um milhão de iterações, separado das seis observações. Watchdogs de 60 segundos internamente e 90 segundos externamente. O checksum esperado vem da soma fechada de i ao quadrado mais 3i mais 7, módulo 2 elevado a 32. Fonte: manifest.json e runs do lote principal.}
+\end{frame}
+
+% ROTEIRO_SLIDE 05: Limites efetivos do cgroup
+\begin{frame}[t]{Limites efetivos do cgroup}
+\vspace{3mm}
+\begin{center}\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lllll}
+\toprule
+\textbf{Condição} & \textbf{cpu.max ($\mu$s)} & \textbf{Memória} & \textbf{Swap adicional} & \textbf{Tarefas}\\\midrule
+C1: 0,5 CPU & 50000 100000 & 256 MiB & 0 & 64\\[5pt]
+C2: 1 CPU & 100000 100000 & 256 MiB & 0 & 64\\\bottomrule
+\end{tabular}
+\end{center}
+\vspace{4mm}
+{\large\destaque{50 ms de CPU por período de 100 ms em C1.}}
+\vspace{3mm}
+
+{\small\texttt{cpu.max}, \texttt{memory.max}, \texttt{memory.swap.max} e \texttt{pids.max}}
+
+\observacao{Leituras antes e depois de cada trabalho confirmam os limites locais.}
+\note{Marcos, 60 segundos. As flags do Docker não são usadas sozinhas como prova. memory.max foi 268435456 bytes, memory.swap.max zero e pids.max 64. Quota de CPU não é afinidade nem reserva de núcleo. Não foi provocado OOM ou esgotamento de tarefas. Referências: https://docs.kernel.org/admin-guide/cgroup-v2.html e https://docs.docker.com/engine/containers/resource_constraints/.}
+\end{frame}
+
+% ROTEIRO_SLIDE 06: Seis medições de tempo decorrido
+\begin{frame}[t]{Seis medições de tempo decorrido}
+\vspace{-1mm}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[ybar,width=0.97\textwidth,height=4.55cm,
+ bar width=16pt,ymin=0,ymax=10,xmin=0.5,xmax=3.5,
+ xtick={1,2,3},xticklabels={Repetição 1,Repetição 2,Repetição 3},
+ ytick={0,2,4,6,8,10},ylabel={Tempo decorrido (s)},
+ axis lines=left,ymajorgrids=true,grid style={linha},
+ tick label style={font=\scriptsize},label style={font=\small},
+ legend style={font=\scriptsize,draw=none,at={(0.5,-0.18)},anchor=north,legend columns=2},
+ nodes near coords,point meta=y,
+ nodes near coords style={font=\scriptsize,/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use comma},
+ /pgf/number format/use comma]
+\addplot[fill=azul,draw=azul] coordinates {(1,7.073924493) (2,8.205041561) (3,6.385169526)};
+\addplot[fill=verde,draw=verde] coordinates {(1,3.495205679) (2,3.384014666) (3,3.273737585)};
+\legend{C1: 0{,}5 CPU,C2: 1 CPU}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\vspace{-1mm}
+\destaque{Medianas: 7,074 s em C1 e 3,384 s em C2}
+
+\observacao{Razão observada: 2,090 vezes. $n=3$ por condição.}
+\note{Sibele, 80 segundos. Gráfico vetorial com os seis tempos reais do laço, sem startup Docker ou Python e sem piloto. Os dados brutos conservam sua precisão original; rótulos são arredondados. Fonte: runs.csv e analysis.json em results/analysis/20261108T013949Z-19921f7f. A razão é entre medianas, sem demonstrar ganho universal.}
+\end{frame}
+
+% ROTEIRO_SLIDE 07: Throttling e escopos de memória
+\begin{frame}[t]{Throttling e escopos de memória}
+\vspace{2mm}
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+\textbf{Condição} & \textbf{Delta nr\_throttled} & \textbf{Delta throttled (s)}\\\midrule
+C1: repetições 1/2/3 & 71 / 82 / 64 & 3,545 / 4,088 / 3,192\\[4pt]
+C2: repetições 1/2/3 & 0 / 0 / 0 & 0 / 0 / 0\\\bottomrule
+\end{tabular}
+\end{center}
+\vspace{3mm}
+\textbf{RSS máximo:} páginas residentes do processo.
+\vspace{1mm}
+
+\textbf{memory.current:} snapshots do uso contabilizado no grupo.
+\vspace{1mm}
+
+\textbf{memory.peak:} pico desde a criação do cgroup.
+\note{Marcos fala 30 segundos e Sibele 30 segundos na apresentação, mantendo este frame. Deltas positivos em C1 sustentam throttling durante o trabalho; zero em C2 vale para a janela observada. Não chamar os três campos de RAM média. Fonte: registros brutos e runs.csv. Referência: https://docs.kernel.org/admin-guide/cgroup-v2.html.}
+\end{frame}
+
+% ROTEIRO_SLIDE 08: Mount read-only e menor privilégio
+\begin{frame}[t]{Mount read-only e menor privilégio}
+\vspace{3mm}
+{\large\bfseries\color{verde}Leitura do documento: permitida\par}
+\vspace{3mm}
+{\large\destaque{Criação de arquivo em /dados: negada}\par}
+\vspace{3mm}
+errno 30, EROFS, Read-only file system
+\vspace{3mm}
+
+UID 65534, CapEff zero, NoNewPrivs = 1
+\vspace{4mm}
+
+\observacao{A restrição da montagem soma-se aos controles de privilégio.}
+\note{Silas, 70 segundos. O documento e o diretório são sintéticos. mountinfo registra ro, UID é não root, capabilities efetivas estão zeradas e NoNewPrivs é um. O teste evidencia uma restrição daquele mount, não isolamento absoluto. Fonte: mount-readonly.json do lote principal.}
+\end{frame}
+
+% ROTEIRO_SLIDE 09: Evidência selecionada
+\begin{frame}[t,fragile]{Evidência selecionada}
+\vspace{3mm}
+{\large\destaque{Auditoria do lote publicado}\par}
+\vspace{5mm}
+\begin{small}
+\begin{verbatim}
+python atividade3/scripts/audit.py \
+  atividade3/results/raw/20261108T013949Z-19921f7f
+\end{verbatim}
+\end{small}
+\vspace{4mm}
+{\large\bfseries 6 execuções válidas, 68 arquivos conferidos\par}
+\vspace{4mm}
+\observacao{Checksum independente, limites do kernel e limpeza confirmados.}
+\note{Christian, 60 segundos na apresentação; no vídeo, reservar o tempo previsto no roteiro para os registros. Executar apenas auditoria do lote existente. Preparar runs/C1-1.json e mount-readonly.json no editor. Se o comando atual falhar, explicar o erro sem afirmar sucesso. Os registros não são novas medições ao vivo.}
+\end{frame}
+
+% ROTEIRO_SLIDE 10: Limitações e relação com inferência
+\begin{frame}[t]{Limitações e relação com inferência}
+\vspace{3mm}
+{\large\destaque{Host compartilhado e três repetições}\par}
+\vspace{2mm}
+Ruído, frequência e temperatura não foram isolados.
+\vspace{3mm}
+
+Ancestrais externos não confirmados pela visão disponível.
+\vspace{3mm}
+
+Quotas e corpus read-only reduzem o impacto de uma carga.
+\vspace{3mm}
+
+\observacao{Kernel e runtime compartilhados mantêm riscos comuns.}
+\note{Iasmin fala 30 segundos e Silas 30 segundos, mantendo o frame. A carga é aritmética Python, sem LLM, GPU ou VRAM. O PID de inspect não estava visível no proc acessível via WSL; não presumir que os ancestrais estavam ilimitados. Referências: documentação de namespaces, cgroup v2 e restrições de recursos do Docker, citadas no relatório.}
+\end{frame}
+
+% ROTEIRO_SLIDE 11: Equipe e revisão final
+\begin{frame}[t]{Equipe e revisão final}
+\vspace{1mm}
+\begin{center}\small
+\begin{tabular}{ll}
+\toprule\textbf{Integrante} & \textbf{Tema proposto para revisão}\\\midrule
+Bruno Amancio Ferreira & Objetivo e organização\\[2pt]
+Christian Will Silva Santos Nunes & Código e demonstração\\[2pt]
+Iasmin Victoria Teixeira Barreto & Ambiente e método\\[2pt]
+Marcos Vinícius Dantas Aguiar & Cgroups e throttling\\[2pt]
+Pedro César Figueiredo Carneiro & Namespaces e PIDs\\[2pt]
+Sibele Oliveira Cruz & Métricas e gráfico\\[2pt]
+Silas Santos da Silva & Read-only e limitações\\\bottomrule
+\end{tabular}
+\end{center}
+\vspace{2mm}
+\observacao{Proposta de participação, a confirmar com a equipe.}
+
+\observacao{Assistência: Codex. Vídeo e commit final permanecem pendentes.}
+\note{Bruno encerra em 30 segundos na apresentação. As contribuições efetivas precisam ser confirmadas antes da entrega, e não devem ser inferidas da distribuição de falas. A participação de todos no vídeo e a submissão ainda dependem da equipe. A declaração de IA e os prompts estão no relatório e em docs/uso\_ia.md.}
+\end{frame}
+
+\end{document}

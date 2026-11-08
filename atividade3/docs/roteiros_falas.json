@@ -1,6 +1,6 @@
 {
-  "deck": "atividade3/output/slides/apresentacao_atividade3.pptx",
-  "deck_sha256": "bf95ccc4b64bc07d726b0427eb380764b9bf07c496018fd2207970e9e7c597c2",
+  "deck": "atividade3/output/slides/apresentacao_atividade3.pdf",
+  "deck_sha256": "33c81531cbe28df49c01759f30042369c06d23598104f582dfa01568f7411cf5",
   "people": {
     "bruno": "Bruno Amancio Ferreira",
     "christian": "Christian Will Silva Santos Nunes",
@@ -426,5 +426,6 @@
         ]
       }
     }
-  ]
+  ],
+  "deck_source": "atividade3/deliverables/apresentacao.tex"
 }

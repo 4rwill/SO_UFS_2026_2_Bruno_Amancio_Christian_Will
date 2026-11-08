@@ -6,13 +6,14 @@ Apresentação com alvo de 11 minutos e vídeo com proposta de 15 minutos, a aju
 - [PDF das falas para o vídeo](../output/pdf/roteiro_video.pdf)
 - [Texto editável da apresentação](roteiro_apresentacao.md)
 - [Texto editável do vídeo](roteiro_video.md)
-- [Slides usados como base](../output/slides/apresentacao_atividade3.pptx)
+- [Slides em PDF usados como base](../output/slides/apresentacao_atividade3.pdf)
+- [Fonte LaTeX Beamer da apresentação](../deliverables/apresentacao.tex)
 
 O PDF da apresentação inclui respostas de apoio para as perguntas; o do vídeo inclui orientações de gravação. Ambos incluem instruções de operação da demonstração. Os slides 7 e 10 têm troca de locutor sem troca de slide. O slide 11 ainda contém proposta de participação e pendências, que devem ser ajustadas com dados confirmados antes da gravação/apresentação final.
 
-Os tempos abaixo referem-se à apresentação. As janelas próprias do vídeo estão no seu roteiro. Para atualizar os PDFs, editar `docs/roteiros_falas.json` e executar `python atividade3/scripts/build_roteiros.py`, com as dependências de `requirements-roteiros.txt` e as prévias dos slides disponíveis, a partir da raiz do repositório. O gerador confere o hash do PPTX para evitar usar falas com slides alterados. Nesta sessão, as prévias foram renderizadas do PPTX atual em `.build/roteiros/slides/` com o runtime de apresentações do Codex.
+Os tempos abaixo referem-se à apresentação. As janelas próprias do vídeo estão no seu roteiro. O fonte oficial dos slides agora é `deliverables/apresentacao.tex`. O comando `python atividade3/scripts/build_slides.py` compila o Beamer, confere os 11 títulos e a sequência, atualiza o hash do PDF no JSON de falas, renderiza miniaturas em `.build/roteiros/slides/` e regenera os dois roteiros.
 
-Para recriar as prévias no runtime Codex, definir `CODEX_RUNTIME_NODE_MODULES` com o caminho de pacotes retornado por `load_workspace_dependencies` e executar `node atividade3/scripts/render_roteiros_slides.mjs`. O PDF e o texto em Markdown são derivados do JSON de falas; editar esse JSON antes de gerar novas versões.
+Esse fluxo usa pdfLaTeX ou Tectonic, Poppler (`pdftoppm`) e os pacotes de `requirements-roteiros.txt`. Para atualizar somente as falas, editar `docs/roteiros_falas.json` e executar `python atividade3/scripts/build_roteiros.py`, mantendo as miniaturas atuais. Para recriar apenas as miniaturas, usar `python atividade3/scripts/render_roteiros_slides.py`. Os roteiros em PDF e Markdown são derivados do JSON; as falas e os tempos originais foram mantidos na conversão para Beamer.
 
 | Slide | Tempo | Responsável sugerido | Conteúdo |
 |---|---|---|---|

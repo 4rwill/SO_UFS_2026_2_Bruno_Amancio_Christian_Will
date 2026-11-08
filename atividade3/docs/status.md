@@ -18,8 +18,8 @@ Atualização: 08/11/2026, America/Sao_Paulo. Entrega em 10/11/2026; apresentaç
 | CSV, tabela e gráfico | Gerado e inspecionado | results/analysis/20261108T013949Z-19921f7f |
 | Auditor e testes negativos | Verificado | Seis testes passaram no Ubuntu; resultados em results/evidence/tests.txt |
 | Limpeza dos contêineres | Confirmada | Manifesto do lote e logs do coletor complementar |
-| Relatório e slides | Preparados para revisão | Fonte LaTeX em deliverables/relatorio.tex; PDF em output/pdf e slides em output/slides |
-| Falas completas para vídeo e apresentação | Preparadas para ensaio | output/pdf/roteiro_video.pdf e roteiro_apresentacao.pdf; falas por aluno, 11 slides, demonstração e tempos estimados |
+| Relatório e slides | Preparados para revisão | Fontes LaTeX em deliverables/relatorio.tex e apresentacao.tex (Beamer); PDFs em output/pdf e output/slides |
+| Falas completas para vídeo e apresentação | Preparadas para ensaio | output/pdf/roteiro_video.pdf e roteiro_apresentacao.pdf; miniaturas sincronizadas com o Beamer, falas por aluno, 11 slides e tempos estimados |
 | Declaração de IA | Preparada para revisão | docs/uso_ia.md; modelo exato a confirmar se disponível |
 | Nomes e contribuição efetiva | Manual, pendente | Confirmar docs/contribuicoes.md e relatório |
 | Vídeo e URL nos três locais | Manual, pendente | Gravar, publicar, conferir acesso e atualizar VIDEO.md, README e relatório |

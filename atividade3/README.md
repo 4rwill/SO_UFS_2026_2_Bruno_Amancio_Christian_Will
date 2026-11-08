@@ -14,7 +14,8 @@ Entrega prevista: **10/11/2026**. Apresentação: **11/11/2026**, 10-12 minutos 
 |---|---|
 | Relatório PDF para revisão | [output/pdf/relatorio_atividade3.pdf](output/pdf/relatorio_atividade3.pdf) |
 | Fonte LaTeX do relatório | [deliverables/relatorio.tex](deliverables/relatorio.tex) |
-| Slides editáveis | [output/slides/apresentacao_atividade3.pptx](output/slides/apresentacao_atividade3.pptx) |
+| Apresentação em PDF | [output/slides/apresentacao_atividade3.pdf](output/slides/apresentacao_atividade3.pdf) |
+| Fonte LaTeX Beamer dos slides | [deliverables/apresentacao.tex](deliverables/apresentacao.tex) |
 | Roteiro de apresentação e vídeo | [docs/apresentacao.md](docs/apresentacao.md) |
 | Falas completas da apresentação, por aluno e slide | [output/pdf/roteiro_apresentacao.pdf](output/pdf/roteiro_apresentacao.pdf) |
 | Falas completas do vídeo, por aluno e slide | [output/pdf/roteiro_video.pdf](output/pdf/roteiro_video.pdf) |
@@ -99,7 +100,15 @@ O script procura pdfLaTeX ou Tectonic no PATH. pdfLaTeX executa duas passagens; 
 
 O texto em `docs/relatorio.md` é o rascunho anterior e não gera mais o PDF. Atualizações do relatório devem ser feitas no `.tex`, inclusive a URL do vídeo e as contribuições.
 
-O construtor de slides usa `@oai/artifact-tool` do runtime Codex, com caminhos configuráveis pelas variáveis `CODEX_RUNTIME_NODE_MODULES`, `CODEX_PRESENTATIONS_SKILL` e `CODEX_RUNTIME_PYTHON`. O PPTX exportado já está incluído, sem exigir esse runtime para leitura. Instruções de construção estão no próprio script.
+A apresentação oficial também usa LaTeX: [deliverables/apresentacao.tex](deliverables/apresentacao.tex), em Beamer 16:9, com os mesmos 11 slides, gráfico, tabelas e diagrama vetoriais. O `.tex` é autocontido e compila com pdfLaTeX ou Tectonic. O resultado fica em `output/slides/apresentacao_atividade3.pdf`.
+
+```bash
+python atividade3/scripts/build_slides.py
+```
+
+Por padrão, esse comando também confere a ordem e os títulos dos slides, atualiza a referência do PDF em `docs/roteiros_falas.json`, renderiza as miniaturas com Poppler e regenera os dois roteiros de falas. Para esse fluxo completo, instalar as dependências de `requirements-roteiros.txt` e disponibilizar `pdftoppm` (Poppler) no PATH. Para compilar apenas os slides, sem sincronizar os roteiros, usar `--skip-roteiros`.
+
+Para selecionar o compilador, os parâmetros `--engine` e `--engine-path` funcionam como no construtor do relatório. A geração oficial dos slides e suas miniaturas não exige Node.js nem bibliotecas de PowerPoint. Os comandos `.mjs` anteriores apenas delegam aos novos scripts Python. O PPTX anterior foi preservado como histórico; os materiais de entrega e os roteiros apontam para o Beamer.
 
 **URL do vídeo: pendente de gravação e publicação pela equipe.** Inserir também na macro `\urlvideo` do relatório LaTeX e em `VIDEO.md`. As contribuições propostas devem ser revisadas por todos. As medições registram o commit base e snapshots/hashes do código ainda não commitado; o commit final da entrega deve ser registrado após a revisão.
 
