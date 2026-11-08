@@ -9,6 +9,7 @@ Entrega prevista: **10/11/2026**. Apresentação: **11/11/2026**, 10-12 minutos 
 - **Executado e auditado:** dois contêineres, três namespaces distintos, leitura e escrita negada em mount read-only, piloto e seis execuções válidas.
 - **Resultados:** 20.000.000 de iterações por execução, checksum 2589261568. Mediana de wall: 7,0739 s em 0,5 CPU e 3,3840 s em 1 CPU. Razão observada: 2,090 vezes.
 - **Pendente da equipe:** revisão, contribuições efetivas, gravação e URL do vídeo, ensaio, commit final e submissão. A atividade ainda não está entregue.
+- **Contribuições:** [distribuição simulada definida para os sete integrantes](docs/contribuicoes.md), refletida no relatório e no slide 11; conferir com o trabalho efetivamente realizado antes da entrega.
 
 | Artefato | Caminho |
 |---|---|

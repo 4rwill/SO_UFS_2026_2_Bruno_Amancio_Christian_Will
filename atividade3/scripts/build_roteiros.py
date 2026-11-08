@@ -141,7 +141,7 @@ def cover(data, mode):
         rows.append([name, ', '.join(numbers), clock(totals[person])])
     story.append(table(rows, [WIDTH * .64, WIDTH * .19, WIDTH * .17]))
     story.append(Spacer(1, 7))
-    story.append(para('Base: ' + Path(data['deck']).name + ', 11 slides em LaTeX Beamer. O slide 11 ainda contém proposta de participação e pendências; atualizar com informações confirmadas antes da versão final. As instruções de operação e preparação aparecem no final deste PDF.', 'small'))
+    story.append(para('Base: ' + Path(data['deck']).name + ', 11 slides em LaTeX Beamer. O slide 11 contém uma distribuição simulada de contribuições e pendências; conferir com o trabalho efetivo antes da versão final. As instruções de operação e preparação aparecem no final deste PDF.', 'small'))
     return story
 
 
@@ -213,7 +213,7 @@ def final_page(mode):
         ('Trocas de locutor', 'Nos slides 7 e 10, manter o slide durante a troca e identificar a pessoa que assume. Registrar pausas curtas para facilitar a edição, sem cortar explicações necessárias.'),
         ('Slides e legibilidade', 'Compartilhar os slides em tela cheia e desligar notificações. Ampliar o terminal e o editor no slide 9. O público deve conseguir ler os campos que sustentam a explicação.'),
         ('Falas e ritmo', 'Usar as falas como base, com compreensão e linguagem natural. Ensaiar o tempo total. Os números longos de handles e checksum podem ser apontados na tela; não é necessário soletrar todos os dígitos.'),
-        ('Slide 11 antes da gravação final', 'A versão atual informa que a divisão é uma proposta e que há pendências. Atualizar apenas com fatos confirmados pela equipe. A divisão de falas deste roteiro não pode ser convertida automaticamente em contribuição técnica já realizada.'),
+        ('Slide 11 antes da gravação final', 'A tabela apresenta uma distribuição simulada de contribuições, detalhada em docs/contribuicoes.md. Conferir as atribuições com o trabalho efetivo de cada integrante antes da gravação final. A divisão simulada e as falas deste roteiro não comprovam autoria individual dos arquivos.'),
         ('Demonstração honesta', 'Apresentar o auditor como verificação de arquivos existentes. O teste de escrita do JSON é uma evidência da coleta anterior. Não narrar essas observações como se os contêineres estivessem sendo executados naquele instante.'),
         ('Revisão e publicação', 'Assistir ao vídeo completo, conferir o áudio de todos, os dados e a duração. Hospedar com acesso adequado ao docente. Inserir a URL no README, em VIDEO.md e na macro urlvideo do relatório LaTeX, recompilando o PDF.'),
         ('Apresentação e entrega', 'O vídeo não substitui a apresentação de 11/11/2026. Preparar a entrega até 10/11/2026. No Classroom, disponibilizar o link do vídeo conforme o enunciado; guardar o comprovante de submissão.'),

@@ -160,7 +160,7 @@ Em um servidor de inferência, quotas podem reduzir o impacto de uma carga sobre
 
 Janela: 10:30-11:00.
 
-**Em tela:** Manter a tabela da equipe. Antes da apresentação final, atualizar a proposta de participação e as pendências do rodapé com informações confirmadas.
+**Em tela:** Manter a tabela da equipe, identificada como distribuição simulada de contribuições. Antes da apresentação final, conferir as atribuições com o trabalho efetivo e atualizar as pendências do rodapé.
 
 **Próxima ação:** Encerrar a exposição. Abrir o período separado de 3-5 minutos para perguntas.
 

@@ -106,20 +106,20 @@ Este relatório apresenta um laboratório reprodutível de contêineres Linux pa
 
 \secao{Contribuições, introdução e problema}
 \begin{table}[H]
-\centering\caption{Proposta de revisão e participação dos integrantes}\label{tab:contribuicoes}
+\centering\caption{Distribuição simulada de contribuições dos integrantes}\label{tab:contribuicoes}
 \begin{singlespace}\small
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.49\textwidth}X}
-\toprule\textbf{Integrante} & \textbf{Tema proposto}\\\midrule
-Bruno Amancio Ferreira & Objetivo, organização e conferência da entrega.\\
-Christian Will Silva Santos Nunes & Código da carga, reprodução e demonstração.\\
-Iasmin Victoria Teixeira Barreto & Ambiente, camadas e metodologia.\\
-Marcos Vinícius Dantas Aguiar & Cgroups, quotas e throttling.\\
-Pedro César Figueiredo Carneiro & Namespaces e numeração de processos.\\
-Sibele Oliveira Cruz & CSV, gráfico, mediana e variação.\\
-Silas Santos da Silva & Mount read-only, riscos e limitações.\\\bottomrule
+\toprule\textbf{Integrante} & \textbf{Contribuição simulada}\\\midrule
+Bruno Amancio Ferreira & Organização, integração do relatório LaTeX e revisão geral dos materiais.\\
+Christian Will Silva Santos Nunes & Carga determinística, checksum, auditor e preparação da demonstração.\\
+Iasmin Victoria Teixeira Barreto & Inventário Windows/WSL2/Docker, diagrama das camadas e protocolo experimental.\\
+Marcos Vinícius Dantas Aguiar & Quotas de CPU, memória, swap e tarefas; análise do throttling.\\
+Pedro César Figueiredo Carneiro & Coleta e comparação dos namespaces PID, mount e network e dos PIDs internos.\\
+Sibele Oliveira Cruz & CSV, medianas, variação, gráficos e interpretação das métricas de memória.\\
+Silas Santos da Silva & Teste read-only, controles de menor privilégio, riscos e limitações.\\\bottomrule
 \end{tabularx}\end{singlespace}
 \end{table}
-Os nomes são os da equipe da Atividade 2. A Tabela~\ref{tab:contribuicoes} propõe temas de revisão e apresentação; as contribuições efetivamente realizadas na Atividade 3 precisam ser confirmadas pela equipe. A assistência de IA está declarada na Seção~\ref{sec:ia}.
+Os nomes são os da equipe da Atividade 2. A Tabela~\ref{tab:contribuicoes} apresenta uma distribuição simulada, elaborada a pedido do usuário e alinhada às falas dos integrantes. Não é um registro verificado de trabalho realizado. A equipe deve conferir e ajustar as atribuições às contribuições efetivas antes da entrega. A revisão final e a participação no vídeo são responsabilidades compartilhadas. O detalhamento está em \path{atividade3/docs/contribuicoes.md}; a assistência de IA está declarada na Seção~\ref{sec:ia}.
 
 A pergunta norteadora é: \textit{como namespaces alteram a visão de processos, mounts e rede, e como cgroups limitam recursos sem transformar um contêiner em uma máquina virtual independente?} O objetivo é responder com comandos, dados e interpretação, conforme o enunciado \cite{enunciado}.
 

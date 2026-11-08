@@ -21,10 +21,10 @@ Atualização: 08/11/2026, America/Sao_Paulo. Entrega em 10/11/2026; apresentaç
 | Relatório e slides | Preparados para revisão | Fontes LaTeX em deliverables/relatorio.tex e apresentacao.tex (Beamer); PDFs em output/pdf e output/slides |
 | Falas completas para vídeo e apresentação | Preparadas para ensaio | output/pdf/roteiro_video.pdf e roteiro_apresentacao.pdf; miniaturas sincronizadas com o Beamer, falas por aluno, 11 slides e tempos estimados |
 | Declaração de IA | Preparada para revisão | docs/uso_ia.md; modelo exato a confirmar se disponível |
-| Nomes e contribuição efetiva | Manual, pendente | Confirmar docs/contribuicoes.md e relatório |
+| Distribuição de contribuições | Simulação definida | docs/contribuicoes.md, relatório e slide 11; conferir com o trabalho efetivo antes da entrega |
 | Vídeo e URL nos três locais | Manual, pendente | Gravar, publicar, conferir acesso e atualizar VIDEO.md, README e relatório |
 | Ensaio e apresentação de todos | Manual, pendente | docs/apresentacao.md |
-| Commit final e publicação | Pendente | Registrar commit após revisão; nenhuma publicação efetuada nesta sessão |
+| Commit final e publicação | Repositório publicado; versão final pendente | Registrar a versão de referência da entrega após revisão e inclusão da URL do vídeo |
 | Submissão | Manual, pendente | Equipe deve submeter e guardar comprovante |
 
 Não houve falhas nas seis cargas principais. Tentativas auxiliares com erro foram preservadas: testes Windows restritos e primeira busca de ancestrais. Elas não foram contadas como medições principais nem apagadas.

@@ -9,7 +9,7 @@ Apresentação com alvo de 11 minutos e vídeo com proposta de 15 minutos, a aju
 - [Slides em PDF usados como base](../output/slides/apresentacao_atividade3.pdf)
 - [Fonte LaTeX Beamer da apresentação](../deliverables/apresentacao.tex)
 
-O PDF da apresentação inclui respostas de apoio para as perguntas; o do vídeo inclui orientações de gravação. Ambos incluem instruções de operação da demonstração. Os slides 7 e 10 têm troca de locutor sem troca de slide. O slide 11 ainda contém proposta de participação e pendências, que devem ser ajustadas com dados confirmados antes da gravação/apresentação final.
+O PDF da apresentação inclui respostas de apoio para as perguntas; o do vídeo inclui orientações de gravação. Ambos incluem instruções de operação da demonstração. Os slides 7 e 10 têm troca de locutor sem troca de slide. O slide 11 contém uma distribuição simulada de contribuições, detalhada em [contribuicoes.md](contribuicoes.md), e pendências. Conferir as atribuições com o trabalho efetivo antes da gravação/apresentação final.
 
 Os tempos abaixo referem-se à apresentação. As janelas próprias do vídeo estão no seu roteiro. O fonte oficial dos slides agora é `deliverables/apresentacao.tex`. O comando `python atividade3/scripts/build_slides.py` compila o Beamer, confere os 11 títulos e a sequência, atualiza o hash do PDF no JSON de falas, renderiza miniaturas em `.build/roteiros/slides/` e regenera os dois roteiros.
 

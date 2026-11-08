@@ -180,7 +180,7 @@ A relação com inferência é conceitual. Limitar CPU, memória e tarefas ajuda
 
 Janela: 14:15-15:00.
 
-**Em tela:** Bruno fecha o vídeo. O slide 11 atual contém proposta de participação e pendências: atualizar essas informações antes da gravação final, sem inventar contribuições. Conferir se todos apareceram identificados em seus trechos.
+**Em tela:** Bruno fecha o vídeo. O slide 11 contém uma distribuição simulada de contribuições e pendências: conferir as atribuições com o trabalho efetivo antes da gravação final. Conferir se todos apareceram identificados em seus trechos.
 
 **Próxima ação:** Encerrar a gravação. Conferir áudio, legibilidade e participação antes de publicar.
 

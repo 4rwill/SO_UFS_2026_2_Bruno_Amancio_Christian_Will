@@ -1,6 +1,6 @@
 {
   "deck": "atividade3/output/slides/apresentacao_atividade3.pdf",
-  "deck_sha256": "33c81531cbe28df49c01759f30042369c06d23598104f582dfa01568f7411cf5",
+  "deck_sha256": "242b403e2ae26ede36ec1ce8526511ab2a932550ee4f6b3ef0612c8c51f0f09a",
   "people": {
     "bruno": "Bruno Amancio Ferreira",
     "christian": "Christian Will Silva Santos Nunes",
@@ -398,7 +398,7 @@
       "title": "Equipe e revisão final",
       "presentation": {
         "seconds": 30,
-        "show": "Manter a tabela da equipe. Antes da apresentação final, atualizar a proposta de participação e as pendências do rodapé com informações confirmadas.",
+        "show": "Manter a tabela da equipe, identificada como distribuição simulada de contribuições. Antes da apresentação final, conferir as atribuições com o trabalho efetivo e atualizar as pendências do rodapé.",
         "next": "Encerrar a exposição. Abrir o período separado de 3-5 minutos para perguntas.",
         "speech": [
           {
@@ -412,7 +412,7 @@
       },
       "video": {
         "seconds": 45,
-        "show": "Bruno fecha o vídeo. O slide 11 atual contém proposta de participação e pendências: atualizar essas informações antes da gravação final, sem inventar contribuições. Conferir se todos apareceram identificados em seus trechos.",
+        "show": "Bruno fecha o vídeo. O slide 11 contém uma distribuição simulada de contribuições e pendências: conferir as atribuições com o trabalho efetivo antes da gravação final. Conferir se todos apareceram identificados em seus trechos.",
         "next": "Encerrar a gravação. Conferir áudio, legibilidade e participação antes de publicar.",
         "speech": [
           {
