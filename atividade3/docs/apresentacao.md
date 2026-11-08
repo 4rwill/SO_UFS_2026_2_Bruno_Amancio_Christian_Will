@@ -48,7 +48,9 @@ Christian mostra a auditoria dos arquivos já coletados. Preparar o terminal na 
 python atividade3/scripts/audit.py atividade3/results/raw/20261108T013949Z-19921f7f
 ```
 
-Apontar `valid=true`, `main_runs=6` e `verified_files=68`. Abrir `runs/C1-1.json` para conferir N, checksum, `cpu.max` e `cpu_stat_delta`. O vídeo pode mostrar também `mount-readonly.json`, que Silas interpreta no slide 13. A auditoria não repete as seis medições. Se o comando atual falhar, explicar e recorrer aos arquivos preservados; seguir para o slide 9 com Marcos.
+Na apresentação, apontar `valid=true`, `main_runs=6` e `verified_files=68`. Abrir `runs/C1-1.json` para conferir N, checksum, `cpu.max` e `cpu_stat_delta`. A auditoria não repete as seis medições. Se o comando atual falhar, explicar e recorrer aos arquivos preservados; seguir para o slide 9 com Marcos.
+
+**No vídeo, Christian mostra somente o repositório, sem executar comandos.** Preparar as abas `manifest.json`, `runs/C1-1.json`, `mount-readonly.json` e `SHA256SUMS.json` do lote. No manifesto, mostrar `status=completed`, `valid_main_runs=6` e `cleanup_confirmed=true`; depois, percorrer os campos de C1-1, a escrita negada e a lista de hashes. Na seção `cpu_stat_delta`, os valores são deltas (71 e 3544785), distintos dos contadores absolutos. A navegação apresenta registros existentes e não equivale a uma nova execução do auditor. A fala completa está no roteiro do vídeo, entre 07:00 e 08:30.
 
 ## Conferência da entrega
 

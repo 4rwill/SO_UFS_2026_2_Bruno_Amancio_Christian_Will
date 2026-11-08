@@ -118,19 +118,19 @@ Isso permite conferir que as duas condições realizaram o mesmo trabalho lógic
 
 Janela: 07:00-08:30.
 
-**Em tela:** Executar o auditor do lote existente. Ampliar o terminal e mostrar valid=true, main_runs=6, verified_files=68. Depois abrir runs/C1-1.json. Se houver falha atual, explicar e abrir os registros preservados.
+**Em tela:** Mostrar somente o repositório, sem terminal ou execução de comandos. Deixar quatro abas prontas no lote results/raw/20261108T013949Z-19921f7f: manifest.json, runs/C1-1.json, mount-readonly.json e SHA256SUMS.json. No manifesto, apontar status=completed, valid_main_runs=6 e cleanup_confirmed=true. Em C1-1, localizar iterations, checksum, correct, cpu.max e a seção cpu_stat_delta; usar os deltas 71 e 3544785, não os contadores absolutos antes/depois. No mount, mostrar write_denied=true e errno=30. Encerrar apontando a lista de hashes.
 
 **Próxima ação:** Avançar ao slide 9 e passar a palavra a Marcos Vinícius Dantas Aguiar.
 
 ### Christian Will Silva Santos Nunes
 
-Nesta demonstração, vamos conferir os registros de uma execução anterior. O comando mostrado verifica o lote existente; não inicia uma nova matriz de contêineres. A saída esperada do lote publicado indica valid igual a true, seis execuções principais e sessenta e oito arquivos verificados.
+Agora vou mostrar, no próprio repositório, as evidências preservadas do experimento. Na pasta dos resultados brutos, o manifesto registra o lote como concluído, com seis execuções principais válidas e limpeza confirmada. São informações da coleta anterior.
 
-Vou abrir C1-1. O registro contém vinte milhões de iterações, checksum 2589261568 e correct igual a true. Em cpu.max, a leitura é 50000 100000. Os campos antes e depois da carga permitem conferir o limite e calcular o delta dos contadores.
+Neste arquivo C1-1, temos a primeira execução com quota de meia CPU. O registro mostra vinte milhões de iterações, o checksum exibido e correct igual a true, indicando concordância com o resultado esperado. O campo cpu.max apresenta 50000 100000, o limite observado no kernel.
 
-No delta, nr_throttled aumentou setenta e um e throttled_usec aumentou 3544785 microssegundos. O JSON de montagem somente leitura preserva, separadamente, a escrita negada com errno trinta. Esses são registros da coleta, não acontecimentos novos em execução neste instante.
+Na seção cpu_stat_delta, nr_throttled aumentou setenta e um, e throttled_usec aumentou aproximadamente três milhões e quinhentos mil microssegundos, cerca de três vírgula cinquenta e quatro segundos. Aqui estamos olhando as diferenças entre os contadores antes e depois da carga.
 
-Os hashes ajudam a verificar integridade interna, mas não equivalem a uma assinatura independente da origem dos dados. Marcos assume para interpretar as quotas e os contadores do cgroup.
+O arquivo de montagem somente leitura registra write_denied igual a true e errno trinta, indicando que a tentativa de escrita foi negada. O arquivo SHA256SUMS reúne os hashes usados na conferência de integridade. Esses registros documentam a coleta e permitem sua verificação posterior, sem representar uma nova execução agora. Marcos continua com a interpretação das quotas e dos contadores do cgroup.
 
 ## Slide 09 - Limites efetivos do cgroup v2
 
@@ -232,14 +232,15 @@ Em um servidor de inferência, quotas de CPU, limites de memória e tarefas, cor
 
 O laboratório mostrou namespaces distintos, limites locais de cgroup confirmados, throttling em C1 e escrita negada no mount observado. Com trabalho fixo, C2 apresentou menor tempo mediano nesta amostra. Os materiais estão no repositório e o link do vídeo foi registrado. Declaramos o apoio do Codex na preparação e a responsabilidade da equipe por revisar e explicar o conteúdo. Obrigado por acompanhar.
 
-## Apoio à demonstração
+## Apoio à navegação no repositório
 
-O auditor verifica o lote existente; não repete os experimentos.
+Sem terminal e sem execução de comandos. Preparar quatro abas, nesta ordem:
 
-```bash
-python atividade3/scripts/audit.py atividade3/results/raw/20261108T013949Z-19921f7f
-```
+- `atividade3/results/raw/20261108T013949Z-19921f7f/manifest.json`
+- `atividade3/results/raw/20261108T013949Z-19921f7f/runs/C1-1.json`
+- `atividade3/results/raw/20261108T013949Z-19921f7f/mount-readonly.json`
+- `atividade3/results/raw/20261108T013949Z-19921f7f/SHA256SUMS.json`
 
-Preparar C1-1.json e mount-readonly.json no editor. Instruções detalhadas, perguntas ou checklist de gravação estão no PDF.
+Mostrar os campos registrados e a lista de hashes. Essa navegação não equivale a uma nova execução do auditor. Instruções detalhadas estão no PDF.
 
 PDF: [../output/pdf/roteiro_video.pdf](../output/pdf/roteiro_video.pdf).

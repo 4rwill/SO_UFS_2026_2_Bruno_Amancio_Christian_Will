@@ -177,6 +177,21 @@ def slide_card(data, slide, mode, elapsed):
 
 
 def demonstration(mode):
+    if mode == 'video':
+        story = [para('Navegação no repositório', 'title'),
+                 para('Apoio ao slide 8. Christian mostra registros já publicados, sem terminal e sem executar comandos.', 'subtitle'),
+                 para('Preparar quatro abas antes de gravar', 'h2'),
+                 para('Abrir os arquivos abaixo no GitHub ou no editor local, ampliar o texto e deixar os campos indicados localizados. Os dados são da coleta anterior.', 'body')]
+        for title, filename, text in [
+            ('1. Manifesto do lote', 'manifest.json', 'Apontar status="completed", valid_main_runs=6 e cleanup_confirmed=true. Esses são campos preservados do manifesto; não são uma saída atual do auditor.'),
+            ('2. Primeira execução C1', 'runs/C1-1.json', 'Apontar iterations=20000000, checksum=2589261568, correct=true e cpu.max="50000 100000". Localizar cpu_stat_delta: nr_throttled=71 e throttled_usec=3544785, cerca de 3,54 s. Os contadores absolutos das seções antes/depois têm outros valores.'),
+            ('3. Montagem somente leitura', 'mount-readonly.json', 'Apontar write_denied=true e errno=30. Trata-se do resultado registrado da tentativa de escrita.'),
+            ('4. Lista de hashes', 'SHA256SUMS.json', 'Mostrar a relação de arquivos com seus hashes SHA-256. A lista permite conferência posterior; exibi-la não realiza uma nova validação de integridade nem comprova independentemente a origem dos dados.'),
+        ]:
+            story.extend([para(title, 'h2'), para(SAMPLE + '/' + filename, 'code'), para(text, 'small')])
+        story.append(para('Transição', 'h2'))
+        story.append(para('Ao concluir a navegação, voltar ao slide 9 e passar a palavra a Marcos. Manter o bloco de Christian entre 07:00 e 08:30; apontar os números longos na tela, sem precisar soletrar cada dígito.', 'small'))
+        return story
     story = [para('Operação da demonstração', 'title'),
              para('Apoio ao slide 8. Esta página orienta Christian e a pessoa que controla a tela.', 'subtitle'),
              para('Preparar antes de apresentar ou gravar', 'h2')]
@@ -216,10 +231,10 @@ def final_page(mode):
     instructions = [
         ('Identificação de todos', 'Gravar cada integrante com seu rosto visível ao menos em sua entrada, seu nome completo na tela e áudio reconhecível. Os nomes estão no quadro da primeira página. Não presumir que apenas a narração sem identificação demonstra participação.'),
         ('Trocas de locutor', 'Trocar somente ao final do segundo slide de cada integrante: 2→3, 4→5, 6→7, 8→9, 10→11 e 12→13. Cada pessoa conclui seu bloco e não retorna na exposição. Identificar quem assume e manter apenas um locutor por slide.'),
-        ('Slides e legibilidade', 'Compartilhar os slides em tela cheia e desligar notificações. Ampliar o terminal e o editor no slide 8. O público deve conseguir ler os campos que sustentam a explicação.'),
+        ('Slides e legibilidade', 'Compartilhar os slides em tela cheia e desligar notificações. No slide 8, mostrar apenas o repositório com os registros ampliados e as abas preparadas. O público deve conseguir ler os campos que sustentam a explicação.'),
         ('Falas e ritmo', 'Usar as falas como base, com compreensão e linguagem natural. Ensaiar o tempo total. Os números longos de handles e checksum podem ser apontados na tela; não é necessário soletrar todos os dígitos.'),
         ('Encerramento', 'Silas apresenta os slides 13 e 14 e encerra o vídeo. Conferir se os sete integrantes foram identificados nos respectivos blocos. Os temas e intervalos estão registrados em docs/contribuicoes.md.'),
-        ('Demonstração honesta', 'Apresentar o auditor como verificação de arquivos existentes. O teste de escrita do JSON é uma evidência da coleta anterior. Não narrar essas observações como se os contêineres estivessem sendo executados naquele instante.'),
+        ('Demonstração dos registros', 'Mostrar os arquivos preservados no repositório, sem executar o auditor ou a carga. O teste de escrita do JSON é uma evidência da coleta anterior. A navegação não representa uma nova medição ou uma nova validação dos hashes.'),
         ('Revisão e publicação', 'Assistir ao vídeo completo, conferir o áudio de todos, os dados e a duração. Hospedar com acesso adequado ao docente. Inserir a URL no README, em VIDEO.md e na macro urlvideo do relatório LaTeX, recompilando o PDF.'),
         ('Apresentação e entrega', 'O vídeo não substitui a apresentação de 11/11/2026. Preparar a entrega até 10/11/2026. No Classroom, disponibilizar o link do vídeo conforme o enunciado; guardar o comprovante de submissão.'),
     ]
@@ -242,19 +257,26 @@ def markdown(data, mode):
             lines.extend(['### ' + data['people'][speech['person']], ''])
             lines.extend(p + '\n' for p in speech['paragraphs'])
         elapsed += block['seconds']
-    lines.extend(['## Apoio à demonstração', '', 'O auditor verifica o lote existente; não repete os experimentos.', '',
-                  '```bash', 'python atividade3/scripts/audit.py ' + SAMPLE, '```', '',
-                  'Preparar C1-1.json e mount-readonly.json no editor. Instruções detalhadas, perguntas ou checklist de gravação estão no PDF.', '',
-                  f'PDF: [../output/pdf/{stem}.pdf](../output/pdf/{stem}.pdf).', ''])
+    if mode == 'video':
+        lines.extend(['## Apoio à navegação no repositório', '',
+                      'Sem terminal e sem execução de comandos. Preparar quatro abas, nesta ordem:', '',
+                      *[f'- `{SAMPLE}/{name}`' for name in ['manifest.json', 'runs/C1-1.json', 'mount-readonly.json', 'SHA256SUMS.json']], '',
+                      'Mostrar os campos registrados e a lista de hashes. Essa navegação não equivale a uma nova execução do auditor. Instruções detalhadas estão no PDF.', ''])
+    else:
+        lines.extend(['## Apoio à demonstração', '', 'O auditor verifica o lote existente; não repete os experimentos.', '',
+                      '```bash', 'python atividade3/scripts/audit.py ' + SAMPLE, '```', '',
+                      'Preparar C1-1.json e mount-readonly.json no editor. Instruções detalhadas, perguntas ou checklist de gravação estão no PDF.', ''])
+    lines.extend([f'PDF: [../output/pdf/{stem}.pdf](../output/pdf/{stem}.pdf).', ''])
     (ROOT / 'docs' / f'{stem}.md').write_text('\n'.join(lines), encoding='utf-8')
 
 
-def main():
+def main(modes=None):
     data = load()
     register_fonts()
     out = ROOT / 'output' / 'pdf'
     out.mkdir(parents=True, exist_ok=True)
-    for mode, (title, stem, _) in MODES.items():
+    for mode in modes or MODES:
+        title, stem, _ = MODES[mode]
         story = cover(data, mode)
         elapsed = 0
         for slide in data['slides']:
@@ -280,4 +302,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--mode', choices=['all', *MODES], default='all')
+    args = parser.parse_args()
+    main(None if args.mode == 'all' else [args.mode])
