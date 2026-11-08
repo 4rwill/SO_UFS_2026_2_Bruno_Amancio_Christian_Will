@@ -10,6 +10,7 @@ Entrega prevista: **10/11/2026**. Apresentação: **11/11/2026**, 10-12 minutos 
 - **Resultados:** 20.000.000 de iterações por execução, checksum 2589261568. Mediana de wall: 7,0739 s em 0,5 CPU e 3,3840 s em 1 CPU. Razão observada: 2,090 vezes.
 - **Conferência final:** revisar os materiais, ensaiar a sequência, testar acesso ao vídeo e efetuar a submissão. A publicação no GitHub não comprova a entrega acadêmica.
 - **Participação:** [sete blocos de dois slides](docs/contribuicoes.md), com nome do apresentador em cada slide e sem retorno de locutores durante a exposição.
+- **Versão de referência dos materiais:** [a8347f78e9da](https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will/commit/a8347f78e9da9f34818df77b3e50d8d560ea7568), também indicada no relatório.
 
 | Artefato | Caminho |
 |---|---|

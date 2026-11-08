@@ -46,7 +46,7 @@
 \newcommand{\pendencia}[1]{\par\smallskip\noindent{\small\textbf{A completar antes da entrega:} #1}\par}
 % Campos que dependem da equipe; editar aqui antes da submissão.
 \newcommand{\urlvideo}{\url{https://drive.google.com/drive/folders/1yPalBhHtxjZmD2yZngRQVawkAElJC-Hj?usp=sharing}}
-\newcommand{\commitfinal}{\textit{A confirmar após a revisão dos materiais da entrega.}}
+\newcommand{\commitfinal}{\href{https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will/commit/a8347f78e9da9f34818df77b3e50d8d560ea7568}{\texttt{a8347f78e9da}}}
 \newcommand{\titulotrabalho}{VIRTUALIZAÇÃO, NAMESPACES E CGROUPS: LABORATÓRIO DE CONTÊINERES LINUX}
 \newcommand{\integrantes}{Bruno Amancio Ferreira\\Christian Will Silva Santos Nunes\\Iasmin Victoria Teixeira Barreto\\Marcos Vinícius Dantas Aguiar\\Pedro César Figueiredo Carneiro\\Sibele Oliveira Cruz\\Silas Santos da Silva}
 \newcommand{\lotecoleta}{\texttt{20261108T013949Z-19921f7f}}
@@ -129,7 +129,7 @@ A Atividade 2 forneceu experiência com Linux, coleta, dados sintéticos e anál
 \noindent\textbf{Repositório:} \url{https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will}.\\
 \textbf{Lote principal:} \lotecoleta.\\
 \textbf{Vídeo:} \urlvideo\\
-\textbf{Commit final da entrega:} \commitfinal
+\textbf{Commit de referência dos materiais:} \commitfinal
 
 \secao{Ambiente experimental e virtualização}
 A coleta principal ocorreu em 07/11/2026, aproximadamente entre 22h39 e 22h40, no fuso America/Sao\_Paulo. Os registros usam UTC: 08/11/2026, entre 01h39 e 01h40. O inventário distingue o host físico, o ambiente Linux efetivo do daemon e o espaço de usuário da imagem.
@@ -332,7 +332,7 @@ O teto de 256 MiB e \texttt{pids.max=64} foram confirmados sem OOM deliberado ou
 \secao{Reprodutibilidade, validação e uso de IA}
 O código está em \path{atividade3/scripts}. O orquestrador \texttt{lab.py} cria snapshots do código e do documento sintético por lote e monta essas cópias read-only. Os contêineres não acessam rede. Identificadores novos preservam resultados anteriores. Comandos, saídas, erros e limites observados ficam registrados.
 
-Commit base da coleta: \path{9f8ad355769af28f7252a5700905476b6dc6a413}, com a Atividade 3 ainda não commitada. O manifesto inclui os hashes dos scripts e os snapshots preservam o código medido. A organização das duas atividades foi publicada em \href{https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will/commit/71626060250925ae7ebbf894991e501057d126d7}{\texttt{7162606}}; o commit final após revisão permanece a confirmar.
+Commit base da coleta: \path{9f8ad355769af28f7252a5700905476b6dc6a413}, com a Atividade 3 ainda não commitada. O manifesto inclui os hashes dos scripts e os snapshots preservam o código medido. A organização das duas atividades foi publicada em \href{https://github.com/4rwill/SO_UFS_2026_2_Bruno_Amancio_Christian_Will/commit/71626060250925ae7ebbf894991e501057d126d7}{\texttt{7162606}}. A versão de referência dos materiais revisados é o commit \commitfinal.
 
 A auditoria verificou 68 arquivos, imagem fixa, seis execuções, checksums, ordem pelos horários do daemon, limites antes e depois, contadores, privilégios e limpeza. SHA-256 evidencia integridade interna, sem equivaler a assinatura independente da origem das medições. Da raiz do repositório, executar:
 \begin{singlespace}\small\noindent

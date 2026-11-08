@@ -24,7 +24,7 @@ Atualização: 08/11/2026, America/Sao_Paulo. Entrega em 10/11/2026; apresentaç
 | Participação na apresentação | Definida | docs/contribuicoes.md; sete blocos contínuos de dois slides, um apresentador por slide |
 | Vídeo e URL | Link registrado | VIDEO.md, README, relatório e slide 14; pasta do Drive fornecida pela equipe, acesso externo a conferir |
 | Ensaio e apresentação de todos | Manual, pendente | docs/apresentacao.md |
-| Commit final e publicação | Repositório publicado; versão final pendente | Registrar a versão de referência da entrega da versão revisada dos materiais |
+| Commit de referência | Registrado | a8347f78e9da9f34818df77b3e50d8d560ea7568; versão revisada dos materiais, indicada no relatório |
 | Submissão | Manual, pendente | Equipe deve submeter e guardar comprovante |
 
 Não houve falhas nas seis cargas principais. Tentativas auxiliares com erro foram preservadas: testes Windows restritos e primeira busca de ancestrais. Elas não foram contadas como medições principais nem apagadas.
