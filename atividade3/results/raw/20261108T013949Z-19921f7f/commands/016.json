@@ -1,0 +1,15 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "a66086e8e014460543765f7f56508a309a0b9c532164bb51037d0cb7eabcec1b",
+    "python",
+    "/lab/probe.py",
+    "namespaces"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kernel\": \"6.18.54.1-microsoft-standard-WSL2\", \"namespaces\": {\"mnt\": \"mnt:[4026532287]\", \"net\": \"net:[4026532405]\", \"pid\": \"pid:[4026532292]\"}, \"pid_1_comm\": \"python\", \"pid_1_status\": \"Name:\\tpython\\nUmask:\\t0022\\nState:\\tS (sleeping)\\nTgid:\\t1\\nNgid:\\t0\\nPid:\\t1\\nPPid:\\t0\\nTracerPid:\\t0\\nUid:\\t65534\\t65534\\t65534\\t65534\\nGid:\\t65534\\t65534\\t65534\\t65534\\nFDSize:\\t64\\nGroups:\\t65534 \\nNStgid:\\t1\\nNSpid:\\t1\\nNSpgid:\\t1\\nNSsid:\\t1\\nKthread:\\t0\\nVmPeak:\\t   14204 kB\\nVmSize:\\t   14176 kB\\nVmLck:\\t       0 kB\\nVmPin:\\t       0 kB\\nVmHWM:\\t    9844 kB\\nVmRSS:\\t    9844 kB\\nRssAnon:\\t    3952 kB\\nRssFile:\\t    5892 kB\\nRssShmem:\\t       0 kB\\nVmData:\\t    5484 kB\\nVmStk:\\t     132 kB\\nVmExe:\\t       4 kB\\nVmLib:\\t    4260 kB\\nVmPTE:\\t      76 kB\\nVmSwap:\\t       0 kB\\nHugetlbPages:\\t       0 kB\\nCoreDumping:\\t0\\nTHP_enabled:\\t1\\nuntag_mask:\\t0xffffffffffffffff\\nThreads:\\t1\\nSigQ:\\t0/15181\\nSigPnd:\\t0000000000000000\\nShdPnd:\\t0000000000000000\\nSigBlk:\\t0000000000000000\\nSigIgn:\\t0000000001001000\\nSigCgt:\\t0000000000000002\\nCapInh:\\t0000000000000000\\nCapPrm:\\t0000000000000000\\nCapEff:\\t0000000000000000\\nCapBnd:\\t0000000000000000\\nCapAmb:\\t0000000000000000\\nNoNewPrivs:\\t1\\nSeccomp:\\t2\\nSeccomp_filters:\\t2\\nSpeculation_Store_Bypass:\\tthread vulnerable\\nSpeculationIndirectBranch:\\tconditional enabled\\nCpus_allowed:\\tfff\\nCpus_allowed_list:\\t0-11\\nMems_allowed:\\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\\nMems_allowed_list:\\t0\\nvoluntary_ctxt_switches:\\t92\\nnonvoluntary_ctxt_switches:\\t2\\n\", \"uid\": 65534}\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 0.2660000000614673
+}

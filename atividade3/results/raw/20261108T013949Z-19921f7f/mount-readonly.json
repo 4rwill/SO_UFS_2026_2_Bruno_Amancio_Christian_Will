@@ -1,0 +1,17 @@
+{
+  "content": "Documento sintetico para demonstracao de montagem somente leitura.\n",
+  "errno": 30,
+  "error": "[Errno 30] Read-only file system: '/dados/tentativa-escrita.txt'",
+  "mountinfo": [
+    "982 973 0:116 /Projetos/SO_UFS_2026_2_Bruno_Amancio_Christian_Will/atividade3/results/raw/20261108T013949Z-19921f7f/dados_demo /dados ro,noatime - 9p C:\\134 rw,aname=drvfs;path=C:\\;uid=0;gid=0;metadata;symlinkroot=/mnt/host/,cache=0x5,access=client,msize=65536,trans=fd,rfd=5,wfd=5"
+  ],
+  "readonly_errno": true,
+  "security_status": [
+    "CapEff:\t0000000000000000",
+    "NoNewPrivs:\t1",
+    "Seccomp:\t2"
+  ],
+  "uid": 65534,
+  "valid": true,
+  "write_denied": true
+}

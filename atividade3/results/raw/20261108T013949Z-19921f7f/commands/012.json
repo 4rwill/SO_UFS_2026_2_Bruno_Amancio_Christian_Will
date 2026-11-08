@@ -1,0 +1,12 @@
+{
+  "command": [
+    "docker",
+    "start",
+    "a66086e8e014460543765f7f56508a309a0b9c532164bb51037d0cb7eabcec1b"
+  ],
+  "returncode": 0,
+  "stdout": "a66086e8e014460543765f7f56508a309a0b9c532164bb51037d0cb7eabcec1b\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 0.2809999999590218
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "docker",
+    "pull",
+    "python:3.12-slim"
+  ],
+  "returncode": 0,
+  "stdout": "3.12-slim: Pulling from library/python\n37fb86c2a767: Pulling fs layer\n68bced9e0afa: Pulling fs layer\n05e0eee5572e: Pulling fs layer\n2dc99d2d0a39: Pulling fs layer\n05e0eee5572e: Download complete\n37fb86c2a767: Download complete\n68bced9e0afa: Download complete\ne0a5f9afcd02: Download complete\nf26199dfe4a6: Download complete\n37fb86c2a767: Pull complete\n68bced9e0afa: Pull complete\n2dc99d2d0a39: Download complete\n05e0eee5572e: Pull complete\n2dc99d2d0a39: Pull complete\nDigest: sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54\nStatus: Downloaded newer image for python:3.12-slim\ndocker.io/library/python:3.12-slim\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 8.155999999959022
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "docker",
+    "rm",
+    "--force",
+    "321444bbed38b8f81ecd3398809376f6c7c575692b50f10a607ef33b65e71a2f"
+  ],
+  "returncode": 0,
+  "stdout": "321444bbed38b8f81ecd3398809376f6c7c575692b50f10a607ef33b65e71a2f\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 0.062000000034458935
+}

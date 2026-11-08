@@ -1,0 +1,13 @@
+{
+  "command": [
+    "docker",
+    "start",
+    "--attach",
+    "321444bbed38b8f81ecd3398809376f6c7c575692b50f10a607ef33b65e71a2f"
+  ],
+  "returncode": 0,
+  "stdout": "{\"cgroup_after\": {\"cgroup.controllers\": \"cpuset cpu io memory hugetlb pids rdma\", \"cgroup.type\": \"domain\", \"cpu.max\": \"100000 100000\", \"cpu.stat\": {\"burst_usec\": 0, \"nice_usec\": 0, \"nr_bursts\": 0, \"nr_periods\": 38, \"nr_throttled\": 0, \"system_usec\": 34251, \"throttled_usec\": 0, \"usage_usec\": 3788897, \"user_usec\": 3754645}, \"errors\": {}, \"memory.current\": 12546048, \"memory.events\": {\"high\": 0, \"low\": 0, \"max\": 0, \"oom\": 0, \"oom_group_kill\": 0, \"oom_kill\": 0}, \"memory.max\": \"268435456\", \"memory.peak\": 12546048, \"memory.swap.max\": \"0\", \"pids.current\": 1, \"pids.max\": \"64\"}, \"cgroup_before\": {\"cgroup.controllers\": \"cpuset cpu io memory hugetlb pids rdma\", \"cgroup.type\": \"domain\", \"cpu.max\": \"100000 100000\", \"cpu.stat\": {\"burst_usec\": 0, \"nice_usec\": 0, \"nr_bursts\": 0, \"nr_periods\": 3, \"nr_throttled\": 0, \"system_usec\": 34251, \"throttled_usec\": 0, \"usage_usec\": 291139, \"user_usec\": 256887}, \"errors\": {}, \"memory.current\": 12546048, \"memory.events\": {\"high\": 0, \"low\": 0, \"max\": 0, \"oom\": 0, \"oom_group_kill\": 0, \"oom_kill\": 0}, \"memory.max\": \"268435456\", \"memory.peak\": 12546048, \"memory.swap.max\": \"0\", \"pids.current\": 1, \"pids.max\": \"64\"}, \"checksum\": 2589261568, \"completed_iterations\": 20000000, \"correct\": true, \"cpu_stat_delta\": {\"burst_usec\": 0, \"nice_usec\": 0, \"nr_bursts\": 0, \"nr_periods\": 35, \"nr_throttled\": 0, \"system_usec\": 0, \"throttled_usec\": 0, \"usage_usec\": 3497758, \"user_usec\": 3497758}, \"expected_checksum\": 2589261568, \"iterations\": 20000000, \"pid\": 1, \"process_cpu_s\": 3.4946573, \"process_peak_rss_bytes\": 17551360, \"schema_version\": 1, \"status\": \"completed\", \"uid\": 65534, \"wall_s\": 3.4952056789998096, \"work_per_s\": 5722123.913956106}\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 4.10999999998603
+}

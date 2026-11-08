@@ -1,0 +1,12 @@
+{
+  "command": [
+    "docker",
+    "compose",
+    "version"
+  ],
+  "returncode": 0,
+  "stdout": "Docker Compose version v5.6.1\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 0.10899999993853271
+}

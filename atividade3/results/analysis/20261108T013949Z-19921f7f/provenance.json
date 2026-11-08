@@ -1,0 +1,23 @@
+{
+  "batch": "/mnt/c/Projetos/SO_UFS_2026_2_Bruno_Amancio_Christian_Will/atividade3/results/raw/20261108T013949Z-19921f7f",
+  "batch_id": "20261108T013949Z-19921f7f",
+  "raw_inventory_sha256": "914d9c129df4b5dd5fc2378eb2cfbd1e1e9e81a38822c31ae55624d326322623",
+  "scripts_sha256": {
+    "audit.py": "a1a287baf62d9227fca15a8842ffded354b847c5b214d42a8317e33b465dbbcc",
+    "common.py": "2dfeb7f0864a8fb81bd6b5458efd529f76164b0fb6850f90068884fb7ada0bc7",
+    "lab.py": "eba64a0e0843800607d58eb39c0cbd82cea5fbfaea76ceb6768790656122b75d",
+    "probe.py": "b4a6559f70cea4b29a467dc6a12e6f1a93f9b5e0509b36eb9fa0e32174a3873e",
+    "summarize.py": "ceed21a2bf5e1893116119251ace0b7c43d41e18d3e495b8f576dbb6405cf13c",
+    "workload.py": "5df9014cf45dd9824a4a07ee6e2d8a088efae688bef1ad7d1f5be4905123e22e"
+  },
+  "matplotlib": "3.10.8",
+  "outputs": {
+    "analysis.json": "2adc1152c5d41c2396a4a750e62077fc9ea72937acbdbf6288e133ce842b4027",
+    "comparison.png": "c5790d52fe84e610cf158ad8a54c7b9647f7cacd591106238d6ed60d6eb4888e",
+    "comparison.svg": "60182d8a3817b77e261377d531b3eaf8b39b01bbb63929aa3b5e86b74f0f78e8",
+    "namespaces.csv": "9766467452c38ad735e06ecd7fd47c17c6aa8b80747d8f8827cc9df5ed4f6c0a",
+    "runs.csv": "f0f5a5f8c2820382de001a4d3a70794e5bf3f25b45b0fee3718d9d4da85e5435",
+    "summary.csv": "3849ee60a446e302554eb8458736349545cffeb73fa93c258c312729daf625d1",
+    "table.md": "dc48289f87887661b62951a48f1433cc9f9379c2a324f5b95365ab366b8d9143"
+  }
+}

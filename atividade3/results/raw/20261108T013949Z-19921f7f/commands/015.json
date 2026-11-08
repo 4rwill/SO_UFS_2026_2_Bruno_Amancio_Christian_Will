@@ -1,0 +1,14 @@
+{
+  "command": [
+    "docker",
+    "inspect",
+    "--format",
+    "{\"state\":{{json .State}},\"image\":{{json .Config.Image}},\"user\":{{json .Config.User}},\"nano_cpus\":{{json .HostConfig.NanoCpus}},\"memory\":{{json .HostConfig.Memory}},\"memory_swap\":{{json .HostConfig.MemorySwap}},\"pids_limit\":{{json .HostConfig.PidsLimit}},\"readonly_rootfs\":{{json .HostConfig.ReadonlyRootfs}},\"cap_drop\":{{json .HostConfig.CapDrop}},\"security_opt\":{{json .HostConfig.SecurityOpt}},\"network_mode\":{{json .HostConfig.NetworkMode}},\"privileged\":{{json .HostConfig.Privileged}}}",
+    "a66086e8e014460543765f7f56508a309a0b9c532164bb51037d0cb7eabcec1b"
+  ],
+  "returncode": 0,
+  "stdout": "{\"state\":{\"Dead\":false,\"Error\":\"\",\"ExitCode\":0,\"FinishedAt\":\"0001-01-01T00:00:00Z\",\"OOMKilled\":false,\"Paused\":false,\"Pid\":567,\"Restarting\":false,\"Running\":true,\"StartedAt\":\"2026-11-08T01:40:03.187312061Z\",\"Status\":\"running\"},\"image\":\"python@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54\",\"user\":\"65534:65534\",\"nano_cpus\":1000000000,\"memory\":268435456,\"memory_swap\":268435456,\"pids_limit\":64,\"readonly_rootfs\":true,\"cap_drop\":[\"ALL\"],\"security_opt\":[\"no-new-privileges:true\"],\"network_mode\":\"none\",\"privileged\":false}\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 0.0470000000204891
+}

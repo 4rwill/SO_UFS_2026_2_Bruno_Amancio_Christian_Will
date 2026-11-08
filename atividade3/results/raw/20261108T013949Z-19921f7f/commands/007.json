@@ -1,0 +1,15 @@
+{
+  "command": [
+    "docker",
+    "image",
+    "inspect",
+    "python@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54",
+    "--format",
+    "{\"id\":{{json .Id}},\"os\":{{json .Os}},\"architecture\":{{json .Architecture}}}"
+  ],
+  "returncode": 0,
+  "stdout": "{\"id\":\"sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54\",\"os\":\"linux\",\"architecture\":\"amd64\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 0.09399999992456287
+}

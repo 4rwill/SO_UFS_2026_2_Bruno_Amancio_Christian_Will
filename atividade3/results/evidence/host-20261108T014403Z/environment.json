@@ -1,0 +1,109 @@
+{
+  "timestamp_utc": "2026-11-08T01:44:03.755128+00:00",
+  "host_system": "Windows",
+  "records": [
+    {
+      "command": [
+        "docker",
+        "create",
+        "--name",
+        "so-atv3-env-ac079fe872",
+        "--cpus",
+        ".5",
+        "--memory",
+        "256m",
+        "--memory-swap",
+        "256m",
+        "--pids-limit",
+        "64",
+        "--network",
+        "none",
+        "--user",
+        "65534:65534",
+        "--cap-drop",
+        "ALL",
+        "--security-opt",
+        "no-new-privileges:true",
+        "--read-only",
+        "python@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54",
+        "python",
+        "-c",
+        "import time;time.sleep(45)"
+      ],
+      "returncode": 0,
+      "stdout": "082d9e776bb178a72ca4f42480eb8c7523452739d6e0d595ab21946c7994a4b2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "start",
+        "082d9e776bb178a72ca4f42480eb8c7523452739d6e0d595ab21946c7994a4b2"
+      ],
+      "returncode": 0,
+      "stdout": "082d9e776bb178a72ca4f42480eb8c7523452739d6e0d595ab21946c7994a4b2\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{.State.Pid}}",
+        "082d9e776bb178a72ca4f42480eb8c7523452739d6e0d595ab21946c7994a4b2"
+      ],
+      "returncode": 0,
+      "stdout": "1219\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "wsl",
+        "-d",
+        "docker-desktop",
+        "--exec",
+        "cat",
+        "/proc/1219/cgroup"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "cat: can't open '/proc/1219/cgroup': No such file or directory\n"
+    }
+  ],
+  "windows": {
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "$ErrorActionPreference=\"Stop\"; [ordered]@{ windows=(Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber); cpu=@(Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores,NumberOfLogicalProcessors); ram_bytes=(Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory } | ConvertTo-Json -Depth 6"
+    ],
+    "returncode": 0,
+    "stdout": "{\n    \"windows\":  {\n                    \"Caption\":  \"Microsoft Windows 10 Home Single Language\",\n                    \"Version\":  \"10.0.19045\",\n                    \"BuildNumber\":  \"19045\"\n                },\n    \"cpu\":  [\n                {\n                    \"Name\":  \"11th Gen Intel(R) Core(TM) i5-11260H @ 2.60GHz\",\n                    \"NumberOfCores\":  6,\n                    \"NumberOfLogicalProcessors\":  12\n                }\n            ],\n    \"ram_bytes\":  8358518784\n}\n",
+    "stderr": ""
+  },
+  "daemon_distribution": {
+    "command": [
+      "wsl",
+      "-d",
+      "docker-desktop",
+      "--exec",
+      "cat",
+      "/etc/os-release"
+    ],
+    "returncode": 0,
+    "stdout": "PRETTY_NAME=\"Docker Desktop\"\n",
+    "stderr": ""
+  },
+  "error": "StopIteration: ",
+  "cleanup": {
+    "command": [
+      "docker",
+      "rm",
+      "--force",
+      "082d9e776bb178a72ca4f42480eb8c7523452739d6e0d595ab21946c7994a4b2"
+    ],
+    "returncode": 0,
+    "stdout": "082d9e776bb178a72ca4f42480eb8c7523452739d6e0d595ab21946c7994a4b2\n",
+    "stderr": ""
+  }
+}

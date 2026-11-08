@@ -1,7 +1,10 @@
 # Preservar bytes das medições e arquivos referenciados por checksums.
 # Não normalizar LF/CRLF no commit nem no checkout dos resultados.
-results/** -text -whitespace
+atividade2/results/** -text -whitespace
+atividade3/results/** -text -whitespace
 
 # Scripts shell precisam de LF quando executados no Linux.
 *.sh text eol=lf
 *.png binary
+*.pdf binary
+*.pptx binary

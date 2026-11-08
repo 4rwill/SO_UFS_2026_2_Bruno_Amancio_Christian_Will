@@ -1,0 +1,4 @@
+resource,handle_A,handle_B,different
+pid,pid:[4026532292],pid:[4026532483],True
+mnt,mnt:[4026532287],mnt:[4026532480],True
+net,net:[4026532405],net:[4026532485],True

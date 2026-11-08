@@ -1,0 +1,13 @@
+{
+  "command": [
+    "docker",
+    "info",
+    "--format",
+    "{\"ServerVersion\":{{json .ServerVersion}},\"OperatingSystem\":{{json .OperatingSystem}},\"KernelVersion\":{{json .KernelVersion}},\"OSType\":{{json .OSType}},\"Architecture\":{{json .Architecture}},\"NCPU\":{{json .NCPU}},\"MemTotal\":{{json .MemTotal}},\"CgroupVersion\":{{json .CgroupVersion}},\"CgroupDriver\":{{json .CgroupDriver}},\"SecurityOptions\":{{json .SecurityOptions}}}"
+  ],
+  "returncode": 0,
+  "stdout": "{\"ServerVersion\":\"29.9.2\",\"OperatingSystem\":\"Docker Desktop\",\"KernelVersion\":\"6.18.54.1-microsoft-standard-WSL2\",\"OSType\":\"linux\",\"Architecture\":\"x86_64\",\"NCPU\":12,\"MemTotal\":3989606400,\"CgroupVersion\":\"2\",\"CgroupDriver\":\"cgroupfs\",\"SecurityOptions\":[\"name=seccomp,profile=builtin\",\"name=cgroupns\"]}\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_s": 1.312000000034459
+}

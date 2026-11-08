@@ -1,0 +1,11 @@
+test_corrupt_file_rejected (test_audit.AuditTests.test_corrupt_file_rejected) ... ok
+test_real_batch_passes (test_audit.AuditTests.test_real_batch_passes) ... ok
+test_requested_quota_does_not_replace_kernel_evidence (test_audit.AuditTests.test_requested_quota_does_not_replace_kernel_evidence) ... ok
+test_wrong_checksum_rejected_even_with_recomputed_inventory (test_audit.AuditTests.test_wrong_checksum_rejected_even_with_recomputed_inventory) ... ok
+test_closed_form_matches_small_and_overflowing_loops (test_workload.WorkloadTests.test_closed_form_matches_small_and_overflowing_loops) ... ok
+test_missing_or_wrong_limit_rejected (test_workload.WorkloadTests.test_missing_or_wrong_limit_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 9.138s
+
+OK

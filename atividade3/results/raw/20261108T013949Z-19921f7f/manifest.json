@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "batch_id": "20261108T013949Z-19921f7f",
+  "timestamp_utc": "2026-11-08T01:39:49.893891+00:00",
+  "git": {
+    "commit": "9f8ad355769af28f7252a5700905476b6dc6a413",
+    "state": "?? atividade3/"
+  },
+  "status": "completed",
+  "host": {
+    "system": "Windows",
+    "release": "10",
+    "machine": "AMD64",
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "source_sha256": {
+    "audit.py": "a1a287baf62d9227fca15a8842ffded354b847c5b214d42a8317e33b465dbbcc",
+    "common.py": "2dfeb7f0864a8fb81bd6b5458efd529f76164b0fb6850f90068884fb7ada0bc7",
+    "lab.py": "eba64a0e0843800607d58eb39c0cbd82cea5fbfaea76ceb6768790656122b75d",
+    "probe.py": "b4a6559f70cea4b29a467dc6a12e6f1a93f9b5e0509b36eb9fa0e32174a3873e",
+    "summarize.py": "ceed21a2bf5e1893116119251ace0b7c43d41e18d3e495b8f576dbb6405cf13c",
+    "workload.py": "5df9014cf45dd9824a4a07ee6e2d8a088efae688bef1ad7d1f5be4905123e22e"
+  },
+  "synthetic_data_sha256": "b0960665a2ae4520683baa31129be414b63cbe716d59b9ff043d91258f9ca636",
+  "protocol": {
+    "order": [
+      "C1",
+      "C2",
+      "C1",
+      "C2",
+      "C1",
+      "C2"
+    ],
+    "repetitions": 3,
+    "memory_bytes": 268435456,
+    "memory_swap_total_bytes": 268435456,
+    "pids_limit": 64,
+    "internal_watchdog_s": 60,
+    "host_watchdog_s": 90,
+    "wall_scope": "Somente laço de trabalho, sem inicialização Docker/Python/coleta.",
+    "cgroup_delta_scope": "Snapshots imediatamente antes/depois do laço; inclui pequena sobrecarga de leitura."
+  },
+  "image": {
+    "digest": "python@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54",
+    "id": "sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54",
+    "os": "linux",
+    "architecture": "amd64"
+  },
+  "iterations": 20000000,
+  "pilot": {
+    "iterations": 1000000,
+    "wall_s": 0.3095456699998067,
+    "frozen_iterations": 20000000,
+    "target_c1_wall_s": 8,
+    "maximum_iterations": 20000000
+  },
+  "valid_main_runs": 6,
+  "cleanup_confirmed": true,
+  "remaining_container_ids": [],
+  "finished_utc": "2026-11-08T01:40:45.122262+00:00"
+}

@@ -5,8 +5,8 @@ __pycache__/
 *.egg-info/
 .env
 .env.*
-data/generated/
-results/local-validation/
+/atividade2/data/generated/
+/atividade2/results/local-validation/
 
 # Material de outra disciplina, preservado apenas localmente.
 /planejamento-qualidade/
