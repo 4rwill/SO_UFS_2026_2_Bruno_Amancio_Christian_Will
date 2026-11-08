@@ -1,0 +1,430 @@
+{
+  "deck": "atividade3/output/slides/apresentacao_atividade3.pptx",
+  "deck_sha256": "bf95ccc4b64bc07d726b0427eb380764b9bf07c496018fd2207970e9e7c597c2",
+  "people": {
+    "bruno": "Bruno Amancio Ferreira",
+    "christian": "Christian Will Silva Santos Nunes",
+    "iasmin": "Iasmin Victoria Teixeira Barreto",
+    "marcos": "Marcos Vinícius Dantas Aguiar",
+    "pedro": "Pedro César Figueiredo Carneiro",
+    "sibele": "Sibele Oliveira Cruz",
+    "silas": "Silas Santos da Silva"
+  },
+  "slides": [
+    {
+      "number": 1,
+      "title": "Virtualização, namespaces e cgroups",
+      "presentation": {
+        "seconds": 40,
+        "show": "Manter a capa e olhar para a turma. Apresentar o objetivo antes dos detalhes técnicos.",
+        "next": "Trocar para o slide 2 quando Bruno anunciar Iasmin.",
+        "speech": [
+          {
+            "person": "bruno",
+            "seconds": 40,
+            "paragraphs": [
+              "Olá, nós somos a equipe GenResearch, e eu sou Bruno. Nesta atividade de Sistemas Operacionais, investigamos como contêineres Linux isolam a visão dos processos e limitam recursos usando o mesmo kernel. Criamos um laboratório próprio, com dois contêineres e seis medições de uma carga de CPU. Vamos apresentar o ambiente, as evidências de isolamento, os resultados e suas limitações. Iasmin começa mostrando onde esses contêineres executam."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 50,
+        "show": "Abrir com Bruno visível e a capa compartilhada. Inserir seu nome completo na identificação da gravação.",
+        "next": "Cortar para Iasmin e exibir o slide 2.",
+        "speech": [
+          {
+            "person": "bruno",
+            "seconds": 50,
+            "paragraphs": [
+              "Olá, eu sou Bruno, da equipe GenResearch. Este vídeo apresenta nosso laboratório da Atividade 3 de Sistemas Operacionais. A pergunta é como namespaces mudam a visão de processos, montagens e rede, e como cgroups limitam recursos dentro de um kernel compartilhado.",
+              "Reaproveitamos a experiência da atividade anterior com Linux e medições, mas desenvolvemos os scripts deste laboratório sem o kit de apoio. Vamos acompanhar os onze slides, explicar as seis execuções e mostrar uma auditoria dos dados reais. Cada integrante vai explicar uma parte do laboratório. Iasmin vai apresentar as camadas do ambiente utilizado."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 2,
+      "title": "Ambiente e kernel compartilhado",
+      "presentation": {
+        "seconds": 60,
+        "show": "Apontar o diagrama de cima para baixo: Windows, WSL2, kernel, daemon e contêineres.",
+        "next": "Trocar para o slide 3 após a passagem para Pedro.",
+        "speech": [
+          {
+            "person": "iasmin",
+            "seconds": 60,
+            "paragraphs": [
+              "Eu sou Iasmin. O host físico utiliza Windows 10. Acima dele, a infraestrutura WSL2 fornece o ambiente Linux em que executa o Docker Desktop. É o kernel desse ambiente Linux que os contêineres compartilham. Cada imagem fornece seu espaço de usuário, com Python e bibliotecas Debian.",
+              "O daemon anunciou doze CPUs lógicas e aproximadamente 3,72 gibibytes de RAM. Esses valores descrevem a camada Linux intermediária. O Ubuntu usado na análise também precisa ser distinguido do ambiente efetivo do daemon. Neste desenho existe uma camada de virtualização, mas cada contêiner continua sendo um conjunto de processos sob o kernel compartilhado. Pedro vai mostrar como esses processos podem ter visões diferentes."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 80,
+        "show": "Exibir Iasmin identificada e o diagrama. Usar o cursor para destacar cada camada. Não apresentar o Ubuntu como host do daemon.",
+        "next": "Passar para Pedro e para o slide 3.",
+        "speech": [
+          {
+            "person": "iasmin",
+            "seconds": 80,
+            "paragraphs": [
+              "Eu sou Iasmin e vou explicar o ambiente experimental. Na parte superior do diagrama está o computador físico com Windows 10. A infraestrutura WSL2 oferece uma camada Linux intermediária. Nessa infraestrutura executa o Docker Desktop, que cria os contêineres A e B.",
+              "Os dois contêineres compartilham o kernel Linux. A imagem usada fornece Python e o espaço de usuário Debian; ela não inicia um kernel independente. Essa distinção ajuda a separar contêiner de máquina virtual: uma VM envolve um kernel convidado, enquanto aqui os processos dos contêineres usam o kernel Linux compartilhado.",
+              "Registramos doze CPUs lógicas e cerca de 3,72 gibibytes de RAM anunciados pelo daemon, além do Docker Engine e do cgroup versão dois. Também fixamos a imagem por digest para manter a mesma referência nas execuções. O Ubuntu do WSL foi usado para analisar os dados, e não deve ser confundido com o ambiente efetivo do daemon. Pedro apresenta agora as evidências de namespaces."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 3,
+      "title": "Evidências de namespaces",
+      "presentation": {
+        "seconds": 70,
+        "show": "Apontar primeiro os PIDs 567 e 612, depois os dois PIDs internos iguais a 1 e as três linhas de handles.",
+        "next": "Trocar para o slide 4 na passagem para Christian.",
+        "speech": [
+          {
+            "person": "pedro",
+            "seconds": 70,
+            "paragraphs": [
+              "Eu sou Pedro. Coletamos os dados enquanto dois contêineres independentes estavam ativos. O Docker informou os PIDs 567 e 612 no host do daemon. Dentro de cada contêiner, o processo inicial tinha PID um. Isso acontece porque a numeração é relativa ao PID namespace de cada contêiner.",
+              "Na tabela, os identificadores de PID, mount e network são diferentes entre A e B. Esses handles sustentam que os contêineres pertenciam a namespaces distintos. O namespace de PID organiza a visão dos processos; o de mount, a visão das montagens; e o de network, os recursos de rede.",
+              "A diferença dos identificadores não comprova isolamento absoluto. A rede estava desativada, e não fizemos um teste de tráfego. Christian vai explicar o trabalho usado para comparar as quotas de CPU."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 85,
+        "show": "Manter a tabela legível em tela inteira. Destacar os valores com o cursor, sem ler todos os dígitos dos handles.",
+        "next": "Passar para Christian no slide 4.",
+        "speech": [
+          {
+            "person": "pedro",
+            "seconds": 85,
+            "paragraphs": [
+              "Eu sou Pedro e vou interpretar os namespaces. Os dados desta tabela foram coletados com os dois contêineres ativos e usando a mesma imagem. O Docker informou os processos 567 e 612 no host do daemon. Mesmo assim, cada contêiner mostrou seu processo inicial com PID um.",
+              "Não se trata do mesmo processo. Cada PID namespace apresenta sua própria numeração. O identificador interno precisa ser interpretado junto com a visão em que ele aparece. Também comparamos os handles de PID, mount e network. Em cada uma dessas três linhas, A e B têm identificadores distintos.",
+              "O PID namespace está ligado à visão dos processos. O mount namespace organiza a visão das montagens, e o network namespace organiza recursos de rede. O que observamos foi a separação desses namespaces nesta execução; os números podem mudar em outra execução.",
+              "Esses resultados não demonstram uma barreira de segurança absoluta. Usamos rede desativada e não testamos comunicação. Além disso, o PID informado por inspect pertence ao host do daemon, e não deve ser procurado em qualquer visão de proc sem confirmar sua correspondência. Agora Christian apresenta a carga determinística."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 4,
+      "title": "Carga determinística e protocolo",
+      "presentation": {
+        "seconds": 70,
+        "show": "Apontar vinte milhões, o checksum e a ordem C1/C2. A fórmula do slide é uma operação de acumulação, não inferência de IA.",
+        "next": "Trocar para o slide 5 na passagem para Marcos.",
+        "speech": [
+          {
+            "person": "christian",
+            "seconds": 70,
+            "paragraphs": [
+              "Eu sou Christian. Para comparar as quotas, usamos uma carga de CPU com uma única thread e vinte milhões de iterações. O laço acumula uma expressão aritmética e limita o resultado a trinta e dois bits. Uma fórmula fechada calcula o checksum esperado de forma independente, e as seis execuções chegaram ao mesmo resultado indicado no slide.",
+              "Primeiro fizemos um piloto separado, com um milhão de iterações. Depois congelamos o trabalho principal e mantivemos a mesma quantidade nas seis medições. Cada execução usou um contêiner novo, alternando C1 e C2 três vezes.",
+              "Assim, a comparação mantém o trabalho e a imagem, variando a quota de CPU. O piloto não entra nas estatísticas. A carga não utiliza LLM, GPU ou espera simulada. Marcos vai mostrar os limites que realmente observamos no kernel."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 85,
+        "show": "Exibir Christian identificado. Apontar a expressão e depois a sequência. O código workload.py pode ser aberto apenas se já estiver preparado.",
+        "next": "Passar para Marcos no slide 5.",
+        "speech": [
+          {
+            "person": "christian",
+            "seconds": 85,
+            "paragraphs": [
+              "Eu sou Christian e vou explicar o desenho da carga. Na atividade anterior havia uma espera simulada para representar geração. Para observar quota de CPU, usamos aqui um cálculo aritmético de uma thread, com memória constante e trabalho conhecido.",
+              "O laço executa vinte milhões de iterações. Em cada uma, acumula a expressão mostrada no slide e mantém o resultado em trinta e dois bits. A correção não depende apenas de repetir o laço: uma fórmula fechada, baseada nas somas dos inteiros e dos quadrados, calcula o valor esperado. As seis execuções concordaram com esse checksum.",
+              "Antes das medições principais, fizemos um piloto de um milhão de iterações e escolhemos uma quantidade segura. Depois disso, o trabalho permaneceu congelado. A ordem foi C1, C2, repetida três vezes, sempre com contêiner novo e a mesma imagem por digest.",
+              "O tempo do piloto fica separado das estatísticas. Também limitamos a duração com watchdogs de sessenta segundos dentro da carga e noventa segundos no comando externo. Marcos vai mostrar como confirmamos os limites de recursos."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 5,
+      "title": "Limites efetivos do cgroup",
+      "presentation": {
+        "seconds": 60,
+        "show": "Apontar cpu.max em C1 e C2, depois memória, swap e tarefas. Ler os valores como microssegundos por período.",
+        "next": "Trocar para o slide 6 na passagem para Sibele.",
+        "speech": [
+          {
+            "person": "marcos",
+            "seconds": 60,
+            "paragraphs": [
+              "Eu sou Marcos. C1 recebeu quota de meia CPU, e C2, quota de uma CPU. Confirmamos esses limites lendo os arquivos do cgroup antes e depois do trabalho, além de registrar a configuração do Docker.",
+              "Em C1, cpu ponto max mostrou cinquenta mil por cem mil microssegundos. Isso significa até cinquenta milissegundos de tempo agregado de CPU por período de cem milissegundos. A quota não reserva um núcleo nem define afinidade.",
+              "As duas condições mantiveram duzentos e cinquenta e seis mebibytes de memória, swap adicional zero e limite de sessenta e quatro tarefas, incluindo threads. Também conferimos os arquivos de memória e tarefas. Não provocamos esgotamento de recursos. Sibele apresenta agora os tempos medidos."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 80,
+        "show": "Exibir Marcos identificado. Usar a tabela como guia e destacar que as linhas são leituras efetivas do kernel.",
+        "next": "Passar para Sibele no slide 6.",
+        "speech": [
+          {
+            "person": "marcos",
+            "seconds": 80,
+            "paragraphs": [
+              "Eu sou Marcos e vou explicar os cgroups. Namespaces organizam visões de recursos. Já os cgroups permitem organizar processos e controlar o consumo de recursos. Neste laboratório, usamos cgroup versão dois.",
+              "C1 recebeu quota de meia CPU e C2, de uma CPU. O arquivo cpu ponto max contém a quota e o período em microssegundos. Em C1, os valores cinquenta mil e cem mil representam cinquenta milissegundos de CPU em cada período de cem milissegundos. Esse é um teto de tempo agregado, sem reservar fisicamente meio núcleo ou fixar o processo em um núcleo.",
+              "Apenas solicitar flags ao Docker não seria evidência suficiente. Por isso, lemos os limites antes e depois do trabalho. Mantivemos a mesma memória de duzentos e cinquenta e seis mebibytes e confirmamos swap adicional zero e sessenta e quatro tarefas, incluindo threads.",
+              "Não foi necessário provocar falta de memória ou criar tarefas em excesso. A comprovação aqui é dos limites configurados e observados. Agora Sibele apresenta as seis medições."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 6,
+      "title": "Seis medições de tempo decorrido",
+      "presentation": {
+        "seconds": 80,
+        "show": "Apontar azul para C1, verde para C2, os três pares e as medianas abaixo do gráfico.",
+        "next": "Trocar para o slide 7; Marcos começa e Sibele continua sem trocar novamente.",
+        "speech": [
+          {
+            "person": "sibele",
+            "seconds": 80,
+            "paragraphs": [
+              "Eu sou Sibele. Cada par de barras representa uma repetição, com azul para meia CPU e verde para uma CPU. As seis execuções fizeram o mesmo trabalho e passaram na verificação de correção. Medimos o tempo do laço, excluindo a criação do contêiner e a inicialização do Python.",
+              "A mediana foi aproximadamente sete vírgula zero sete quatro segundos em C1 e três vírgula três oito quatro segundos em C2. A razão entre essas medianas foi dois vírgula zero nove. Isso mostra uma redução observada do tempo quando aumentamos a quota neste ambiente.",
+              "Também precisamos olhar a variação. C1 apresentou tempos de cerca de seis vírgula trinta e nove a oito vírgula vinte e um segundos; C2 ficou entre três vírgula vinte e sete e três vírgula cinquenta. Temos apenas três repetições por condição, então esse resultado não demonstra um ganho universal de duas vezes. Marcos vai relacionar esses tempos aos contadores de throttling."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 90,
+        "show": "Exibir Sibele identificada e ampliar o gráfico. Deixar os três pares visíveis. Os rótulos estão arredondados a duas casas; as medianas abaixo têm três.",
+        "next": "Passar para Marcos no slide 7 e manter o mesmo slide durante a fala seguinte de Sibele.",
+        "speech": [
+          {
+            "person": "sibele",
+            "seconds": 90,
+            "paragraphs": [
+              "Eu sou Sibele e vou interpretar os resultados. O gráfico mostra as seis observações, com três pares de barras. Azul corresponde a C1, com meia CPU, e verde a C2, com uma CPU. Todas as execuções concluíram vinte milhões de iterações com o mesmo checksum.",
+              "O eixo vertical mostra o tempo decorrido em segundos. Esse tempo cobre o laço de trabalho e exclui a criação do contêiner, a inicialização do Python e a coleta posterior. Assim, ele tem um escopo definido e não representa toda a duração do comando Docker.",
+              "A mediana de C1 foi cerca de sete vírgula zero sete quatro segundos. Em C2, foi três vírgula três oito quatro. A razão entre as medianas foi aproximadamente dois vírgula zero nove. Na tabela consolidada também registramos trabalho por segundo, que significa iterações por segundo e não tokens de um modelo.",
+              "C1 variou mais que C2. Como temos apenas três repetições e o host é compartilhado, o resultado deve ser interpretado dentro dessas condições. Não isolamos frequência, temperatura ou carga externa. Os contadores que Marcos apresenta a seguir ajudam a sustentar a interpretação da quota."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 7,
+      "title": "Throttling e escopos de memória",
+      "presentation": {
+        "seconds": 60,
+        "show": "Marcos aponta a tabela superior; Sibele assume ao final da passagem e aponta as três definições abaixo. Manter o slide.",
+        "next": "Trocar para o slide 8 após Sibele anunciar Silas.",
+        "speech": [
+          {
+            "person": "marcos",
+            "seconds": 30,
+            "paragraphs": [
+              "Em C1, o contador de períodos com throttling aumentou nas três execuções: setenta e um, oitenta e dois e sessenta e quatro. Também houve aumento do tempo de throttling. Em C2, esses deltas foram zero na janela observada. Junto com cpu ponto max e com os tempos, isso sustenta que a quota restringiu a carga em C1. Sibele explica agora os escopos da memória."
+            ]
+          },
+          {
+            "person": "sibele",
+            "seconds": 30,
+            "paragraphs": [
+              "RSS máximo descreve páginas residentes do processo. Memory current mostra o uso contabilizado no grupo em instantes de coleta. Memory peak registra o pico desde a criação do cgroup, incluindo a inicialização. Essas medidas têm escopos diferentes e não são todas uma média de RAM. O limite foi confirmado sem provocar OOM. Silas vai apresentar a restrição de escrita."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 70,
+        "show": "Marcos aparece no início; fazer uma troca clara de locutor para Sibele, com identificação na tela. Nenhuma troca de slide entre as falas.",
+        "next": "Passar para Silas e para o slide 8.",
+        "speech": [
+          {
+            "person": "marcos",
+            "seconds": 35,
+            "paragraphs": [
+              "Para verificar throttling, usamos diferenças entre os contadores lidos antes e depois da carga. Nas três execuções de C1, houve aumento do número de períodos com throttling e do tempo associado à restrição. Em C2, esses deltas foram zero nessa janela. Não estamos afirmando ausência de toda restrição externa: estamos descrevendo esses contadores locais. A combinação entre limites, tempos e deltas torna a interpretação mais sustentada. Sibele continua com a memória."
+            ]
+          },
+          {
+            "person": "sibele",
+            "seconds": 35,
+            "paragraphs": [
+              "Na memória, distinguimos três escopos. RSS máximo vem do processo e descreve suas páginas residentes. Memory current é a contabilização do grupo nos instantes observados. Memory peak cobre a vida do cgroup, inclusive a inicialização. Por isso, os valores podem diferir e não devem ser chamados de RAM média. Também não representam uma quota de memória de GPU. Não provocamos OOM nem esgotamento de tarefas. Silas mostra agora o teste de montagem somente leitura."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 8,
+      "title": "Mount read-only e menor privilégio",
+      "presentation": {
+        "seconds": 70,
+        "show": "Apontar leitura permitida, criação negada, EROFS e os controles de privilégio. Não tentar escrever em outro diretório do host.",
+        "next": "Trocar para o slide 9 quando Silas passar a palavra a Christian.",
+        "speech": [
+          {
+            "person": "silas",
+            "seconds": 70,
+            "paragraphs": [
+              "Eu sou Silas. Criamos um documento sintético e montamos seu diretório em barra dados com a opção somente leitura. O contêiner conseguiu ler o documento, mas a tentativa controlada de criar um arquivo nesse mesmo diretório foi negada. O erro foi trinta, EROFS, que indica sistema de arquivos somente leitura.",
+              "Também observamos a opção ro no ponto de montagem. A execução usou usuário não root, capabilities efetivas zeradas e a restrição de novos privilégios ativada. Cada mecanismo tem um papel: o mount namespace define a visão das montagens, a opção ro restringe escrita e a identidade limita ações permitidas.",
+              "Essa negação comprova a restrição daquele mount, sem demonstrar segurança absoluta. O teste ficou limitado ao diretório sintético. Christian vai mostrar como auditamos as evidências preservadas."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 85,
+        "show": "Exibir Silas identificado. Apontar o erro e, se necessário, mostrar o arquivo mount-readonly.json já aberto. A demonstração é a evidência da execução registrada.",
+        "next": "Passar para Christian no slide 9 e preparar a captura do terminal.",
+        "speech": [
+          {
+            "person": "silas",
+            "seconds": 85,
+            "paragraphs": [
+              "Eu sou Silas e vou apresentar o teste de montagem somente leitura. Criamos um arquivo de texto sintético e montamos apenas seu diretório em barra dados. A leitura funcionou. Quando tentamos criar um novo arquivo nesse mesmo ponto de montagem, o sistema negou a operação com errno trinta, EROFS, ou sistema de arquivos somente leitura.",
+              "Registramos o erro e a opção ro no mount observado. Essa combinação relaciona a negação ao caráter somente leitura da montagem. Também executamos o teste com UID sessenta e cinco mil quinhentos e trinta e quatro, sem root, com capabilities efetivas zeradas e NoNewPrivs igual a um.",
+              "É importante separar os papéis. O mount namespace organiza a visão das montagens; a opção ro restringe escrita; identidade, permissões e políticas de privilégio regulam o acesso. O conjunto reduz as ações disponíveis, mas não elimina riscos do kernel e do runtime compartilhados.",
+              "Não montamos diretórios sigilosos, a raiz do host ou o Docker socket. O teste negativo ficou dentro do diretório sintético autorizado. Christian vai mostrar a verificação dos registros guardados."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 9,
+      "title": "Evidência selecionada",
+      "presentation": {
+        "seconds": 60,
+        "show": "0-10 s: explicar no slide. 10-30 s: terminal preparado, executar o auditor e apontar o resultado. 30-50 s: mostrar C1-1.json já aberto. 50-60 s: voltar e passar a palavra. Comandos na página de operação.",
+        "next": "Retornar aos slides e avançar para o 10; Iasmin assume.",
+        "speech": [
+          {
+            "person": "christian",
+            "seconds": 60,
+            "paragraphs": [
+              "Vou mostrar uma evidência verificável. Este comando audita o lote já coletado; ele não repete os experimentos. O resultado informa seis execuções principais válidas e sessenta e oito arquivos conferidos.",
+              "No registro C1 um, podemos localizar cpu ponto max com a quota de meia CPU e os deltas dos contadores. O auditor também recalcula o checksum e confere limites, ordem das execuções e limpeza. Assim, a interpretação pode ser confrontada com os arquivos, além dos slides. Iasmin e Silas encerram discutindo os limites do estudo."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 150,
+        "show": "Seguir a página de operação: 0-20 s no slide; 20-55 s executar auditor e explicar a saída; 55-95 s mostrar C1-1.json; 95-125 s mostrar mount-readonly.json; 125-150 s retornar ao slide e concluir. Reservar trechos silenciosos para leitura dos campos.",
+        "next": "Retornar aos slides, avançar para o 10 e passar a palavra a Iasmin.",
+        "speech": [
+          {
+            "person": "christian",
+            "seconds": 150,
+            "paragraphs": [
+              "Nesta demonstração, vamos conferir o lote que produziu os resultados. O comando do slide executa uma auditoria dos arquivos existentes. Não estamos criando uma nova medição nem repetindo agora as seis cargas.",
+              "A saída indica um resultado válido, seis execuções principais e sessenta e oito arquivos verificados. Isso significa que a auditoria conferiu a integridade interna, a correção do trabalho, os limites observados e outros critérios do lote.",
+              "Vou abrir o registro C1 um. Aqui aparecem a condição, a quantidade fixa de trabalho, o checksum e os snapshots do cgroup. Em cpu ponto max, vemos cinquenta mil por cem mil. Nos deltas de CPU, podemos identificar o aumento dos contadores de throttling.",
+              "Agora mostramos o registro do mount somente leitura. Ele preserva a leitura bem-sucedida, o erro trinta na tentativa de escrita e os controles de privilégio. Esses arquivos permitem confrontar os números apresentados com as evidências da execução.",
+              "A auditoria é uma verificação de consistência e integridade dos registros; ela não representa uma assinatura independente de sua origem. Os dados completos e os scripts permanecem no repositório. Vamos voltar aos slides para discutir as limitações com Iasmin e Silas."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 10,
+      "title": "Limitações e relação com inferência",
+      "presentation": {
+        "seconds": 60,
+        "show": "Iasmin apresenta as três primeiras linhas; Silas continua com a relação com servidores e o risco compartilhado. Manter o slide entre os locutores.",
+        "next": "Trocar para o slide 11 após Silas passar a palavra a Bruno.",
+        "speech": [
+          {
+            "person": "iasmin",
+            "seconds": 30,
+            "paragraphs": [
+              "Nossa principal ameaça à validade é o host compartilhado. Fizemos três repetições por condição, sem isolar carga externa, frequência ou temperatura. Além disso, a visão de proc acessível via WSL não permitiu localizar os ancestrais reais dos contêineres. Por isso, os limites externos permanecem não confirmados. As leituras dos limites locais continuam registradas, mas a generalização precisa respeitar essas condições."
+            ]
+          },
+          {
+            "person": "silas",
+            "seconds": 30,
+            "paragraphs": [
+              "Em um servidor de inferência, quotas podem reduzir o impacto de uma carga sobre as demais, e um corpus somente leitura reduz alterações indevidas nos documentos. Ainda permanecem riscos ligados ao host, ao kernel e ao runtime compartilhados. Nosso teste usou aritmética Python, então não mede desempenho de LLM ou GPU. Bruno encerra retomando os resultados e a participação da equipe."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 80,
+        "show": "Identificar a troca de Iasmin para Silas sem mudar o slide. Não apresentar hipóteses de frequência ou temperatura como causas medidas.",
+        "next": "Passar para Bruno e exibir o slide 11.",
+        "speech": [
+          {
+            "person": "iasmin",
+            "seconds": 40,
+            "paragraphs": [
+              "A principal limitação é que o host era compartilhado. Temos três repetições por condição e uma ordem alternada fixa, mas não controlamos continuamente carga externa, frequência ou temperatura. Esses fatores podem influenciar a variação e não foram isolados. Também houve uma limitação de visibilidade: o PID informado pelo Docker não apareceu no proc acessível via WSL. Assim, não confirmamos os limites ancestrais externos. Não substituímos essa ausência por uma afirmação de que eles estavam ilimitados."
+            ]
+          },
+          {
+            "person": "silas",
+            "seconds": 40,
+            "paragraphs": [
+              "A relação com inferência é conceitual. Limitar CPU, memória e tarefas ajuda a reduzir o impacto de uma carga em infraestrutura compartilhada. Um corpus somente leitura reduz alterações acidentais ou indevidas nos dados. Mesmo assim, kernel, runtime e host continuam sendo recursos e pontos de risco comuns. Nossa carga é aritmética Python: não carregamos um modelo de linguagem nem avaliamos GPU ou VRAM. Os resultados mostram os mecanismos observados neste laboratório, sem quantificar um serviço real de inferência. Bruno fará o encerramento."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "number": 11,
+      "title": "Equipe e revisão final",
+      "presentation": {
+        "seconds": 30,
+        "show": "Manter a tabela da equipe. Antes da apresentação final, atualizar a proposta de participação e as pendências do rodapé com informações confirmadas.",
+        "next": "Encerrar a exposição. Abrir o período separado de 3-5 minutos para perguntas.",
+        "speech": [
+          {
+            "person": "bruno",
+            "seconds": 30,
+            "paragraphs": [
+              "Para concluir, observamos namespaces distintos, limites efetivos de cgroup e uma restrição real de escrita. Com o mesmo trabalho, a quota maior apresentou menor tempo mediano nesta execução. O repositório reúne código, dados e documentação para conferência. Registramos a assistência do Codex, e a revisão e a responsabilidade acadêmica pertencem à equipe. Obrigado. Estamos disponíveis para as perguntas."
+            ]
+          }
+        ]
+      },
+      "video": {
+        "seconds": 45,
+        "show": "Bruno fecha o vídeo. O slide 11 atual contém proposta de participação e pendências: atualizar essas informações antes da gravação final, sem inventar contribuições. Conferir se todos apareceram identificados em seus trechos.",
+        "next": "Encerrar a gravação. Conferir áudio, legibilidade e participação antes de publicar.",
+        "speech": [
+          {
+            "person": "bruno",
+            "seconds": 45,
+            "paragraphs": [
+              "Encerramos com três evidências centrais: namespaces distintos entre os contêineres, limites locais de cgroup confirmados e escrita negada no mount somente leitura. Na comparação de trabalho fixo, elevar a quota de meia para uma CPU reduziu o tempo mediano observado, dentro das limitações apresentadas.",
+              "Os scripts, os registros brutos, o gráfico e o relatório estão organizados no repositório. Também declaramos a assistência do Codex e a necessidade de revisão crítica pela equipe. A equipe permanece responsável por revisar os resultados e explicar os mecanismos utilizados. Obrigado por acompanhar nosso laboratório de Sistemas Operacionais."
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

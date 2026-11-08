@@ -16,6 +16,8 @@ Entrega prevista: **10/11/2026**. Apresentação: **11/11/2026**, 10-12 minutos 
 | Fonte LaTeX do relatório | [deliverables/relatorio.tex](deliverables/relatorio.tex) |
 | Slides editáveis | [output/slides/apresentacao_atividade3.pptx](output/slides/apresentacao_atividade3.pptx) |
 | Roteiro de apresentação e vídeo | [docs/apresentacao.md](docs/apresentacao.md) |
+| Falas completas da apresentação, por aluno e slide | [output/pdf/roteiro_apresentacao.pdf](output/pdf/roteiro_apresentacao.pdf) |
+| Falas completas do vídeo, por aluno e slide | [output/pdf/roteiro_video.pdf](output/pdf/roteiro_video.pdf) |
 | Situação por requisito | [docs/status.md](docs/status.md) |
 | Participação e revisão | [docs/contribuicoes.md](docs/contribuicoes.md) |
 | Vídeo | [VIDEO.md](VIDEO.md) |
