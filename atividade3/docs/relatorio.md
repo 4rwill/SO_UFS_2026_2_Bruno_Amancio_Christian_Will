@@ -1,5 +1,7 @@
 # Virtualização, namespaces e cgroups
 
+> Rascunho anterior preservado como referência. O fonte oficial do relatório é [../deliverables/relatorio.tex](../deliverables/relatorio.tex), no formato LaTeX da Atividade 2. Este Markdown não gera mais o PDF.
+
 ## Sistemas Operacionais - Atividade 3 (2026.2)
 
 Universidade Federal de Sergipe

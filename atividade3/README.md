@@ -13,7 +13,7 @@ Entrega prevista: **10/11/2026**. Apresentação: **11/11/2026**, 10-12 minutos 
 | Artefato | Caminho |
 |---|---|
 | Relatório PDF para revisão | [output/pdf/relatorio_atividade3.pdf](output/pdf/relatorio_atividade3.pdf) |
-| Fonte do relatório | [docs/relatorio.md](docs/relatorio.md) |
+| Fonte LaTeX do relatório | [deliverables/relatorio.tex](deliverables/relatorio.tex) |
 | Slides editáveis | [output/slides/apresentacao_atividade3.pptx](output/slides/apresentacao_atividade3.pptx) |
 | Roteiro de apresentação e vídeo | [docs/apresentacao.md](docs/apresentacao.md) |
 | Situação por requisito | [docs/status.md](docs/status.md) |
@@ -31,7 +31,7 @@ Entrega prevista: **10/11/2026**. Apresentação: **11/11/2026**, 10-12 minutos 
 
 Usar Python >= 3.10 e Docker com daemon Linux, cgroup v2 e controladores CPU, memória e pids funcionais. O daemon deve ser local e permitir bind mounts do projeto. Em Windows, iniciar Docker Desktop em modo Linux e compartilhar o disco do projeto quando necessário. O Ubuntu WSL e o Linux efetivo do daemon são camadas diferentes.
 
-A execução do laboratório usa apenas a biblioteca padrão do Python no host e a imagem oficial Python no contêiner. Análise e PDF usam as dependências de `requirements-analysis.txt`; a matriz pode ser coletada sem instalá-las. Não é necessário Compose para executar, mas sua versão é registrada quando disponível.
+A execução do laboratório usa apenas a biblioteca padrão do Python no host e a imagem oficial Python no contêiner. A análise usa as dependências de `requirements-analysis.txt`; a matriz pode ser coletada sem instalá-las. O relatório exige um compilador LaTeX (pdfLaTeX ou Tectonic). Não é necessário Compose para executar, mas sua versão é registrada quando disponível.
 
 Comandos abaixo são relativos à **raiz do repositório**, em terminal com `python` apontando para o ambiente escolhido:
 
@@ -85,14 +85,20 @@ Há apenas três repetições por condição, em ordem alternada fixa, sem exclu
 
 ## Relatório, slides e vídeo
 
-O PDF é gerado de `docs/relatorio.md`, usando o gráfico e as evidências locais:
+O fonte oficial é [deliverables/relatorio.tex](deliverables/relatorio.tex), no mesmo formato de `atividade2/deliverables/relatorio.tex`: A4, fonte Times de 12 pontos, espaçamento 1,5, margens superior/esquerda de 3 cm e inferior/direita de 2 cm, capa, folha de rosto, resumo e sumário. O arquivo é independente, com diagrama e gráficos vetoriais incorporados em TikZ/PGFPlots e referências no próprio `.tex`.
+
+O script abaixo compila o LaTeX e atualiza `output/pdf/relatorio_atividade3.pdf`:
 
 ```bash
 python atividade3/scripts/build_report.py
 ```
 
+O script procura pdfLaTeX ou Tectonic no PATH. pdfLaTeX executa duas passagens; Tectonic resolve automaticamente os pacotes e recompila para atualizar referências e sumário. Para selecionar explicitamente um compilador, usar `--engine pdflatex`, `--engine tectonic` ou `--engine-path CAMINHO`. Com TeX Live/MiKTeX, os pacotes necessários estão listados no preâmbulo, incluindo suporte a português, Times, PGFPlots e títulos/tabelas. Os arquivos auxiliares ficam em `.build/latex/`, fora do versionamento. Nesta sessão, a compilação foi preparada com Tectonic 0.17.0 portátil, obtido da distribuição oficial e validado pelo SHA-256 publicado.
+
+O texto em `docs/relatorio.md` é o rascunho anterior e não gera mais o PDF. Atualizações do relatório devem ser feitas no `.tex`, inclusive a URL do vídeo e as contribuições.
+
 O construtor de slides usa `@oai/artifact-tool` do runtime Codex, com caminhos configuráveis pelas variáveis `CODEX_RUNTIME_NODE_MODULES`, `CODEX_PRESENTATIONS_SKILL` e `CODEX_RUNTIME_PYTHON`. O PPTX exportado já está incluído, sem exigir esse runtime para leitura. Instruções de construção estão no próprio script.
 
-**URL do vídeo: pendente de gravação e publicação pela equipe.** Inserir também no relatório e em `VIDEO.md`. As contribuições propostas devem ser revisadas por todos. As medições registram o commit base e snapshots/hashes do código ainda não commitado; o commit final da entrega deve ser registrado após a revisão.
+**URL do vídeo: pendente de gravação e publicação pela equipe.** Inserir também na macro `\urlvideo` do relatório LaTeX e em `VIDEO.md`. As contribuições propostas devem ser revisadas por todos. As medições registram o commit base e snapshots/hashes do código ainda não commitado; o commit final da entrega deve ser registrado após a revisão.
 
 IA: Codex auxiliou código, coleta, auditoria, análise e materiais. O modelo exato desta sessão não foi exposto por uma fonte verificável; não foi presumido. A equipe deve revisar o registro em `docs/uso_ia.md` e explicar os mecanismos e suas contribuições.

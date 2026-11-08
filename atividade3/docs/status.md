@@ -1,6 +1,6 @@
 # Situação da Atividade 3
 
-Atualização: 07/11/2026, America/Sao_Paulo. Entrega em 10/11/2026; apresentação em 11/11/2026.
+Atualização: 08/11/2026, America/Sao_Paulo. Entrega em 10/11/2026; apresentação em 11/11/2026.
 
 | Requisito | Estado | Evidência / próximo passo |
 |---|---|---|
@@ -18,7 +18,7 @@ Atualização: 07/11/2026, America/Sao_Paulo. Entrega em 10/11/2026; apresentaç
 | CSV, tabela e gráfico | Gerado e inspecionado | results/analysis/20261108T013949Z-19921f7f |
 | Auditor e testes negativos | Verificado | Seis testes passaram no Ubuntu; resultados em results/evidence/tests.txt |
 | Limpeza dos contêineres | Confirmada | Manifesto do lote e logs do coletor complementar |
-| Relatório e slides | Preparados para revisão | output/pdf e output/slides |
+| Relatório e slides | Preparados para revisão | Fonte LaTeX em deliverables/relatorio.tex; PDF em output/pdf e slides em output/slides |
 | Declaração de IA | Preparada para revisão | docs/uso_ia.md; modelo exato a confirmar se disponível |
 | Nomes e contribuição efetiva | Manual, pendente | Confirmar docs/contribuicoes.md e relatório |
 | Vídeo e URL nos três locais | Manual, pendente | Gravar, publicar, conferir acesso e atualizar VIDEO.md, README e relatório |

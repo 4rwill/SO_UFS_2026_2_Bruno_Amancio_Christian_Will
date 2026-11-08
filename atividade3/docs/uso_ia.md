@@ -8,6 +8,7 @@ Prompts fornecidos pelo usuário, preservados como contexto:
 
 1. “baseado na atividade 2 que já fizemos, analise se é possível a realização da atividade 3”
 2. “vamos fazer sem o kit de apoio mesmo, pode começar”
+3. “eu quero que o relatório seja feito em latex, no mesmo formato que foi utilizado na atividade 2 use esse arquivo de referencia relatorio.tex (atividade2/deliverables/relatorio.tex)”
 
 | Decisão | Tratamento | Verificação |
 |---|---|---|
